@@ -13,7 +13,6 @@ import { Input } from "@/components/ui/input";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { ActivityCard } from "@/components/activity-card";
 import { ActivityViewModal } from "@/components/activity-view-modal";
-import { MotivationalMessage } from "@/components/motivational-message";
 import { activities, categories, type Activity } from "@/lib/mock-data";
 import { Heart, Search, Star, Trophy } from "lucide-react";
 
@@ -44,7 +43,7 @@ export default function DashboardPage() {
 
   return (
     <div className="space-y-8">
-      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+      <div className="grid gap-6 md:grid-cols-2">
         <Card className="hover:shadow-lg transition-shadow duration-300">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">Favoritos</CardTitle>
@@ -69,9 +68,6 @@ export default function DashboardPage() {
             </p>
           </CardContent>
         </Card>
-        <div className="lg:col-span-2">
-            <MotivationalMessage />
-        </div>
       </div>
 
       <Card className="shadow-lg">
