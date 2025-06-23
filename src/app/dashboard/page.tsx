@@ -82,7 +82,7 @@ export default function DashboardPage() {
           </div>
 
           <Tabs defaultValue="all" className="w-full">
-            <TabsList className="h-auto flex-wrap justify-start gap-2">
+            <TabsList className="grid h-auto grid-cols-3 gap-2">
               <TabsTrigger value="all">Todas</TabsTrigger>
               {categories.map((cat) => (
                 <TabsTrigger key={cat.id} value={cat.id}>
