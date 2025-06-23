@@ -3,7 +3,7 @@ import './globals.css';
 import { Toaster } from "@/components/ui/toaster";
 
 export const metadata: Metadata = {
-  title: 'Kids Activities Hub',
+  title: 'Geniuzinho em Ação',
   description: 'Uma plataforma divertida de atividades infantis.',
 };
 

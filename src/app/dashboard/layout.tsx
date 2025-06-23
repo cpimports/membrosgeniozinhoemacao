@@ -33,7 +33,7 @@ export default function DashboardLayout({
         <div className="container mx-auto flex h-16 items-center space-x-4 px-4 sm:justify-between sm:space-x-0">
           <Link href="/dashboard" className="flex items-center gap-2">
             <Logo className="h-8 w-8 text-primary" />
-            <span className="font-bold text-lg hidden sm:inline-block">Kids Activities Hub</span>
+            <span className="font-bold text-lg hidden sm:inline-block">Geniuzinho em Ação</span>
           </Link>
           <div className="flex flex-1 items-center justify-end space-x-4">
             <nav className="flex items-center space-x-2">
