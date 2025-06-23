@@ -22,29 +22,27 @@ import { useToast } from "@/hooks/use-toast";
 
 const formSchema = z.object({
   email: z.string().email({ message: "Por favor, insira um e-mail válido." }),
-  password: z.string().min(1, { message: "A senha é obrigatória." }),
 });
 
-export default function LoginPage() {
+export default function ForgotPasswordPage() {
   const router = useRouter();
   const { toast } = useToast();
-  
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
       email: "",
-      password: "",
     },
   });
 
   function onSubmit(values: z.infer<typeof formSchema>) {
-    // Here you would add your Firebase login logic
+    // Here you would add your Firebase password reset logic
     console.log(values);
     toast({
-      title: "Login realizado com sucesso!",
-      description: "Redirecionando para o painel...",
+      title: "Link enviado!",
+      description: "Se o e-mail estiver cadastrado, você receberá um link para redefinir sua senha.",
     });
-    router.push("/dashboard");
+    router.push("/");
   }
 
   return (
@@ -64,8 +62,8 @@ export default function LoginPage() {
           <div className="mx-auto mb-2 flex items-center justify-center h-20 w-20 rounded-full bg-primary/10">
             <Logo className="h-12 w-12 text-primary" />
           </div>
-          <CardTitle className="text-3xl font-bold text-primary-foreground" style={{color: 'hsl(var(--primary))'}}>Bem-vindo(a) de volta!</CardTitle>
-          <CardDescription>Vamos brincar e aprender juntos.</CardDescription>
+          <CardTitle className="text-3xl font-bold text-primary-foreground" style={{color: 'hsl(var(--primary))'}}>Esqueceu sua senha?</CardTitle>
+          <CardDescription>Não se preocupe! Insira seu e-mail para recuperar o acesso.</CardDescription>
         </CardHeader>
         <CardContent>
           <Form {...form}>
@@ -83,32 +81,14 @@ export default function LoginPage() {
                   </FormItem>
                 )}
               />
-              <FormField
-                control={form.control}
-                name="password"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Senha</FormLabel>
-                    <FormControl>
-                      <Input type="password" placeholder="••••••••" {...field} />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <Button type="submit" className="w-full text-lg h-12">Entrar</Button>
+              <Button type="submit" className="w-full text-lg h-12">Enviar link de recuperação</Button>
             </form>
           </Form>
           <div className="mt-6 text-center text-sm">
             <p className="text-muted-foreground">
-              Não tem uma conta?{" "}
-              <Link href="/signup" className="font-semibold text-primary hover:underline">
-                Cadastre-se
-              </Link>
-            </p>
-            <p className="mt-2">
-              <Link href="/forgot-password" className="text-xs text-muted-foreground hover:underline">
-                Esqueceu sua senha?
+              Lembrou a senha?{" "}
+              <Link href="/" className="font-semibold text-primary hover:underline">
+                Faça login
               </Link>
             </p>
           </div>
