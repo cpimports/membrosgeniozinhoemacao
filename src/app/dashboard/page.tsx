@@ -13,7 +13,6 @@ import { Input } from "@/components/ui/input";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { ActivityCard } from "@/components/activity-card";
 import { ActivityViewModal } from "@/components/activity-view-modal";
-import { AIRecommender } from "@/components/ai-recommender";
 import { MotivationalMessage } from "@/components/motivational-message";
 import { activities, categories, type Activity } from "@/lib/mock-data";
 import { Heart, Search, Star, Trophy } from "lucide-react";
@@ -74,8 +73,6 @@ export default function DashboardPage() {
             <MotivationalMessage />
         </div>
       </div>
-
-      <AIRecommender onActivityClick={setSelectedActivity} />
 
       <Card className="shadow-lg">
         <CardHeader>
