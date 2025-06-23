@@ -38,7 +38,7 @@ export default function DashboardLayout({
           <div className="flex flex-1 items-center justify-end space-x-4">
             <nav className="flex items-center space-x-2">
               <div className="hidden md:block text-sm text-muted-foreground">
-                Olá, pronto para ensinar, inspirar e transformar o dia das suas crianças?
+                Olá! Vamos juntos tornar o aprendizado uma aventura?
               </div>
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
