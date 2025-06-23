@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
 import {
   Card,
   CardContent,
@@ -14,7 +13,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { ActivityCard } from "@/components/activity-card";
 import { ActivityViewModal } from "@/components/activity-view-modal";
 import { activities, categories, type Activity } from "@/lib/mock-data";
-import { Heart, Search, Star, Trophy } from "lucide-react";
+import { Heart, Search } from "lucide-react";
 
 export default function DashboardPage() {
   const [searchQuery, setSearchQuery] = useState("");
@@ -43,7 +42,7 @@ export default function DashboardPage() {
 
   return (
     <div className="space-y-8">
-      <div className="grid gap-6 md:grid-cols-2">
+      <div className="grid gap-6">
         <Card className="hover:shadow-lg transition-shadow duration-300">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">Favoritos</CardTitle>
@@ -53,18 +52,6 @@ export default function DashboardPage() {
             <div className="text-2xl font-bold">{favorites.size}</div>
             <p className="text-xs text-muted-foreground">
               Atividades que você mais gostou
-            </p>
-          </CardContent>
-        </Card>
-        <Card className="hover:shadow-lg transition-shadow duration-300">
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Concluídas</CardTitle>
-            <Trophy className="h-5 w-5 text-amber-500" />
-          </CardHeader>
-          <CardContent>
-            <div className="text-2xl font-bold">12</div>
-            <p className="text-xs text-muted-foreground">
-              Atividades que você já fez
             </p>
           </CardContent>
         </Card>
