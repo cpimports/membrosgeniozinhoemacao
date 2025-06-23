@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
+import Image from "next/image";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -17,7 +18,6 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Logo } from "@/components/icons";
 import { useToast } from "@/hooks/use-toast";
 
 const formSchema = z.object({
@@ -62,7 +62,7 @@ export default function LoginPage() {
       <Card className="w-full max-w-md z-10 shadow-2xl animate-in fade-in-50 zoom-in-95 duration-500">
         <CardHeader className="text-center space-y-2">
           <div className="mx-auto mb-2 flex items-center justify-center h-20 w-20 rounded-full bg-primary/10">
-            <Logo className="h-12 w-12 text-primary" />
+            <Image src="https://i.imgur.com/lWxj4DQ.png" alt="Geniuzinho em Ação Logo" width={48} height={48} className="h-12 w-12" />
           </div>
           <CardTitle className="text-3xl font-bold text-primary-foreground" style={{color: 'hsl(var(--primary))'}}>Bem-vindo(a) de volta!</CardTitle>
           <CardDescription>Vamos brincar e aprender juntos.</CardDescription>
