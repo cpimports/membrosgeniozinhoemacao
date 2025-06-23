@@ -39,14 +39,14 @@ export function ActivityCard({
   };
 
   return (
-    <Card className="flex flex-col overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 group animate-in fade-in-50 zoom-in-95">
+    <Card className="flex flex-col overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 animate-in fade-in-50 zoom-in-95">
       <CardHeader className="p-0 relative">
         <Image
           src={activity.thumbnailUrl}
           alt={`Thumbnail da atividade ${activity.title}`}
           width={400}
           height={250}
-          className="w-full h-40 object-cover transition-transform duration-300 group-hover:scale-105"
+          className="w-full h-40 object-cover"
           data-ai-hint={activity.aiHint}
         />
         <Button
