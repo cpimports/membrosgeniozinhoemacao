@@ -42,6 +42,10 @@ export default function DashboardPage() {
 
   return (
     <div className="space-y-8">
+      <div>
+        <h1 className="text-3xl font-bold text-primary">Seja bem-vindo(a) ao Gêniozinho em Ação!</h1>
+        <p className="text-muted-foreground mt-1">Tudo o que você precisa para aulas incríveis está aqui.</p>
+      </div>
       <div className="grid gap-6">
         <Card className="hover:shadow-lg transition-shadow duration-300">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
