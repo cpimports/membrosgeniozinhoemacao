@@ -44,7 +44,7 @@ export default function DashboardPage() {
     <div className="space-y-8">
       <div>
         <h1 className="text-3xl font-bold text-primary">Seja bem-vindo(a) ao Gêniozinho em Ação!</h1>
-        <p className="text-muted-foreground mt-1">Tudo o que você precisa para aulas incríveis está aqui.</p>
+        <p className="text-muted-foreground mt-1">Um mundo onde brincar ensina e aprender encanta!</p>
       </div>
       <div className="grid gap-6">
         <Card className="hover:shadow-lg transition-shadow duration-300">
