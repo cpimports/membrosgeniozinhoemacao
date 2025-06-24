@@ -74,5 +74,5 @@ export const activities: Activity[] = [
   { id: '49', title: 'Alimentação saudável', category: 'Ciências', thumbnailUrl: 'https://placehold.co/400x250.png', pdfUrl: 'https://drive.google.com/drive/u/4/folders/1QIbcck6E2wMimvx4Hw0ePgTAl56XCCxJ', isFavorite: false, aiHint: 'healthy food' },
   { id: '50', title: 'Alfabeto das boquinhas', category: 'Alfabetização', thumbnailUrl: 'https://placehold.co/400x250.png', pdfUrl: 'https://drive.google.com/drive/u/4/folders/12JHT9ez2-C56hdZLHnx5ygMu7VIylJv7', isFavorite: false, aiHint: 'mouth alphabet' },
   { id: '51', title: '+720 Atividades Escolares para Pré escola 1°, 2°, 3°, 4° e 5º ano', category: 'Pacotes Completos', thumbnailUrl: 'https://placehold.co/400x250.png', pdfUrl: 'https://drive.google.com/drive/u/4/folders/1o55DGXm-3xeEYEDwlxZdGR-nshFX2Con', isFavorite: false, aiHint: 'school activities' },
-  { id: '52', title: '+300 Atividades Bíblicas Infantil', category: 'Pacotes Completos', thumbnailUrl: 'https://placehold.co/400x250.png', pdfUrl: '#', isFavorite: false, aiHint: 'bible activities' },
+  { id: '52', title: '+300 Atividades Bíblicas Infantil', category: 'Pacotes Completos', thumbnailUrl: 'https://placehold.co/400x250.png', pdfUrl: 'https://drive.google.com/drive/u/4/folders/1LG6I5KHaBrWvlhMb8IL3em8sP1mZfJNC', isFavorite: false, aiHint: 'bible activities' },
 ];
