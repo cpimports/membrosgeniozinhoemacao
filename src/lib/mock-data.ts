@@ -26,7 +26,7 @@ export const activities: Activity[] = [
   { id: '4', title: 'Os 5 Sentidos', category: 'Datas comemorativas', thumbnailUrl: 'https://i.imgur.com/oRjjmWE.jpeg', pdfUrl: 'https://drive.google.com/drive/u/4/folders/13MoFL5zqccABp1IsXaOm8LVk8N47e_Y_', isFavorite: true, aiHint: "five senses" },
   { id: '5', title: 'Formas Geométricas', category: 'Matemática', thumbnailUrl: 'https://placehold.co/400x250.png', pdfUrl: 'https://drive.google.com/drive/u/4/folders/1kWWJU3fIVzuuXNgk9hx4UKhBUup-LBwq', isFavorite: false, aiHint: "geometric shapes" },
   { id: '6', title: 'Dia da Árvore', category: 'Datas comemorativas', thumbnailUrl: 'https://placehold.co/400x250.png', pdfUrl: 'https://drive.google.com/drive/u/4/folders/1O4K0z-tNU87n8VfZL0iZ5OulwiLf4Ovr', isFavorite: false, aiHint: "tree day" },
-  { id: '7', title: 'Soma Simples com Blocos', category: 'Matemática', thumbnailUrl: 'https://placehold.co/400x250.png', pdfUrl: '#', isFavorite: false, aiHint: "simple sum" },
+  { id: '7', title: 'Coordenação Motora', category: 'Coordenação motora', thumbnailUrl: 'https://placehold.co/400x250.png', pdfUrl: '#', isFavorite: false, aiHint: "motor skills" },
   { id: '8', title: 'Traçando o Caminho da Joaninha', category: 'Coordenação motora', thumbnailUrl: 'https://placehold.co/400x250.png', pdfUrl: '#', isFavorite: true, aiHint: "tracing lines" },
   { id: '9', title: 'Máscara de Carnaval para Montar', category: 'Datas comemorativas', thumbnailUrl: 'https://placehold.co/400x250.png', pdfUrl: '#', isFavorite: false, aiHint: "carnival mask" },
   { id: '10', title: 'Roda da Gratidão', category: 'Educação emocional', thumbnailUrl: 'https://placehold.co/400x250.png', pdfUrl: '#', isFavorite: false, aiHint: "gratitude wheel" },
