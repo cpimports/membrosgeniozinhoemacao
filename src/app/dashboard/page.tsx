@@ -36,6 +36,14 @@ export default function DashboardPage() {
     });
   };
 
+  const handleViewActivity = (activity: Activity) => {
+    if (activity.pdfUrl && activity.pdfUrl !== '#') {
+      window.open(activity.pdfUrl, '_blank');
+    } else {
+      setSelectedActivity(activity);
+    }
+  };
+
   const filteredActivities = activities.filter((activity) =>
     activity.title.toLowerCase().includes(searchQuery.toLowerCase())
   );
@@ -98,7 +106,7 @@ export default function DashboardPage() {
                     activity={activity}
                     isFavorite={favorites.has(activity.id)}
                     onToggleFavorite={handleToggleFavorite}
-                    onView={setSelectedActivity}
+                    onView={handleViewActivity}
                   />
                 ))}
               </div>
@@ -114,7 +122,7 @@ export default function DashboardPage() {
                           activity={activity}
                           isFavorite={favorites.has(activity.id)}
                           onToggleFavorite={handleToggleFavorite}
-                          onView={setSelectedActivity}
+                          onView={handleViewActivity}
                         />
                       ))}
                   </div>

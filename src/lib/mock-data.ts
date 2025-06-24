@@ -20,7 +20,7 @@ export const categories = [
 
 
 export const activities: Activity[] = [
-  { id: '1', title: 'Sabe Ler - Autismo', category: 'Alfabetização', thumbnailUrl: 'https://i.imgur.com/SvaWc91.jpeg', pdfUrl: '#', isFavorite: true, aiHint: "child drawing" },
+  { id: '1', title: 'Sabe Ler - Autismo', category: 'Alfabetização', thumbnailUrl: 'https://i.imgur.com/SvaWc91.jpeg', pdfUrl: 'https://drive.google.com/drive/u/4/folders/14qQNTkDYdEyBaJEROknqnEt0Imkg4XXr', isFavorite: true, aiHint: "child drawing" },
   { id: '2', title: 'Contando com Frutinhas Coloridas', category: 'Matemática', thumbnailUrl: 'https://placehold.co/400x250.png', pdfUrl: '#', isFavorite: false, aiHint: "counting fruits" },
   { id: '3', title: 'Recortando Formas Geométricas', category: 'Coordenação motora', thumbnailUrl: 'https://placehold.co/400x250.png', pdfUrl: '#', isFavorite: false, aiHint: "cutting shapes" },
   { id: '4', title: 'Colorindo o Saci para o Folclore', category: 'Datas comemorativas', thumbnailUrl: 'https://placehold.co/400x250.png', pdfUrl: '#', isFavorite: true, aiHint: "brazilian folklore" },
