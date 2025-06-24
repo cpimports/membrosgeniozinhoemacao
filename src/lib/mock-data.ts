@@ -57,7 +57,7 @@ export const activities: Activity[] = [
   { id: '31', title: 'Historias', category: 'Alfabetização', thumbnailUrl: 'https://placehold.co/400x250.png', pdfUrl: 'https://drive.google.com/drive/u/4/folders/1uqwk0ZTh5Xe9g8fLWpeCSfKP7nGir1_d', isFavorite: false, aiHint: 'story time' },
   { id: '32', title: 'Fluência leitora', category: 'Alfabetização', thumbnailUrl: 'https://placehold.co/400x250.png', pdfUrl: 'https://drive.google.com/drive/u/4/folders/1hbv7gmSDPlYdAJvg65ucvpQ7SHIfaioh', isFavorite: false, aiHint: 'reading fluency' },
   { id: '33', title: 'Escrita maluca', category: 'Alfabetização', thumbnailUrl: 'https://placehold.co/400x250.png', pdfUrl: 'https://drive.google.com/drive/u/4/folders/1MRdHra0aDU04PwIfQygjmxb1XrF1dooR', isFavorite: false, aiHint: 'creative writing' },
-  { id: '34', title: 'Escreva as silabas', category: 'Alfabetização', thumbnailUrl: 'https://placehold.co/400x250.png', pdfUrl: '#', isFavorite: false, aiHint: 'writing syllables' },
+  { id: '34', title: 'Escreva as silabas', category: 'Alfabetização', thumbnailUrl: 'https://placehold.co/400x250.png', pdfUrl: 'https://drive.google.com/drive/u/4/folders/1nkPv-pmbEC2QHDxEPl155-Pq34ex2Dkj', isFavorite: false, aiHint: 'writing syllables' },
   { id: '35', title: 'Emoções', category: 'Educação emocional', thumbnailUrl: 'https://placehold.co/400x250.png', pdfUrl: '#', isFavorite: false, aiHint: 'feelings chart' },
   { id: '36', title: 'Embaralhe as letras', category: 'Alfabetização', thumbnailUrl: 'https://placehold.co/400x250.png', pdfUrl: '#', isFavorite: false, aiHint: 'unscramble letters' },
   { id: '37', title: 'Dominós', category: 'Matemática', thumbnailUrl: 'https://placehold.co/400x250.png', pdfUrl: '#', isFavorite: false, aiHint: 'dominoes game' },
