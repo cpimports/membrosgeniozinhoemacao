@@ -51,7 +51,7 @@ export const activities: Activity[] = [
   { id: '25', title: 'Que horas são', category: 'Matemática', thumbnailUrl: 'https://placehold.co/400x250.png', pdfUrl: 'https://drive.google.com/drive/u/4/folders/1inGZVdf16B4G0VgnjyPUy4j2PAoEMUVD', isFavorite: false, aiHint: 'telling time' },
   { id: '26', title: 'Nome Próprio', category: 'Alfabetização', thumbnailUrl: 'https://placehold.co/400x250.png', pdfUrl: 'https://drive.google.com/drive/u/4/folders/1KnZLIrj5lVWCFzidzwKz3icIYkRObHLi', isFavorite: false, aiHint: 'name writing' },
   { id: '27', title: 'Jogos para autista', category: 'Educação emocional', thumbnailUrl: 'https://placehold.co/400x250.png', pdfUrl: 'https://drive.google.com/drive/u/4/folders/14OlnLT2h3QwUCAD-kP6b-WEW0mvJYRW3', isFavorite: false, aiHint: 'autism games' },
-  { id: '28', title: 'Jogo da memória', category: 'Coordenação motora', thumbnailUrl: 'https://placehold.co/400x250.png', pdfUrl: '#', isFavorite: false, aiHint: 'memory game' },
+  { id: '28', title: 'Jogo da memória', category: 'Coordenação motora', thumbnailUrl: 'https://placehold.co/400x250.png', pdfUrl: 'https://drive.google.com/drive/u/4/folders/1_F462SgMdKCvZXSBPDd7kUu7biRv7JmA', isFavorite: false, aiHint: 'memory game' },
   { id: '29', title: 'Interpretação de texto', category: 'Alfabetização', thumbnailUrl: 'https://placehold.co/400x250.png', pdfUrl: '#', isFavorite: false, aiHint: 'text interpretation' },
   { id: '30', title: 'Imitando os animais', category: 'Coordenação motora', thumbnailUrl: 'https://placehold.co/400x250.png', pdfUrl: '#', isFavorite: false, aiHint: 'animal imitation' },
   { id: '31', title: 'Historias', category: 'Alfabetização', thumbnailUrl: 'https://placehold.co/400x250.png', pdfUrl: '#', isFavorite: false, aiHint: 'story time' },
