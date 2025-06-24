@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { Eye, Download, Star } from "lucide-react";
+import { Eye, Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -13,7 +13,6 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { type Activity } from "@/lib/mock-data";
 import { cn } from "@/lib/utils";
-import { useToast } from "@/hooks/use-toast";
 
 interface ActivityCardProps {
   activity: Activity;
@@ -28,18 +27,8 @@ export function ActivityCard({
   onToggleFavorite,
   onView,
 }: ActivityCardProps) {
-  const { toast } = useToast();
-
-  const handleDownload = () => {
-    // This would trigger a download from Firebase Storage
-    toast({
-      title: "Download iniciado!",
-      description: `Baixando a atividade "${activity.title}".`,
-    });
-  };
-
   return (
-    <Card className="flex flex-col overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 animate-in fade-in-50 zoom-in-95">
+    <Card className="flex flex-col overflow-hidden shadow-md hover:shadow-xl transition-all duration-300">
       <CardHeader className="p-0 relative">
         <Image
           src={activity.thumbnailUrl}
@@ -68,19 +57,12 @@ export function ActivityCard({
           {activity.title}
         </CardTitle>
       </CardContent>
-      <CardFooter className="p-4 pt-0 flex gap-2">
+      <CardFooter className="p-4 pt-0">
         <Button
-          className="flex-1"
+          className="w-full"
           onClick={() => onView(activity)}
         >
           <Eye className="mr-2 h-4 w-4" /> Visualizar
-        </Button>
-        <Button
-          variant="outline"
-          className="flex-1"
-          onClick={handleDownload}
-        >
-          <Download className="mr-2 h-4 w-4" /> Download
         </Button>
       </CardFooter>
     </Card>

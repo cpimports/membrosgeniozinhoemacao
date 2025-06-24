@@ -12,8 +12,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { type Activity } from "@/lib/mock-data";
-import { Download, X } from "lucide-react";
-import { useToast } from "@/hooks/use-toast";
+import { X } from "lucide-react";
 
 interface ActivityViewModalProps {
   activity: Activity | null;
@@ -26,18 +25,7 @@ export function ActivityViewModal({
   isOpen,
   onClose,
 }: ActivityViewModalProps) {
-  const { toast } = useToast();
-
   if (!activity) return null;
-
-  const handleDownload = () => {
-    // This would trigger a download from Firebase Storage
-    toast({
-      title: "Download iniciado!",
-      description: `Baixando a atividade "${activity.title}".`,
-    });
-    onClose();
-  };
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
@@ -46,7 +34,7 @@ export function ActivityViewModal({
           <Badge variant="secondary" className="w-fit">{activity.category}</Badge>
           <DialogTitle className="text-2xl font-bold">{activity.title}</DialogTitle>
           <DialogDescription>
-            Visualize a atividade abaixo. Você pode baixá-la em PDF.
+            Visualize a atividade abaixo.
           </DialogDescription>
         </DialogHeader>
         <div className="px-6 py-4 max-h-[60vh] overflow-y-auto">
@@ -59,12 +47,9 @@ export function ActivityViewModal({
             data-ai-hint={activity.aiHint}
           />
         </div>
-        <DialogFooter className="p-6 bg-muted/50 flex sm:justify-between items-center">
+        <DialogFooter className="p-6 bg-muted/50 flex sm:justify-end items-center">
             <Button variant="ghost" onClick={onClose}>
                 <X className="mr-2 h-4 w-4" /> Fechar
-            </Button>
-            <Button onClick={handleDownload}>
-                <Download className="mr-2 h-4 w-4" /> Baixar PDF
             </Button>
         </DialogFooter>
       </DialogContent>
