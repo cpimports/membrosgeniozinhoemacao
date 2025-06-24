@@ -60,7 +60,7 @@ export const activities: Activity[] = [
   { id: '34', title: 'Escreva as silabas', category: 'Alfabetização', thumbnailUrl: 'https://placehold.co/400x250.png', pdfUrl: 'https://drive.google.com/drive/u/4/folders/1nkPv-pmbEC2QHDxEPl155-Pq34ex2Dkj', isFavorite: false, aiHint: 'writing syllables' },
   { id: '35', title: 'Emoções', category: 'Educação emocional', thumbnailUrl: 'https://placehold.co/400x250.png', pdfUrl: 'https://drive.google.com/drive/u/4/folders/1CdeMcf2vTJZBnsZFgdMcBSldhZcEKgCd', isFavorite: false, aiHint: 'feelings chart' },
   { id: '36', title: 'Embaralhe as letras', category: 'Alfabetização', thumbnailUrl: 'https://placehold.co/400x250.png', pdfUrl: 'https://drive.google.com/drive/u/4/folders/155ka2G-Z5Qn5-0kawPdKHOB7dJZ62ZOI', isFavorite: false, aiHint: 'unscramble letters' },
-  { id: '37', title: 'Dominós', category: 'Matemática', thumbnailUrl: 'https://placehold.co/400x250.png', pdfUrl: '#', isFavorite: false, aiHint: 'dominoes game' },
+  { id: '37', title: 'Dominós', category: 'Matemática', thumbnailUrl: 'https://placehold.co/400x250.png', pdfUrl: 'https://drive.google.com/drive/u/4/folders/1Q629gOLdWL-42ivNpdtaY5xrRjNdd2Vt', isFavorite: false, aiHint: 'dominoes game' },
   { id: '38', title: 'Dominó dos números', category: 'Matemática', thumbnailUrl: 'https://placehold.co/400x250.png', pdfUrl: '#', isFavorite: false, aiHint: 'number dominoes' },
   { id: '39', title: 'Dado Das Silabas', category: 'Alfabetização', thumbnailUrl: 'https://placehold.co/400x250.png', pdfUrl: '#', isFavorite: false, aiHint: 'syllable dice' },
   { id: '40', title: 'Dado das frases', category: 'Alfabetização', thumbnailUrl: 'https://placehold.co/400x250.png', pdfUrl: '#', isFavorite: false, aiHint: 'sentence dice' },
