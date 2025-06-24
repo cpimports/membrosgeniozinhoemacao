@@ -3,7 +3,7 @@ import { BookOpen, CalendarHeart, FlaskConical, Globe, Languages, Package, Sciss
 export type Activity = {
   id: string;
   title: string;
-  category: "Alfabetização" | "Números" | "Coordenação motora" | "Datas comemorativas" | "Educação emocional" | "Ciências" | "Geografia" | "Inglês" | "Pacotes Completos";
+  category: "Alfabetização" | "Números" | "Atividades sensoriais" | "Datas comemorativas" | "Educação emocional" | "Ciências" | "Geografia" | "Inglês" | "Pacotes Completos";
   thumbnailUrl: string;
   pdfUrl: string;
   isFavorite: boolean;
@@ -13,7 +13,7 @@ export type Activity = {
 export const categories = [
     { id: 'alfabetizacao', name: 'Alfabetização', icon: BookOpen },
     { id: 'matematica', name: 'Números', icon: Shapes },
-    { id: 'coordenacao', name: 'Coordenação motora', icon: Scissors },
+    { id: 'sensoriais', name: 'Atividades sensoriais', icon: Scissors },
     { id: 'datas', name: 'Datas comemorativas', icon: CalendarHeart },
     { id: 'emocional', name: 'Educação emocional', icon: Smile },
     { id: 'ciencias', name: 'Ciências', icon: FlaskConical },
@@ -43,9 +43,9 @@ export const activities: Activity[] = [
   { id: '4', title: 'Os 5 Sentidos', category: 'Datas comemorativas', thumbnailUrl: 'https://i.imgur.com/oRjjmWE.jpeg', pdfUrl: 'https://drive.google.com/drive/u/4/folders/13MoFL5zqccABp1IsXaOm8LVk8N47e_Y_', isFavorite: true, aiHint: "five senses" },
   { id: '5', title: 'Formas Geométricas', category: 'Números', thumbnailUrl: 'https://placehold.co/400x250.png', pdfUrl: 'https://drive.google.com/drive/u/4/folders/1kWWJU3fIVzuuXNgk9hx4UKhBUup-LBwq', isFavorite: false, aiHint: "geometric shapes" },
   { id: '6', title: 'Dia da Árvore', category: 'Datas comemorativas', thumbnailUrl: 'https://placehold.co/400x250.png', pdfUrl: 'https://drive.google.com/drive/u/4/folders/1O4K0z-tNU87n8VfZL0iZ5OulwiLf4Ovr', isFavorite: false, aiHint: "tree day" },
-  { id: '7', title: 'Coordenação Motora', category: 'Coordenação motora', thumbnailUrl: 'https://placehold.co/400x250.png', pdfUrl: 'https://drive.google.com/drive/u/4/folders/1Aoe90oiFQ0f8jpowYh0DR_S_olmf0dRQ', isFavorite: false, aiHint: "motor skills" },
+  { id: '7', title: 'Coordenação Motora', category: 'Atividades sensoriais', thumbnailUrl: 'https://placehold.co/400x250.png', pdfUrl: 'https://drive.google.com/drive/u/4/folders/1Aoe90oiFQ0f8jpowYh0DR_S_olmf0dRQ', isFavorite: false, aiHint: "motor skills" },
   { id: '9', title: 'Adivinhe o que é', category: 'Alfabetização', thumbnailUrl: 'https://placehold.co/400x250.png', pdfUrl: 'https://drive.google.com/drive/u/4/folders/1iMkAFLHQn7c7BvELxofO8Nt4jy6ZwM_z', isFavorite: false, aiHint: "riddle" },
-  { id: '10', title: 'Atividades Sensoriais', category: 'Coordenação motora', thumbnailUrl: 'https://placehold.co/400x250.png', pdfUrl: 'https://drive.google.com/drive/u/4/folders/1oBgVLL4c6oUOSXPT3m3Vm_Oxv1v5opIi', isFavorite: false, aiHint: "sensory activities" },
+  { id: '10', title: 'Atividades Sensoriais', category: 'Atividades sensoriais', thumbnailUrl: 'https://placehold.co/400x250.png', pdfUrl: 'https://drive.google.com/drive/u/4/folders/1oBgVLL4c6oUOSXPT3m3Vm_Oxv1v5opIi', isFavorite: false, aiHint: "sensory activities" },
   { id: '11', title: 'Cores', category: 'Números', thumbnailUrl: 'https://placehold.co/400x250.png', pdfUrl: 'https://drive.google.com/drive/u/4/folders/1mqrM_wj2xlgUAPRgWyUrw36WFT7yXebl', isFavorite: false, aiHint: "colors" },
   { id: '12', title: 'Matemática', category: 'Números', thumbnailUrl: 'https://placehold.co/400x250.png', pdfUrl: 'https://drive.google.com/drive/u/4/folders/18l9N86Y26RChn8M16RNZe0F6npa4yWjW', isFavorite: false, aiHint: 'math' },
   { id: '13', title: 'Ciências', category: 'Ciências', thumbnailUrl: 'https://placehold.co/400x250.png', pdfUrl: 'https://drive.google.com/drive/u/4/folders/1a1TsO_sVxfOaf6jwCr_ZBk6_tgS8j5Nm', isFavorite: false, aiHint: 'science experiment' },
@@ -54,11 +54,11 @@ export const activities: Activity[] = [
   { id: '20', title: 'Sorvetinho das contagens', category: 'Números', thumbnailUrl: 'https://placehold.co/400x250.png', pdfUrl: 'https://drive.google.com/drive/u/4/folders/1i7mQLhtEMd-HkrU7helv9tODZjpBU-dx', isFavorite: false, aiHint: 'counting game' },
   { id: '21', title: 'Rotina', category: 'Educação emocional', thumbnailUrl: 'https://placehold.co/400x250.png', pdfUrl: 'https://drive.google.com/drive/u/4/folders/1_8SFh8_redUcdLhXXeukbgVbSA0EqYQu', isFavorite: false, aiHint: 'daily routine' },
   { id: '22', title: 'Roleta das cores', category: 'Alfabetização', thumbnailUrl: 'https://placehold.co/400x250.png', pdfUrl: 'https://drive.google.com/drive/u/4/folders/1SOXWU9WErST4ujfqDhG_eqnv2KQYnvNy', isFavorite: false, aiHint: 'color wheel' },
-  { id: '23', title: 'Recorte e cole', category: 'Coordenação motora', thumbnailUrl: 'https://placehold.co/400x250.png', pdfUrl: 'https://drive.google.com/drive/u/4/folders/1tDGfVvxSARJHm7ZK23lXmE8LR57CETvC', isFavorite: false, aiHint: 'cut paste' },
-  { id: '24', title: 'Quebra-cabeças', category: 'Coordenação motora', thumbnailUrl: 'https://placehold.co/400x250.png', pdfUrl: 'https://drive.google.com/drive/u/4/folders/1GaXxojfmBYf77wPYJIMqeP-2nHyi0GA1', isFavorite: false, aiHint: 'puzzle' },
+  { id: '23', title: 'Recorte e cole', category: 'Atividades sensoriais', thumbnailUrl: 'https://placehold.co/400x250.png', pdfUrl: 'https://drive.google.com/drive/u/4/folders/1tDGfVvxSARJHm7ZK23lXmE8LR57CETvC', isFavorite: false, aiHint: 'cut paste' },
+  { id: '24', title: 'Quebra-cabeças', category: 'Atividades sensoriais', thumbnailUrl: 'https://placehold.co/400x250.png', pdfUrl: 'https://drive.google.com/drive/u/4/folders/1GaXxojfmBYf77wPYJIMqeP-2nHyi0GA1', isFavorite: false, aiHint: 'puzzle' },
   { id: '27', title: 'Jogos para autista', category: 'Educação emocional', thumbnailUrl: 'https://placehold.co/400x250.png', pdfUrl: 'https://drive.google.com/drive/u/4/folders/14OlnLT2h3QwUCAD-kP6b-WEW0mvJYRW3', isFavorite: false, aiHint: 'autism games' },
-  { id: '28', title: 'Jogo da memória', category: 'Coordenação motora', thumbnailUrl: 'https://placehold.co/400x250.png', pdfUrl: 'https://drive.google.com/drive/u/4/folders/1_F462SgMdKCvZXSBPDd7kUu7biRv7JmA', isFavorite: false, aiHint: 'memory game' },
-  { id: '30', title: 'Imitando os animais', category: 'Coordenação motora', thumbnailUrl: 'https://placehold.co/400x250.png', pdfUrl: 'https://drive.google.com/drive/u/4/folders/18G0TKYXblMC6F7XZwsojKlApx8dVuVPx', isFavorite: false, aiHint: 'animal imitation' },
+  { id: '28', title: 'Jogo da memória', category: 'Atividades sensoriais', thumbnailUrl: 'https://placehold.co/400x250.png', pdfUrl: 'https://drive.google.com/drive/u/4/folders/1_F462SgMdKCvZXSBPDd7kUu7biRv7JmA', isFavorite: false, aiHint: 'memory game' },
+  { id: '30', title: 'Imitando os animais', category: 'Atividades sensoriais', thumbnailUrl: 'https://placehold.co/400x250.png', pdfUrl: 'https://drive.google.com/drive/u/4/folders/18G0TKYXblMC6F7XZwsojKlApx8dVuVPx', isFavorite: false, aiHint: 'animal imitation' },
   { id: '35', title: 'Emoções', category: 'Educação emocional', thumbnailUrl: 'https://placehold.co/400x250.png', pdfUrl: 'https://drive.google.com/drive/u/4/folders/1CdeMcf2vTJZBnsZFgdMcBSldhZcEKgCd', isFavorite: false, aiHint: 'feelings chart' },
   { id: '36', title: 'Embaralhe as letras', category: 'Alfabetização', thumbnailUrl: 'https://placehold.co/400x250.png', pdfUrl: 'https://drive.google.com/drive/u/4/folders/155ka2G-Z5Qn5-0kawPdKHOB7dJZ62ZOI', isFavorite: false, aiHint: 'unscramble letters' },
   { id: '37', title: 'Dominós', category: 'Números', thumbnailUrl: 'https://placehold.co/400x250.png', pdfUrl: 'https://drive.google.com/drive/u/4/folders/1Q629gOLdWL-42ivNpdtaY5xrRjNdd2Vt', isFavorite: false, aiHint: 'dominoes game' },
@@ -69,9 +69,9 @@ export const activities: Activity[] = [
   { id: '43', title: 'Cartões de Comunicação', category: 'Educação emocional', thumbnailUrl: 'https://placehold.co/400x250.png', pdfUrl: 'https://drive.google.com/drive/u/4/folders/1E6ThcEmkZNCOUQmOjzVRTaTCVDBRjNF_', isFavorite: false, aiHint: 'communication cards' },
   { id: '44', title: 'Bingos', category: 'Alfabetização', thumbnailUrl: 'https://placehold.co/400x250.png', pdfUrl: 'https://drive.google.com/drive/u/4/folders/1oJTWu62uNDqF_-3k3FsK2EYeLBKzs_75', isFavorite: false, aiHint: 'bingo game' },
   { id: '45', title: 'Bingo das Palavras', category: 'Alfabetização', thumbnailUrl: 'https://placehold.co/400x250.png', pdfUrl: 'https://drive.google.com/drive/u/4/folders/1wQoSTPOrUtNUbQqc_FjpKxge4XOBlWr3', isFavorite: false, aiHint: 'word bingo' },
-  { id: '46', title: 'Atividades sensoriais', category: 'Coordenação motora', thumbnailUrl: 'https://placehold.co/400x250.png', pdfUrl: 'https://drive.google.com/drive/u/4/folders/1tkNga3m9HaF-OTRa9qaleM1Agb3xSulT', isFavorite: false, aiHint: 'sensory play' },
+  { id: '46', title: 'Atividades sensoriais', category: 'Atividades sensoriais', thumbnailUrl: 'https://placehold.co/400x250.png', pdfUrl: 'https://drive.google.com/drive/u/4/folders/1tkNga3m9HaF-OTRa9qaleM1Agb3xSulT', isFavorite: false, aiHint: 'sensory play' },
   { id: '47', title: 'Atividades de sequencias', category: 'Números', thumbnailUrl: 'https://placehold.co/400x250.png', pdfUrl: 'https://drive.google.com/drive/u/4/folders/1shbn3wR01vXU4e0H4HQFPg4tQxUBll7P', isFavorite: false, aiHint: 'sequence activity' },
-  { id: '48', title: 'Alinhavos', category: 'Coordenação motora', thumbnailUrl: 'https://placehold.co/400x250.png', pdfUrl: 'https://drive.google.com/drive/u/4/folders/1vgV_nc1pQ7VJiAGYlcqyeWh0qs5CXQLZ', isFavorite: false, aiHint: 'lacing cards' },
+  { id: '48', title: 'Alinhavos', category: 'Atividades sensoriais', thumbnailUrl: 'https://placehold.co/400x250.png', pdfUrl: 'https://drive.google.com/drive/u/4/folders/1vgV_nc1pQ7VJiAGYlcqyeWh0qs5CXQLZ', isFavorite: false, aiHint: 'lacing cards' },
   { id: '49', title: 'Alimentação saudável', category: 'Ciências', thumbnailUrl: 'https://placehold.co/400x250.png', pdfUrl: 'https://drive.google.com/drive/u/4/folders/1QIbcck6E2wMimvx4Hw0ePgTAl56XCCxJ', isFavorite: false, aiHint: 'healthy food' },
   { id: '51', title: '+720 Atividades Escolares para Pré escola 1°, 2°, 3°, 4° e 5º ano', category: 'Pacotes Completos', thumbnailUrl: 'https://placehold.co/400x250.png', pdfUrl: 'https://drive.google.com/drive/u/4/folders/1o55DGXm-3xeEYEDwlxZdGR-nshFX2Con', isFavorite: false, aiHint: 'school activities' },
   { id: '52', title: '+300 Atividades Bíblicas Infantil', category: 'Pacotes Completos', thumbnailUrl: 'https://placehold.co/400x250.png', pdfUrl: 'https://drive.google.com/drive/u/4/folders/1LG6I5KHaBrWvlhMb8IL3em8sP1mZfJNC', isFavorite: false, aiHint: 'bible activities' },
