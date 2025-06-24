@@ -38,6 +38,6 @@ export const activities: Activity[] = [
   { id: '12', title: 'Matemática', category: 'Matemática', thumbnailUrl: 'https://placehold.co/400x250.png', pdfUrl: 'https://drive.google.com/drive/u/4/folders/18l9N86Y26RChn8M16RNZe0F6npa4yWjW', isFavorite: false, aiHint: "math" },
   { id: '13', title: 'Ciências', category: 'Ciências', thumbnailUrl: 'https://placehold.co/400x250.png', pdfUrl: 'https://drive.google.com/drive/u/4/folders/1a1TsO_sVxfOaf6jwCr_ZBk6_tgS8j5Nm', isFavorite: false, aiHint: "science experiment" },
   { id: '14', title: 'Geografia', category: 'Geografia', thumbnailUrl: 'https://placehold.co/400x250.png', pdfUrl: 'https://drive.google.com/drive/u/4/folders/1z6yTCx64YU0hapMAlvde3pjAXgKZ5dx4', isFavorite: false, aiHint: "world map" },
-  { id: '15', title: 'Inglês', category: 'Inglês', thumbnailUrl: 'https://placehold.co/400x250.png', pdfUrl: '#', isFavorite: false, aiHint: "learning english" },
+  { id: '15', title: 'Inglês', category: 'Inglês', thumbnailUrl: 'https://placehold.co/400x250.png', pdfUrl: 'https://drive.google.com/drive/u/4/folders/1oRZLigZYIPQPKAQZWFWGSotcmF9_q9Nn', isFavorite: false, aiHint: "learning english" },
   { id: '16', title: 'Todas as disciplinas - 2ºano', category: 'Pacotes Completos', thumbnailUrl: 'https://placehold.co/400x250.png', pdfUrl: '#', isFavorite: false, aiHint: "school subjects" },
 ];
