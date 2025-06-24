@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -44,7 +44,6 @@ export default function DashboardLayout({
                 <DropdownMenuTrigger asChild>
                   <Button variant="ghost" className="relative h-10 w-10 rounded-full">
                     <Avatar className="h-10 w-10">
-                      <AvatarImage src="https://i.imgur.com/SvaWc91.jpeg" alt="Avatar" />
                       <AvatarFallback>C</AvatarFallback>
                     </Avatar>
                   </Button>
