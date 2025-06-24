@@ -70,7 +70,7 @@ export const activities: Activity[] = [
   { id: '45', title: 'Bingo das Palavras', category: 'Alfabetização', thumbnailUrl: 'https://placehold.co/400x250.png', pdfUrl: '#', isFavorite: false, aiHint: 'word bingo' },
   { id: '46', title: 'Atividades sensoriais', category: 'Coordenação motora', thumbnailUrl: 'https://placehold.co/400x250.png', pdfUrl: '#', isFavorite: false, aiHint: 'sensory play' },
   { id: '47', title: 'Atividades de sequencias', category: 'Matemática', thumbnailUrl: 'https://placehold.co/400x250.png', pdfUrl: '#', isFavorite: false, aiHint: 'sequence activity' },
-  { id: '48', title: 'Alinhavos', category: 'Coordenação motora', thumbnailUrl: 'https://placehold.co/400x250.png', pdfUrl: '#', isFavorite: false, aiHint: 'lacing cards' },
+  { id: '48', title: 'Alinhavos', category: 'Coordenação motora', thumbnailUrl: 'https://placehold.co/400x250.png', pdfUrl: 'https://drive.google.com/drive/u/4/folders/1vgV_nc1pQ7VJiAGYlcqyeWh0qs5CXQLZ', isFavorite: false, aiHint: 'lacing cards' },
   { id: '49', title: 'Alimentação saudável', category: 'Ciências', thumbnailUrl: 'https://placehold.co/400x250.png', pdfUrl: '#', isFavorite: false, aiHint: 'healthy food' },
   { id: '50', title: 'Alfabeto das boquinhas', category: 'Alfabetização', thumbnailUrl: 'https://placehold.co/400x250.png', pdfUrl: '#', isFavorite: false, aiHint: 'mouth alphabet' },
   { id: '51', title: '+720 Atividades Escolares para Pré escola 1°, 2°, 3°, 4° e 5º ano', category: 'Pacotes Completos', thumbnailUrl: 'https://placehold.co/400x250.png', pdfUrl: '#', isFavorite: false, aiHint: 'school activities' },
