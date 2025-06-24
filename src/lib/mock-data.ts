@@ -40,7 +40,7 @@ export const activities: Activity[] = [
   { id: '14', title: 'Geografia', category: 'Geografia', thumbnailUrl: 'https://placehold.co/400x250.png', pdfUrl: 'https://drive.google.com/drive/u/4/folders/1z6yTCx64YU0hapMAlvde3pjAXgKZ5dx4', isFavorite: false, aiHint: "world map" },
   { id: '15', title: 'Inglês', category: 'Inglês', thumbnailUrl: 'https://placehold.co/400x250.png', pdfUrl: 'https://drive.google.com/drive/u/4/folders/1oRZLigZYIPQPKAQZWFWGSotcmF9_q9Nn', isFavorite: false, aiHint: "learning english" },
   { id: '16', title: 'Todas as disciplinas - 2ºano', category: 'Pacotes Completos', thumbnailUrl: 'https://placehold.co/400x250.png', pdfUrl: 'https://drive.google.com/drive/u/4/folders/16BakFM09KQ4E-qaJcqmU-bmuuKxNyjpy', isFavorite: false, aiHint: "school subjects" },
-  { id: '17', title: 'Vogais Fônicas', category: 'Alfabetização', thumbnailUrl: 'https://placehold.co/400x250.png', pdfUrl: '#', isFavorite: false, aiHint: 'vowels phonics' },
+  { id: '17', title: 'Vogais Fônicas', category: 'Alfabetização', thumbnailUrl: 'https://placehold.co/400x250.png', pdfUrl: 'https://drive.google.com/drive/u/4/folders/1Ylq98saTlody6Rse-rK67j0bh-caLR8T', isFavorite: false, aiHint: 'vowels phonics' },
   { id: '18', title: 'Vamos escrever', category: 'Alfabetização', thumbnailUrl: 'https://placehold.co/400x250.png', pdfUrl: '#', isFavorite: false, aiHint: 'writing practice' },
   { id: '19', title: 'Uno da leitura', category: 'Alfabetização', thumbnailUrl: 'https://placehold.co/400x250.png', pdfUrl: '#', isFavorite: false, aiHint: 'reading game' },
   { id: '20', title: 'Sorvetinho das contagens', category: 'Matemática', thumbnailUrl: 'https://placehold.co/400x250.png', pdfUrl: '#', isFavorite: false, aiHint: 'counting game' },
