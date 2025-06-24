@@ -28,7 +28,7 @@ export const activities: Activity[] = [
   { id: '6', title: 'Dia da Árvore', category: 'Datas comemorativas', thumbnailUrl: 'https://placehold.co/400x250.png', pdfUrl: 'https://drive.google.com/drive/u/4/folders/1O4K0z-tNU87n8VfZL0iZ5OulwiLf4Ovr', isFavorite: false, aiHint: "tree day" },
   { id: '7', title: 'Coordenação Motora', category: 'Coordenação motora', thumbnailUrl: 'https://placehold.co/400x250.png', pdfUrl: 'https://drive.google.com/drive/u/4/folders/1Aoe90oiFQ0f8jpowYh0DR_S_olmf0dRQ', isFavorite: false, aiHint: "motor skills" },
   { id: '8', title: 'Caligrafia', category: 'Coordenação motora', thumbnailUrl: 'https://placehold.co/400x250.png', pdfUrl: 'https://drive.google.com/drive/u/4/folders/1MQJbnDiYW1w0SjrzGRYokFDwRT_DAWnU', isFavorite: true, aiHint: "tracing lines" },
-  { id: '9', title: 'Máscara de Carnaval para Montar', category: 'Datas comemorativas', thumbnailUrl: 'https://placehold.co/400x250.png', pdfUrl: '#', isFavorite: false, aiHint: "carnival mask" },
+  { id: '9', title: 'Adivinhe o que é', category: 'Alfabetização', thumbnailUrl: 'https://placehold.co/400x250.png', pdfUrl: '#', isFavorite: false, aiHint: "riddle" },
   { id: '10', title: 'Roda da Gratidão', category: 'Educação emocional', thumbnailUrl: 'https://placehold.co/400x250.png', pdfUrl: '#', isFavorite: false, aiHint: "gratitude wheel" },
   { id: '11', title: 'Caça-palavras de Objetos', category: 'Alfabetização', thumbnailUrl: 'https://placehold.co/400x250.png', pdfUrl: '#', isFavorite: false, aiHint: "word search" },
   { id: '12', title: 'Quebra-cabeça numérico', category: 'Matemática', thumbnailUrl: 'https://placehold.co/400x250.png', pdfUrl: '#', isFavorite: false, aiHint: "number puzzle" },
