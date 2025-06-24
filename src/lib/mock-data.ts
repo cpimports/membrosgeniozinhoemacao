@@ -64,7 +64,7 @@ export const activities: Activity[] = [
   { id: '38', title: 'Dominó dos números', category: 'Matemática', thumbnailUrl: 'https://placehold.co/400x250.png', pdfUrl: 'https://drive.google.com/drive/u/4/folders/1Tj9eBlp1l53k4E0zL5QPOiuTCr5-zi-3', isFavorite: false, aiHint: 'number dominoes' },
   { id: '39', title: 'Dado Das Silabas', category: 'Alfabetização', thumbnailUrl: 'https://placehold.co/400x250.png', pdfUrl: 'https://drive.google.com/drive/u/4/folders/10ZFRqO09QFDhuTKICnBs3v1RRdUY-mxS', isFavorite: false, aiHint: 'syllable dice' },
   { id: '40', title: 'Dado das frases', category: 'Alfabetização', thumbnailUrl: 'https://placehold.co/400x250.png', pdfUrl: 'https://drive.google.com/drive/u/4/folders/18d70i_VnA043TFVy8PIlE16CRBJwAcb9', isFavorite: false, aiHint: 'sentence dice' },
-  { id: '42', title: 'Contando com os dedinhos', category: 'Matemática', thumbnailUrl: 'https://placehold.co/400x250.png', pdfUrl: '#', isFavorite: false, aiHint: 'finger counting' },
+  { id: '42', title: 'Contando com os dedinhos', category: 'Matemática', thumbnailUrl: 'https://placehold.co/400x250.png', pdfUrl: 'https://drive.google.com/drive/u/4/folders/1JopL1v99qFiXKOacsu0hMNs__vqSMjRT', isFavorite: false, aiHint: 'finger counting' },
   { id: '43', title: 'Cartões de Comunicação', category: 'Educação emocional', thumbnailUrl: 'https://placehold.co/400x250.png', pdfUrl: '#', isFavorite: false, aiHint: 'communication cards' },
   { id: '44', title: 'Bingos', category: 'Alfabetização', thumbnailUrl: 'https://placehold.co/400x250.png', pdfUrl: '#', isFavorite: false, aiHint: 'bingo game' },
   { id: '45', title: 'Bingo das Palavras', category: 'Alfabetização', thumbnailUrl: 'https://placehold.co/400x250.png', pdfUrl: '#', isFavorite: false, aiHint: 'word bingo' },
