@@ -1,9 +1,9 @@
-import { BookOpen, CalendarHeart, Scissors, Shapes, Smile } from "lucide-react";
+import { BookOpen, CalendarHeart, FlaskConical, Globe, Languages, Package, Scissors, Shapes, Smile } from "lucide-react";
 
 export type Activity = {
   id: string;
   title: string;
-  category: "Alfabetização" | "Matemática" | "Coordenação motora" | "Datas comemorativas" | "Educação emocional";
+  category: "Alfabetização" | "Matemática" | "Coordenação motora" | "Datas comemorativas" | "Educação emocional" | "Ciências" | "Geografia" | "Inglês" | "Pacotes Completos";
   thumbnailUrl: string;
   pdfUrl: string;
   isFavorite: boolean;
@@ -16,6 +16,10 @@ export const categories = [
     { id: 'coordenacao', name: 'Coordenação motora', icon: Scissors },
     { id: 'datas', name: 'Datas comemorativas', icon: CalendarHeart },
     { id: 'emocional', name: 'Educação emocional', icon: Smile },
+    { id: 'ciencias', name: 'Ciências', icon: FlaskConical },
+    { id: 'geografia', name: 'Geografia', icon: Globe },
+    { id: 'ingles', name: 'Inglês', icon: Languages },
+    { id: 'pacotes', name: 'Pacotes Completos', icon: Package },
 ] as const;
 
 
@@ -32,4 +36,8 @@ export const activities: Activity[] = [
   { id: '10', title: 'Atividades Sensoriais', category: 'Coordenação motora', thumbnailUrl: 'https://placehold.co/400x250.png', pdfUrl: 'https://drive.google.com/drive/u/4/folders/1oBgVLL4c6oUOSXPT3m3Vm_Oxv1v5opIi', isFavorite: false, aiHint: "sensory activities" },
   { id: '11', title: 'Cores', category: 'Alfabetização', thumbnailUrl: 'https://placehold.co/400x250.png', pdfUrl: 'https://drive.google.com/drive/u/4/folders/1mqrM_wj2xlgUAPRgWyUrw36WFT7yXebl', isFavorite: false, aiHint: "colors" },
   { id: '12', title: 'Matemática', category: 'Matemática', thumbnailUrl: 'https://placehold.co/400x250.png', pdfUrl: 'https://drive.google.com/drive/u/4/folders/18l9N86Y26RChn8M16RNZe0F6npa4yWjW', isFavorite: false, aiHint: "math" },
+  { id: '13', title: 'Ciências', category: 'Ciências', thumbnailUrl: 'https://placehold.co/400x250.png', pdfUrl: '#', isFavorite: false, aiHint: "science experiment" },
+  { id: '14', title: 'Geografia', category: 'Geografia', thumbnailUrl: 'https://placehold.co/400x250.png', pdfUrl: '#', isFavorite: false, aiHint: "world map" },
+  { id: '15', title: 'Inglês', category: 'Inglês', thumbnailUrl: 'https://placehold.co/400x250.png', pdfUrl: '#', isFavorite: false, aiHint: "learning english" },
+  { id: '16', title: 'Todas as disciplinas - 2ºano', category: 'Pacotes Completos', thumbnailUrl: 'https://placehold.co/400x250.png', pdfUrl: '#', isFavorite: false, aiHint: "school subjects" },
 ];
