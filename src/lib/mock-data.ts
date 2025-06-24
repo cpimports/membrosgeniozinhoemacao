@@ -31,5 +31,5 @@ export const activities: Activity[] = [
   { id: '9', title: 'Adivinhe o que é', category: 'Alfabetização', thumbnailUrl: 'https://placehold.co/400x250.png', pdfUrl: 'https://drive.google.com/drive/u/4/folders/1iMkAFLHQn7c7BvELxofO8Nt4jy6ZwM_z', isFavorite: false, aiHint: "riddle" },
   { id: '10', title: 'Atividades Sensoriais', category: 'Coordenação motora', thumbnailUrl: 'https://placehold.co/400x250.png', pdfUrl: 'https://drive.google.com/drive/u/4/folders/1oBgVLL4c6oUOSXPT3m3Vm_Oxv1v5opIi', isFavorite: false, aiHint: "sensory activities" },
   { id: '11', title: 'Cores', category: 'Alfabetização', thumbnailUrl: 'https://placehold.co/400x250.png', pdfUrl: 'https://drive.google.com/drive/u/4/folders/1mqrM_wj2xlgUAPRgWyUrw36WFT7yXebl', isFavorite: false, aiHint: "colors" },
-  { id: '12', title: 'Matemática', category: 'Matemática', thumbnailUrl: 'https://placehold.co/400x250.png', pdfUrl: '#', isFavorite: false, aiHint: "math" },
+  { id: '12', title: 'Matemática', category: 'Matemática', thumbnailUrl: 'https://placehold.co/400x250.png', pdfUrl: 'https://drive.google.com/drive/u/4/folders/18l9N86Y26RChn8M16RNZe0F6npa4yWjW', isFavorite: false, aiHint: "math" },
 ];
