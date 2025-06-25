@@ -1,9 +1,9 @@
-import { BookOpen, Gamepad2, Globe, Languages, Package, Scissors, Shapes } from "lucide-react";
+import { BookOpen, Gamepad2, Package, Scissors, Shapes } from "lucide-react";
 
 export type Activity = {
   id: string;
   title: string;
-  category: "Alfabetização" | "Números" | "Atividades sensoriais" | "Ensino Completo" | "Jogos Educativos" | "Geografia" | "Inglês" | "Pacotes Completos";
+  category: "Alfabetização" | "Números" | "Atividades sensoriais" | "Ensino Completo" | "Jogos Educativos";
   thumbnailUrl: string;
   pdfUrl: string;
   isFavorite: boolean;
@@ -16,9 +16,6 @@ export const categories = [
     { id: 'sensoriais', name: 'Atividades sensoriais', icon: Scissors },
     { id: 'ensino-completo', name: 'Ensino Completo', icon: Package },
     { id: 'jogos-educativos', name: 'Jogos Educativos', icon: Gamepad2 },
-    { id: 'geografia', name: 'Geografia', icon: Globe },
-    { id: 'ingles', name: 'Inglês', icon: Languages },
-    { id: 'pacotes', name: 'Pacotes Completos', icon: Package },
 ] as const;
 
 
@@ -35,7 +32,7 @@ export const activities: Activity[] = [
   { id: '17', title: 'Vogais Fônicas', category: 'Alfabetização', thumbnailUrl: 'https://placehold.co/400x250.png', pdfUrl: 'https://drive.google.com/drive/u/4/folders/1Ylq98saTlody6Rse-rK67j0bh-caLR8T', isFavorite: false, aiHint: 'vowels phonics' },
   { id: '29', title: 'Interpretação de texto', category: 'Alfabetização', thumbnailUrl: 'https://placehold.co/400x250.png', pdfUrl: 'https://drive.google.com/drive/u/4/folders/1mlpZtbw-bMmobRePp4ZTRavW7uZnMj3', isFavorite: false, aiHint: 'text interpretation' },
   { id: '50', title: 'Alfabeto das boquinhas', category: 'Alfabetização', thumbnailUrl: 'https://placehold.co/400x250.png', pdfUrl: 'https://drive.google.com/drive/u/4/folders/12JHT9ez2-C56hdZLHnx5ygMu7VIylJv7', isFavorite: false, aiHint: 'mouth alphabet' },
-  { id: '15', title: 'Inglês', category: 'Inglês', thumbnailUrl: 'https://placehold.co/400x250.png', pdfUrl: 'https://drive.google.com/drive/u/4/folders/1oRZLigZYIPQPKAQZWFWGSotcmF9_q9Nn', isFavorite: false, aiHint: 'learning english' },
+  { id: '15', title: 'Inglês', category: 'Alfabetização', thumbnailUrl: 'https://placehold.co/400x250.png', pdfUrl: 'https://drive.google.com/drive/u/4/folders/1oRZLigZYIPQPKAQZWFWGSotcmF9_q9Nn', isFavorite: false, aiHint: 'learning english' },
   { id: '25', title: 'Que horas são', category: 'Alfabetização', thumbnailUrl: 'https://placehold.co/400x250.png', pdfUrl: 'https://drive.google.com/drive/u/4/folders/1inGZVdf16B4G0VgnjyPUy4j2PAoEMUVD', isFavorite: false, aiHint: 'telling time' },
   { id: '31', title: 'Historias', category: 'Alfabetização', thumbnailUrl: 'https://placehold.co/400x250.png', pdfUrl: 'https://drive.google.com/drive/u/4/folders/1uqwk0ZTh5Xe9g8fLWpeCSfKP7nGir1_d', isFavorite: false, aiHint: 'story time' },
   { id: '3', title: 'Números', category: 'Números', thumbnailUrl: 'https://i.imgur.com/bYZblCi.jpeg', pdfUrl: 'https://drive.google.com/drive/u/4/folders/1l1pZ7p6-RZQoS4ozo8OwH88-T5EeF7Jo', isFavorite: false, aiHint: "cutting shapes" },
@@ -48,8 +45,8 @@ export const activities: Activity[] = [
   { id: '11', title: 'Cores', category: 'Números', thumbnailUrl: 'https://placehold.co/400x250.png', pdfUrl: 'https://drive.google.com/drive/u/4/folders/1mqrM_wj2xlgUAPRgWyUrw36WFT7yXebl', isFavorite: false, aiHint: "colors" },
   { id: '12', title: 'Matemática', category: 'Números', thumbnailUrl: 'https://placehold.co/400x250.png', pdfUrl: 'https://drive.google.com/drive/u/4/folders/18l9N86Y26RChn8M16RNZe0F6npa4yWjW', isFavorite: false, aiHint: 'math' },
   { id: '13', title: 'Ciências', category: 'Ensino Completo', thumbnailUrl: 'https://placehold.co/400x250.png', pdfUrl: 'https://drive.google.com/drive/u/4/folders/1a1TsO_sVxfOaf6jwCr_ZBk6_tgS8j5Nm', isFavorite: false, aiHint: 'science experiment' },
-  { id: '14', title: 'Geografia', category: 'Geografia', thumbnailUrl: 'https://placehold.co/400x250.png', pdfUrl: 'https://drive.google.com/drive/u/4/folders/1z6yTCx64YU0hapMAlvde3pjAXgKZ5dx4', isFavorite: false, aiHint: 'world map' },
-  { id: '16', title: 'Todas as disciplinas - 2ºano', category: 'Pacotes Completos', thumbnailUrl: 'https://placehold.co/400x250.png', pdfUrl: 'https://drive.google.com/drive/u/4/folders/16BakFM09KQ4E-qaJcqmU-bmuuKxNyjpy', isFavorite: false, aiHint: 'school subjects' },
+  { id: '14', title: 'Geografia', category: 'Ensino Completo', thumbnailUrl: 'https://placehold.co/400x250.png', pdfUrl: 'https://drive.google.com/drive/u/4/folders/1z6yTCx64YU0hapMAlvde3pjAXgKZ5dx4', isFavorite: false, aiHint: 'world map' },
+  { id: '16', title: 'Todas as disciplinas - 2ºano', category: 'Ensino Completo', thumbnailUrl: 'https://placehold.co/400x250.png', pdfUrl: 'https://drive.google.com/drive/u/4/folders/16BakFM09KQ4E-qaJcqmU-bmuuKxNyjpy', isFavorite: false, aiHint: 'school subjects' },
   { id: '20', title: 'Sorvetinho das contagens', category: 'Números', thumbnailUrl: 'https://placehold.co/400x250.png', pdfUrl: 'https://drive.google.com/drive/u/4/folders/1i7mQLhtEMd-HkrU7helv9tODZjpBU-dx', isFavorite: false, aiHint: 'counting game' },
   { id: '21', title: 'Rotina', category: 'Jogos Educativos', thumbnailUrl: 'https://placehold.co/400x250.png', pdfUrl: 'https://drive.google.com/drive/u/4/folders/1_8SFh8_redUcdLhXXeukbgVbSA0EqYQu', isFavorite: false, aiHint: 'daily routine' },
   { id: '22', title: 'Roleta das cores', category: 'Alfabetização', thumbnailUrl: 'https://placehold.co/400x250.png', pdfUrl: 'https://drive.google.com/drive/u/4/folders/1SOXWU9WErST4ujfqDhG_eqnv2KQYnvNy', isFavorite: false, aiHint: 'color wheel' },
@@ -72,6 +69,7 @@ export const activities: Activity[] = [
   { id: '47', title: 'Atividades de sequencias', category: 'Números', thumbnailUrl: 'https://placehold.co/400x250.png', pdfUrl: 'https://drive.google.com/drive/u/4/folders/1shbn3wR01vXU4e0H4HQFPg4tQxUBll7P', isFavorite: false, aiHint: 'sequence activity' },
   { id: '48', title: 'Alinhavos', category: 'Atividades sensoriais', thumbnailUrl: 'https://placehold.co/400x250.png', pdfUrl: 'https://drive.google.com/drive/u/4/folders/1vgV_nc1pQ7VJiAGYlcqyeWh0qs5CXQLZ', isFavorite: false, aiHint: 'lacing cards' },
   { id: '49', title: 'Alimentação saudável', category: 'Ensino Completo', thumbnailUrl: 'https://placehold.co/400x250.png', pdfUrl: 'https://drive.google.com/drive/u/4/folders/1QIbcck6E2wMimvx4Hw0ePgTAl56XCCxJ', isFavorite: false, aiHint: 'healthy food' },
-  { id: '51', title: '+720 Atividades Escolares para Pré escola 1°, 2°, 3°, 4° e 5º ano', category: 'Pacotes Completos', thumbnailUrl: 'https://placehold.co/400x250.png', pdfUrl: 'https://drive.google.com/drive/u/4/folders/1o55DGXm-3xeEYEDwlxZdGR-nshFX2Con', isFavorite: false, aiHint: 'school activities' },
-  { id: '52', title: '+300 Atividades Bíblicas Infantil', category: 'Pacotes Completos', thumbnailUrl: 'https://placehold.co/400x250.png', pdfUrl: 'https://drive.google.com/drive/u/4/folders/1LG6I5KHaBrWvlhMb8IL3em8sP1mZfJNC', isFavorite: false, aiHint: 'bible activities' },
+  { id: '50', title: 'Alfabeto das boquinhas', category: 'Alfabetização', thumbnailUrl: 'https://placehold.co/400x250.png', pdfUrl: 'https://drive.google.com/drive/u/4/folders/12JHT9ez2-C56hdZLHnx5ygMu7VIylJv7', isFavorite: false, aiHint: 'mouth alphabet' },
+  { id: '51', title: '+720 Atividades Escolares para Pré escola 1°, 2°, 3°, 4° e 5º ano', category: 'Ensino Completo', thumbnailUrl: 'https://placehold.co/400x250.png', pdfUrl: 'https://drive.google.com/drive/u/4/folders/1o55DGXm-3xeEYEDwlxZdGR-nshFX2Con', isFavorite: false, aiHint: 'school activities' },
+  { id: '52', title: '+300 Atividades Bíblicas Infantil', category: 'Ensino Completo', thumbnailUrl: 'https://placehold.co/400x250.png', pdfUrl: 'https://drive.google.com/drive/u/4/folders/1LG6I5KHaBrWvlhMb8IL3em8sP1mZfJNC', isFavorite: false, aiHint: 'bible activities' },
 ];
