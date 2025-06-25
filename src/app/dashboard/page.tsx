@@ -90,48 +90,44 @@ export default function DashboardPage() {
           </div>
 
           <Tabs defaultValue="all" className="w-full">
-            <div className="md:grid md:grid-cols-4 md:gap-8">
-              <TabsList className="flex flex-col h-auto items-stretch gap-2 md:col-span-1">
-                <TabsTrigger value="all">Todas</TabsTrigger>
-                {categories.map((cat) => (
-                  <TabsTrigger key={cat.id} value={cat.id}>
-                    {cat.name}
-                  </TabsTrigger>
-                ))}
-              </TabsList>
-              <div className="md:col-span-3 mt-6 md:mt-0">
-                <TabsContent value="all" className="mt-0">
-                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                    {filteredActivities.map((activity) => (
-                      <ActivityCard
-                        key={activity.id}
-                        activity={activity}
-                        isFavorite={favorites.has(activity.id)}
-                        onToggleFavorite={handleToggleFavorite}
-                        onView={handleViewActivity}
-                      />
-                    ))}
-                  </div>
-                </TabsContent>
-                {categories.map((cat) => (
-                  <TabsContent key={cat.id} value={cat.id} className="mt-0">
-                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                        {filteredActivities
-                          .filter((act) => act.category === cat.name)
-                          .map((activity) => (
-                            <ActivityCard
-                              key={activity.id}
-                              activity={activity}
-                              isFavorite={favorites.has(activity.id)}
-                              onToggleFavorite={handleToggleFavorite}
-                              onView={handleViewActivity}
-                            />
-                          ))}
-                      </div>
-                  </TabsContent>
+            <TabsList className="grid w-full h-auto grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-2 mb-4">
+              <TabsTrigger value="all">Todas</TabsTrigger>
+              {categories.map((cat) => (
+                <TabsTrigger key={cat.id} value={cat.id}>
+                  {cat.name}
+                </TabsTrigger>
+              ))}
+            </TabsList>
+            <TabsContent value="all">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                {filteredActivities.map((activity) => (
+                  <ActivityCard
+                    key={activity.id}
+                    activity={activity}
+                    isFavorite={favorites.has(activity.id)}
+                    onToggleFavorite={handleToggleFavorite}
+                    onView={handleViewActivity}
+                  />
                 ))}
               </div>
-            </div>
+            </TabsContent>
+            {categories.map((cat) => (
+              <TabsContent key={cat.id} value={cat.id}>
+                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    {filteredActivities
+                      .filter((act) => act.category === cat.name)
+                      .map((activity) => (
+                        <ActivityCard
+                          key={activity.id}
+                          activity={activity}
+                          isFavorite={favorites.has(activity.id)}
+                          onToggleFavorite={handleToggleFavorite}
+                          onView={handleViewActivity}
+                        />
+                      ))}
+                  </div>
+              </TabsContent>
+            ))}
           </Tabs>
         </CardContent>
       </Card>
