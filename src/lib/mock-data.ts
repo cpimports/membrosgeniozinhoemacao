@@ -63,7 +63,7 @@ export const activities: Activity[] = [
   { id: '47', title: 'Atividades de sequencias', category: 'Ensino Completo', thumbnailUrl: 'https://i.imgur.com/OIab9X8.png', pdfUrl: 'https://drive.gdrive.com/drive/u/4/folders/1shbn3wR01vXU4e0H4HQFPg4tQxUBll7P', isFavorite: false, aiHint: 'sequence activity' },
   { id: '49', title: 'Alimentação saudável', category: 'Ensino Completo', thumbnailUrl: 'https://i.imgur.com/f6a2O8C.png', pdfUrl: 'https://drive.google.com/drive/u/4/folders/1QIbcck6E2wMimvx4Hw0ePgTAl56XCCxJ', isFavorite: false, aiHint: 'healthy food' },
   { id: '51', title: '+720 Atividades Escolares para Pré escola 1°, 2°, 3°, 4° e 5º ano', category: 'Ensino Completo', thumbnailUrl: 'https://i.imgur.com/KdeacSh.png', pdfUrl: 'https://drive.google.com/drive/u/4/folders/1o55DGXm-3xeEYEDwlxZdGR-nshFX2Con', isFavorite: false, aiHint: 'school activities' },
-  { id: '52', title: '+300 Atividades Bíblicas Infantil', category: 'Ensino Completo', thumbnailUrl: 'https://i.imgur.com/lWxj4DQ.png', pdfUrl: '#', isFavorite: false, aiHint: 'bible activities' },
+  { id: '52', title: '+300 Atividades Bíblicas Infantil', category: 'Ensino Completo', thumbnailUrl: 'https://i.imgur.com/MOk7GL4.png', pdfUrl: '#', isFavorite: false, aiHint: 'bible activities' },
 
   { id: '9', title: 'Adivinhe o que é', category: 'Jogos Educativos', thumbnailUrl: 'https://placehold.co/400x250.png', pdfUrl: 'https://drive.google.com/drive/u/4/folders/1iMkAFLHQn7c7BvELxofO8Nt4jy6ZwM_z', isFavorite: false, aiHint: "riddle" },
   { id: '21', title: 'Rotina', category: 'Jogos Educativos', thumbnailUrl: 'https://placehold.co/400x250.png', pdfUrl: 'https://drive.google.com/drive/u/4/folders/1_8SFh8_redUcdLhXXeukbgVbSA0EqYQu', isFavorite: false, aiHint: 'daily routine' },
