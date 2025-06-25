@@ -1,119 +1,142 @@
 "use client";
 
-import Link from "next/link";
-import { useRouter } from "next/navigation";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
-import * as z from "zod";
-import Image from "next/image";
-
-import { Button } from "@/components/ui/button";
+import { useState } from "react";
 import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "@/components/ui/form";
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { useToast } from "@/hooks/use-toast";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { ActivityCard } from "@/components/activity-card";
+import { ActivityViewModal } from "@/components/activity-view-modal";
+import { activities, categories, type Activity } from "@/lib/mock-data";
+import { Heart, Search } from "lucide-react";
 
-const formSchema = z.object({
-  email: z.string().email({ message: "Por favor, insira um e-mail válido." }),
-  password: z.string().min(1, { message: "A senha é obrigatória." }),
-});
+export default function Page() {
+  const [searchQuery, setSearchQuery] = useState("");
+  const [favorites, setFavorites] = useState(
+    new Set(activities.filter((a) => a.isFavorite).map((a) => a.id))
+  );
+  const [selectedActivity, setSelectedActivity] = useState<Activity | null>(
+    null
+  );
 
-export default function LoginPage() {
-  const router = useRouter();
-  const { toast } = useToast();
-  
-  const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
-    defaultValues: {
-      email: "",
-      password: "",
-    },
-  });
-
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    // Here you would add your Firebase login logic
-    console.log(values);
-    toast({
-      title: "Login realizado com sucesso!",
-      description: "Redirecionando para o painel...",
+  const handleToggleFavorite = (activityId: string) => {
+    setFavorites((prev) => {
+      const newFavorites = new Set(prev);
+      if (newFavorites.has(activityId)) {
+        newFavorites.delete(activityId);
+      } else {
+        newFavorites.add(activityId);
+      }
+      return newFavorites;
     });
-    router.push("/dashboard");
-  }
+  };
+
+  const handleViewActivity = (activity: Activity) => {
+    if (activity.pdfUrl && activity.pdfUrl !== '#') {
+      window.open(activity.pdfUrl, '_blank');
+    } else {
+      setSelectedActivity(activity);
+    }
+  };
+
+  const filteredActivities = activities.filter((activity) =>
+    activity.title.toLowerCase().includes(searchQuery.toLowerCase())
+  );
 
   return (
-    <div className="relative flex min-h-screen flex-col items-center justify-center bg-background p-4 overflow-hidden">
-       <div className="absolute inset-0 z-0">
-        <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <pattern id="patt" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
-              <circle cx="20" cy="20" r="2" fill="hsl(var(--primary) / 0.2)"/>
-            </pattern>
-          </defs>
-          <rect width="100%" height="100%" fill="url(#patt)" />
-        </svg>
+    <div className="space-y-8">
+      <div>
+        <h1 className="text-3xl font-bold text-primary">Seja bem-vindo(a) ao Gêniozinho em Ação!</h1>
+        <p className="text-muted-foreground mt-1">Um mundo onde brincar ensina e aprender encanta!</p>
       </div>
-      <Card className="w-full max-w-md z-10 shadow-2xl animate-in fade-in-50 zoom-in-95 duration-500">
-        <CardHeader className="text-center space-y-2">
-          <div className="mx-auto mb-2 flex items-center justify-center h-20 w-20 rounded-full bg-primary/10">
-            <Image src="https://i.imgur.com/lWxj4DQ.png" alt="Gêniozinho em Ação Logo" width={48} height={48} className="h-12 w-12" />
-          </div>
-          <CardTitle className="text-3xl font-bold text-primary-foreground" style={{color: 'hsl(var(--primary))'}}>Bem-vindo(a) de volta!</CardTitle>
-          <CardDescription>Vamos brincar e aprender juntos.</CardDescription>
+      <div className="grid gap-6">
+        <Card className="hover:shadow-lg transition-shadow duration-300">
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+            <CardTitle className="text-sm font-medium">Favoritos</CardTitle>
+            <Heart className="h-5 w-5 text-pink-400" />
+          </CardHeader>
+          <CardContent>
+            <div className="text-2xl font-bold">{favorites.size}</div>
+            <p className="text-xs text-muted-foreground">
+              Atividades que você mais gostou
+            </p>
+          </CardContent>
+        </Card>
+      </div>
+
+      <Card className="shadow-lg">
+        <CardHeader>
+          <CardTitle className="text-2xl font-bold text-primary">
+            Biblioteca de Atividades
+          </CardTitle>
+          <CardDescription>
+            Explore, aprenda e divirta-se com nossas atividades!
+          </CardDescription>
         </CardHeader>
         <CardContent>
-          <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-              <FormField
-                control={form.control}
-                name="email"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>E-mail</FormLabel>
-                    <FormControl>
-                      <Input placeholder="seunome@email.com" {...field} />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <FormField
-                control={form.control}
-                name="password"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Senha</FormLabel>
-                    <FormControl>
-                      <Input type="password" placeholder="••••••••" {...field} />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <Button type="submit" className="w-full text-lg h-12">Entrar</Button>
-            </form>
-          </Form>
-          <div className="mt-6 text-center text-sm">
-            <p className="text-muted-foreground">
-              Não tem uma conta?{" "}
-              <Link href="/signup" className="font-semibold text-primary hover:underline">
-                Cadastre-se
-              </Link>
-            </p>
-            <p className="mt-2">
-              <Link href="/forgot-password" className="text-xs text-muted-foreground hover:underline">
-                Esqueceu sua senha?
-              </Link>
-            </p>
+          <div className="relative mb-6">
+            <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
+            <Input
+              placeholder="Buscar atividades por nome..."
+              className="pl-10"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+            />
           </div>
+
+          <Tabs defaultValue="all" className="w-full">
+            <TabsList className="grid w-full h-auto grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-2 mb-4">
+              <TabsTrigger value="all">Todas</TabsTrigger>
+              {categories.map((cat) => (
+                <TabsTrigger key={cat.id} value={cat.id}>
+                  {cat.name}
+                </TabsTrigger>
+              ))}
+            </TabsList>
+            <TabsContent value="all">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                {filteredActivities.map((activity) => (
+                  <ActivityCard
+                    key={activity.id}
+                    activity={activity}
+                    isFavorite={favorites.has(activity.id)}
+                    onToggleFavorite={handleToggleFavorite}
+                    onView={handleViewActivity}
+                  />
+                ))}
+              </div>
+            </TabsContent>
+            {categories.map((cat) => (
+              <TabsContent key={cat.id} value={cat.id}>
+                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    {filteredActivities
+                      .filter((act) => act.category === cat.name)
+                      .map((activity) => (
+                        <ActivityCard
+                          key={activity.id}
+                          activity={activity}
+                          isFavorite={favorites.has(activity.id)}
+                          onToggleFavorite={handleToggleFavorite}
+                          onView={handleViewActivity}
+                        />
+                      ))}
+                  </div>
+              </TabsContent>
+            ))}
+          </Tabs>
         </CardContent>
       </Card>
+
+      <ActivityViewModal
+        activity={selectedActivity}
+        isOpen={!!selectedActivity}
+        onClose={() => setSelectedActivity(null)}
+      />
     </div>
   );
 }
