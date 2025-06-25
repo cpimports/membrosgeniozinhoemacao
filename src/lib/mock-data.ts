@@ -45,7 +45,7 @@ export const activities: Activity[] = [
   { id: '12', title: 'Matemática', category: 'Números', thumbnailUrl: 'https://i.imgur.com/pv3u289.png', pdfUrl: 'https://drive.google.com/drive/u/4/folders/18l9N86Y26RChn8M16RNZe0F6npa4yWjW', isFavorite: false, aiHint: 'math' },
   { id: '20', title: 'Sorvetinho das contagens', category: 'Números', thumbnailUrl: 'https://i.imgur.com/6rxsUJ2.png', pdfUrl: 'https://drive.google.com/drive/u/4/folders/1i7mQLhtEMd-HkrU7helv9tODZjpBU-dx', isFavorite: false, aiHint: 'counting game' },
   { id: '38', title: 'Dominó dos números', category: 'Números', thumbnailUrl: 'https://i.imgur.com/9Y4bFSe.png', pdfUrl: 'https://drive.google.com/drive/u/4/folders/1Tj9eBlp1l53k4E0zL5QPOiuTCr5-zi-3', isFavorite: false, aiHint: 'number dominoes' },
-  { id: '42', title: 'Contando com os dedinhos', category: 'Números', thumbnailUrl: 'https://placehold.co/400x250.png', pdfUrl: 'https://drive.google.com/drive/u/4/folders/1JopL1v99qFiXKOacsu0hMNs__vqSMjRT', isFavorite: false, aiHint: 'finger counting' },
+  { id: '42', title: 'Somando com os dedinhos', category: 'Números', thumbnailUrl: 'https://i.imgur.com/2Pu9SEt.png', pdfUrl: 'https://drive.google.com/drive/u/4/folders/1JopL1v99qFiXKOacsu0hMNs__vqSMjRT', isFavorite: false, aiHint: 'finger counting' },
   { id: '11', title: 'Cores', category: 'Números', thumbnailUrl: 'https://placehold.co/400x250.png', pdfUrl: 'https://drive.google.com/drive/u/4/folders/1mqrM_wj2xlgUAPRgWyUrw36WFT7yXebl', isFavorite: false, aiHint: "colors" },
 
   { id: '7', title: 'Coordenação Motora', category: 'Atividades sensoriais', thumbnailUrl: 'https://placehold.co/400x250.png', pdfUrl: 'https://drive.google.com/drive/u/4/folders/1Aoe90oiFQ0f8jpowYh0DR_S_olmf0dRQ', isFavorite: false, aiHint: "motor skills" },
