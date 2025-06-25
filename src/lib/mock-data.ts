@@ -66,7 +66,7 @@ export const activities: Activity[] = [
   { id: '52', title: '+300 Atividades Bíblicas Infantil', category: 'Ensino Completo', thumbnailUrl: 'https://i.imgur.com/MOk7GL4.png', pdfUrl: '#', isFavorite: false, aiHint: 'bible activities' },
 
   { id: '9', title: 'Adivinhe o que é', category: 'Jogos Educativos', thumbnailUrl: 'https://i.imgur.com/WE6PZF2.png', pdfUrl: 'https://drive.google.com/drive/u/4/folders/1iMkAFLHQn7c7BvELxofO8Nt4jy6ZwM_z', isFavorite: false, aiHint: "riddle" },
-  { id: '21', title: 'Rotina', category: 'Jogos Educativos', thumbnailUrl: 'https://placehold.co/400x250.png', pdfUrl: 'https://drive.google.com/drive/u/4/folders/1_8SFh8_redUcdLhXXeukbgVbSA0EqYQu', isFavorite: false, aiHint: 'daily routine' },
+  { id: '21', title: 'Rotina', category: 'Jogos Educativos', thumbnailUrl: 'https://i.imgur.com/A4pLZXf.png', pdfUrl: 'https://drive.google.com/drive/u/4/folders/1_8SFh8_redUcdLhXXeukbgVbSA0EqYQu', isFavorite: false, aiHint: 'daily routine' },
   { id: '22', title: 'Roleta das cores', category: 'Jogos Educativos', thumbnailUrl: 'https://placehold.co/400x250.png', pdfUrl: 'https://drive.google.com/drive/u/4/folders/1SOXWU9WErST4ujfqDhG_eqnv2KQYnvNy', isFavorite: false, aiHint: 'color wheel' },
   { id: '24', title: 'Quebra-cabeças', category: 'Jogos Educativos', thumbnailUrl: 'https://placehold.co/400x250.png', pdfUrl: 'https://drive.google.com/drive/u/4/folders/1GaXxojfmBYf77wPYJIMqeP-2nHyi0GA1', isFavorite: false, aiHint: 'puzzle' },
   { id: '27', title: 'Jogos para autista', category: 'Jogos Educativos', thumbnailUrl: 'https://placehold.co/400x250.png', pdfUrl: 'https://drive.google.com/drive/u/4/folders/14OlnLT2h3QwUCAD-kP6b-WEW0mvJYRW3', isFavorite: false, aiHint: 'autism games' },
