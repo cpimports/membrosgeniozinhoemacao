@@ -37,7 +37,7 @@ export const activities: Activity[] = [
   { id: '36', title: 'Embaralhe as letras', category: 'Alfabetização', thumbnailUrl: 'https://i.imgur.com/fzBH8d8.png', pdfUrl: 'https://drive.google.com/drive/u/4/folders/155ka2G-Z5Qn5-0kawPdKHOB7dJZ62ZOI', isFavorite: false, aiHint: 'unscramble letters' },
   { id: '40', title: 'Dado das frases', category: 'Jogos Educativos', thumbnailUrl: 'https://i.imgur.com/ymR2MCW.png', pdfUrl: 'https://drive.google.com/drive/u/4/folders/18d70i_VnA043TFVy8PIlE16CRBJwAcb9', isFavorite: false, aiHint: 'sentence dice' },
   { id: '39', title: 'Dado Das Silabas', category: 'Jogos Educativos', thumbnailUrl: 'https://i.imgur.com/FaCXj4X.png', pdfUrl: 'https://drive.google.com/drive/u/4/folders/10ZFRqO09QFDhuTKICnBs3v1RRdUY-mxS', isFavorite: false, aiHint: 'syllable dice' },
-  { id: '45', title: 'Bingo das Palavras', category: 'Jogos Educativos', thumbnailUrl: 'https://placehold.co/400x250.png', pdfUrl: 'https://drive.google.com/drive/u/4/folders/1wQoSTPOrUtNUbQqc_FjpKxge4XOBlWr3', isFavorite: false, aiHint: 'word bingo' },
+  { id: '45', title: 'Bingo das Palavras', category: 'Jogos Educativos', thumbnailUrl: 'https://i.imgur.com/RpNv5Du.png', pdfUrl: 'https://drive.google.com/drive/u/4/folders/1wQoSTPOrUtNUbQqc_FjpKxge4XOBlWr3', isFavorite: false, aiHint: 'word bingo' },
   { id: '50', title: 'Alfabeto das boquinhas', category: 'Alfabetização', thumbnailUrl: 'https://i.imgur.com/lWxj4DQ.png', pdfUrl: 'https://drive.google.com/drive/u/4/folders/12JHT9ez2-C56hdZLHnx5ygMu7VIylJv7', isFavorite: false, aiHint: 'mouth alphabet' },
 
   { id: '3', title: 'Números', category: 'Números', thumbnailUrl: 'https://i.imgur.com/bYZblCi.jpeg', pdfUrl: 'https://drive.google.com/drive/u/4/folders/1l1pZ7p6-RZQoS4ozo8OwH88-T5EeF7Jo', isFavorite: false, aiHint: "cutting shapes" },
@@ -75,5 +75,5 @@ export const activities: Activity[] = [
   { id: '37', title: 'Dominós', category: 'Jogos Educativos', thumbnailUrl: 'https://placehold.co/400x250.png', pdfUrl: 'https://drive.google.com/drive/u/4/folders/1Q629gOLdWL-42ivNpdtaY5xrRjNdd2Vt', isFavorite: false, aiHint: 'dominoes game' },
   { id: '43', title: 'Cartões de Comunicação', category: 'Jogos Educativos', thumbnailUrl: 'https://placehold.co/400x250.png', pdfUrl: 'https://drive.google.com/drive/u/4/folders/1E6ThcEmkZNCOUQmOjzVRTaTCVDBRjNF_', isFavorite: false, aiHint: 'communication cards' },
   { id: '44', title: 'Bingos', category: 'Jogos Educativos', thumbnailUrl: 'https://placehold.co/400x250.png', pdfUrl: 'https://drive.google.com/drive/u/4/folders/1oJTWu62uNDqF_-3k3FsK2EYeLBKzs_75', isFavorite: false, aiHint: 'bingo game' },
-  { id: '45', title: 'Bingo das Palavras', category: 'Jogos Educativos', thumbnailUrl: 'https://placehold.co/400x250.png', pdfUrl: 'https://drive.google.com/drive/u/4/folders/1wQoSTPOrUtNUbQqc_FjpKxge4XOBlWr3', isFavorite: false, aiHint: 'word bingo' },
+  { id: '45', title: 'Bingo das Palavras', category: 'Jogos Educativos', thumbnailUrl: 'https://i.imgur.com/RpNv5Du.png', pdfUrl: 'https://drive.google.com/drive/u/4/folders/1wQoSTPOrUtNUbQqc_FjpKxge4XOBlWr3', isFavorite: false, aiHint: 'word bingo' },
 ];
