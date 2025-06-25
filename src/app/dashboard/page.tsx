@@ -90,44 +90,48 @@ export default function DashboardPage() {
           </div>
 
           <Tabs defaultValue="all" className="w-full">
-            <TabsList className="grid h-auto grid-cols-3 gap-2">
-              <TabsTrigger value="all">Todas</TabsTrigger>
-              {categories.map((cat) => (
-                <TabsTrigger key={cat.id} value={cat.id}>
-                  {cat.name}
-                </TabsTrigger>
-              ))}
-            </TabsList>
-            <TabsContent value="all" className="mt-6">
-              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-                {filteredActivities.map((activity) => (
-                  <ActivityCard
-                    key={activity.id}
-                    activity={activity}
-                    isFavorite={favorites.has(activity.id)}
-                    onToggleFavorite={handleToggleFavorite}
-                    onView={handleViewActivity}
-                  />
+            <div className="md:grid md:grid-cols-4 md:gap-8">
+              <TabsList className="flex flex-col h-auto items-stretch gap-2 md:col-span-1">
+                <TabsTrigger value="all">Todas</TabsTrigger>
+                {categories.map((cat) => (
+                  <TabsTrigger key={cat.id} value={cat.id}>
+                    {cat.name}
+                  </TabsTrigger>
+                ))}
+              </TabsList>
+              <div className="md:col-span-3 mt-6 md:mt-0">
+                <TabsContent value="all" className="mt-0">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    {filteredActivities.map((activity) => (
+                      <ActivityCard
+                        key={activity.id}
+                        activity={activity}
+                        isFavorite={favorites.has(activity.id)}
+                        onToggleFavorite={handleToggleFavorite}
+                        onView={handleViewActivity}
+                      />
+                    ))}
+                  </div>
+                </TabsContent>
+                {categories.map((cat) => (
+                  <TabsContent key={cat.id} value={cat.id} className="mt-0">
+                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                        {filteredActivities
+                          .filter((act) => act.category === cat.name)
+                          .map((activity) => (
+                            <ActivityCard
+                              key={activity.id}
+                              activity={activity}
+                              isFavorite={favorites.has(activity.id)}
+                              onToggleFavorite={handleToggleFavorite}
+                              onView={handleViewActivity}
+                            />
+                          ))}
+                      </div>
+                  </TabsContent>
                 ))}
               </div>
-            </TabsContent>
-            {categories.map((cat) => (
-              <TabsContent key={cat.id} value={cat.id} className="mt-6">
-                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-                    {filteredActivities
-                      .filter((act) => act.category === cat.name)
-                      .map((activity) => (
-                        <ActivityCard
-                          key={activity.id}
-                          activity={activity}
-                          isFavorite={favorites.has(activity.id)}
-                          onToggleFavorite={handleToggleFavorite}
-                          onView={handleViewActivity}
-                        />
-                      ))}
-                  </div>
-              </TabsContent>
-            ))}
+            </div>
           </Tabs>
         </CardContent>
       </Card>
