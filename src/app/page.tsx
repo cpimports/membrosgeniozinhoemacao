@@ -14,6 +14,8 @@ import { ActivityCard } from "@/components/activity-card";
 import { ActivityViewModal } from "@/components/activity-view-modal";
 import { activities, categories, type Activity } from "@/lib/mock-data";
 import { Search } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { WhatsappIcon } from "@/components/icons/whatsapp-icon";
 
 export default function Page() {
   const [searchQuery, setSearchQuery] = useState("");
@@ -39,6 +41,27 @@ export default function Page() {
         <h1 className="text-3xl font-bold text-primary">Seja bem-vindo(a) ao Gêniozinho em Ação!</h1>
         <p className="text-muted-foreground mt-1">Um mundo onde brincar ensina e aprender encanta!</p>
       </div>
+
+      <Card>
+        <CardContent className="p-6">
+          <div className="flex flex-col md:flex-row items-center gap-4 text-center md:text-left">
+            <div className="flex-grow">
+              <h3 className="text-lg font-semibold text-primary">Junte-se à nossa comunidade exclusiva de pais e professores!</h3>
+              <p className="text-muted-foreground mt-1 text-sm">
+                Receba conteúdos especiais, dicas práticas e novidades em primeira mão.
+                Clique no botão abaixo e participe do nosso grupo VIP no WhatsApp!
+              </p>
+            </div>
+            <Button asChild className="mt-4 md:mt-0 md:ml-6 flex-shrink-0 w-full md:w-auto" size="lg" style={{ backgroundColor: '#25D366', color: 'white' }}>
+              <a href="https://chat.whatsapp.com/replace-with-your-invite-link" target="_blank" rel="noopener noreferrer">
+                <WhatsappIcon className="mr-2 h-5 w-5" />
+                Entrar no Grupo VIP
+              </a>
+            </Button>
+          </div>
+        </CardContent>
+      </Card>
+
 
       <Card className="shadow-lg">
         <CardHeader>
