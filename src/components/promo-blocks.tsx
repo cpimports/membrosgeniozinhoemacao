@@ -10,7 +10,7 @@ export function PromoBlocks() {
   return (
     <div 
       className="space-y-6 rounded-2xl border bg-[#FFD700] p-6" 
-      style={{ boxShadow: '8px 8px 0px rgba(0, 0, 0, 1)' }}
+      style={{ boxShadow: '8px 8px 0px rgba(128, 128, 128, 1)' }}
     >
       <div className="w-full text-center">
           <AlertTitle 
