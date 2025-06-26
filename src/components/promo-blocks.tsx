@@ -15,7 +15,7 @@ export function PromoBlocks() {
             className="font-bold text-2xl mb-1 flex flex-col justify-center items-center gap-2 text-black"
             style={{ textShadow: '-1px -1px 0 #FFF, 1px -1px 0 #FFF, -1px 1px 0 #FFF, 1px 1px 0 #FFF' }}
           >
-              <Gift className="h-8 w-8 text-red-600" />
+              <Gift className="h-8 w-8 text-red-600 [filter:drop-shadow(0_2px_2px_rgba(0,0,0,0.4))]" />
               Novas atividades disponíveis!
           </AlertTitle>
           <AlertDescription className="text-neutral-800">
