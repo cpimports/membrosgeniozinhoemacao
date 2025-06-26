@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
 import {
   Card,
   CardContent,
@@ -38,18 +37,6 @@ export default function Page() {
 
   return (
     <div className="space-y-8">
-      <div className="w-full overflow-hidden rounded-lg shadow-md">
-        <Image
-          src="https://i.imgur.com/KdeacSh.png"
-          alt="Banner Gêniozinho em Ação"
-          width={1200}
-          height={400}
-          className="w-full h-auto object-cover"
-          data-ai-hint="children activities"
-          priority
-        />
-      </div>
-
       <div>
         <h1 className="text-3xl font-bold text-primary">Seja bem-vindo(a) ao Gêniozinho em Ação!</h1>
         <p className="text-muted-foreground mt-1">Um mundo onde brincar ensina e aprender encanta!</p>
