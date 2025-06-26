@@ -58,12 +58,12 @@ export function PromoBlocks() {
             </p>
           </CardContent>
           <CardFooter className="bg-muted/40 p-4 mt-auto">
-            <Label 
-              htmlFor="eva-molds" 
-              className="flex items-center justify-center space-x-3 w-full p-3 bg-accent hover:bg-accent/90 rounded-lg border-2 border-accent-foreground/30 shadow-md cursor-pointer transition-all duration-300 hover:shadow-lg"
+            <Label
+              htmlFor="eva-molds"
+              className="flex items-center justify-center space-x-3 w-full p-3 bg-green-600 hover:bg-green-700 text-white rounded-lg cursor-pointer animate-button-pulse transition-colors duration-300"
             >
-               <Checkbox id="eva-molds" className="h-6 w-6 border-accent-foreground/50"/>
-               <span className="text-base font-bold text-accent-foreground">
+               <Checkbox id="eva-molds" className="h-6 w-6 border-white/80"/>
+               <span className="text-base font-bold">
                 Sim! Quero os +1000 moldes agora!
                </span>
             </Label>
@@ -96,12 +96,12 @@ export function PromoBlocks() {
             </p>
           </CardContent>
           <CardFooter className="bg-muted/40 p-4 mt-auto">
-             <Label 
-              htmlFor="medals" 
-              className="flex items-center justify-center space-x-3 w-full p-3 bg-accent hover:bg-accent/90 rounded-lg border-2 border-accent-foreground/30 shadow-md cursor-pointer transition-all duration-300 hover:shadow-lg"
+             <Label
+              htmlFor="medals"
+              className="flex items-center justify-center space-x-3 w-full p-3 bg-green-600 hover:bg-green-700 text-white rounded-lg cursor-pointer animate-button-pulse transition-colors duration-300"
             >
-               <Checkbox id="medals" className="h-6 w-6 border-accent-foreground/50"/>
-               <span className="text-base font-bold text-accent-foreground">
+               <Checkbox id="medals" className="h-6 w-6 border-white/80"/>
+               <span className="text-base font-bold">
                 Sim! Quero as medalhas para premiar meus alunos!
                </span>
             </Label>

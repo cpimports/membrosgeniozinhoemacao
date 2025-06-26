@@ -85,10 +85,21 @@ export default {
             height: '0',
           },
         },
+        'button-pulse': {
+          '0%, 100%': {
+            transform: 'scale(1)',
+            boxShadow: '0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)'
+          },
+          '50%': {
+            transform: 'scale(1.02)',
+            boxShadow: '0 25px 50px -12px rgb(0 0 0 / 0.25)'
+          }
+        }
       },
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out',
+        'button-pulse': 'button-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
       },
     },
   },
