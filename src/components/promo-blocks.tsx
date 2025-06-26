@@ -22,9 +22,9 @@ export function PromoBlocks() {
               Aproveite para adquirir esses materiais extras e enriquecer ainda mais sua experiência com o Gêniozinho em Ação!
           </AlertDescription>
       </div>
-      <Alert className="bg-white/80 border-yellow-950/40 text-yellow-900 [&>svg]:text-yellow-950 border-l-4">
+      <Alert className="bg-white/80 border-yellow-950/40 text-yellow-900 [&>svg]:text-yellow-950 border-l-4 text-center flex flex-col items-center [&>svg]:static [&>svg~*]:pl-0">
         <AlertTriangle className="h-5 w-5" />
-        <AlertTitle className="font-bold text-yellow-950">ATENÇÃO</AlertTitle>
+        <AlertTitle className="font-bold text-yellow-950 mt-2">ATENÇÃO</AlertTitle>
         <AlertDescription className="text-yellow-900">
           Se você já adquiriu algum desses materiais, confira o e-mail cadastrado — o acesso já foi enviado para lá!
         </AlertDescription>
