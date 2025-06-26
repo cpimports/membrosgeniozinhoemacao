@@ -39,6 +39,14 @@ export default function Page() {
   return (
     <div className="space-y-8">
       <div className="text-center">
+        <Image
+          src="https://i.imgur.com/29Kp6BM.png"
+          alt="Gêniozinho em Ação Logo"
+          width={160}
+          height={160}
+          className="mx-auto mb-4 w-40 h-auto"
+          data-ai-hint="logo"
+        />
         <h1 className="text-3xl font-bold text-primary">Seja bem-vindo(a) ao Gêniozinho em Ação!</h1>
         <p className="text-muted-foreground mt-1">Um mundo onde brincar ensina e aprender encanta!</p>
       </div>
