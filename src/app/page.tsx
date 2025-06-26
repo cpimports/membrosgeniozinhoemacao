@@ -38,16 +38,6 @@ export default function Page() {
 
   return (
     <div className="space-y-8">
-      <div className="w-full">
-        <Image
-          src="https://i.imgur.com/29Kp6BM.png"
-          alt="Banner Gêniozinho em Ação"
-          width={1200}
-          height={300}
-          className="w-full h-auto rounded-lg shadow-md object-cover max-h-64"
-          priority
-        />
-      </div>
       <div>
         <h1 className="text-3xl font-bold text-primary">Seja bem-vindo(a) ao Gêniozinho em Ação!</h1>
         <p className="text-muted-foreground mt-1">Um mundo onde brincar ensina e aprender encanta!</p>
