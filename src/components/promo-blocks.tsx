@@ -24,12 +24,12 @@ export function PromoBlocks() {
               Aproveite para adquirir esses materiais extras e enriquecer ainda mais sua experiência com o Gêniozinho em Ação!
           </AlertDescription>
       </div>
-      <Alert className="bg-white/80 border-yellow-950/40 text-yellow-900 border-l-4">
-        <AlertTitle className="font-bold text-yellow-950 mt-2 flex items-center justify-center gap-2">
-          <AlertTriangle className="h-5 w-5" />
+      <Alert className="bg-white/80 border-yellow-950/40 text-yellow-900 border-l-4 text-center">
+        <AlertTriangle className="h-5 w-5" />
+        <AlertTitle className="font-bold text-yellow-950 mt-2 text-center">
           ATENÇÃO
         </AlertTitle>
-        <AlertDescription className="text-yellow-900">
+        <AlertDescription className="text-yellow-900 text-center">
           Se você já adquiriu algum desses materiais, confira o e-mail cadastrado — o acesso já foi enviado para lá!
         </AlertDescription>
       </Alert>
@@ -53,7 +53,7 @@ export function PromoBlocks() {
               data-ai-hint="eva craft molds"
             />
             <p className="text-card-foreground/90">
-              Transforme suas aulas com moldes prontos para imprimir! Temas variados como letras, animais, datas comemorativas e muito mais! 🖨️ Perfeito para decorar, criar lembrancinhas e deixar tudo mais criativo!
+              Transforme suas atividades em verdadeiras obras de arte com moldes prontos para imprimir! Inclui temas como letras, animais, datas comemorativas, painéis escolares, personagens e muito mais!🖨️Ideal para decorar salas, criar lembrancinhas e deixar suas aulas ainda mais criativas!
             </p>
           </CardContent>
           <CardFooter className="bg-muted/40 p-4 mt-auto">
@@ -99,7 +99,7 @@ export function PromoBlocks() {
                <span className="text-base font-bold">
                 Sim! Quero as medalhas para premiar meus alunos!
                </span>
-            </Label>
+             </Label>
           </CardFooter>
         </Card>
       </div>
