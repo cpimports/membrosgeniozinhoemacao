@@ -9,13 +9,13 @@ import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 
 export function PromoBlocks() {
   return (
-    <div className="space-y-6 rounded-2xl border bg-[#229A00] p-6 shadow-lg">
+    <div className="space-y-6 rounded-2xl border bg-[#F4FF00] p-6 shadow-lg">
       <div className="w-full text-center">
-          <AlertTitle className="font-bold text-2xl mb-1 flex flex-col justify-center items-center gap-2 text-white">
+          <AlertTitle className="font-bold text-2xl mb-1 flex flex-col justify-center items-center gap-2 text-black">
               <Gift className="h-8 w-8 text-red-600" />
               Novas atividades disponíveis!
           </AlertTitle>
-          <AlertDescription className="text-primary-foreground/90">
+          <AlertDescription className="text-neutral-800">
               Aproveite para adquirir esses materiais extras e enriquecer ainda mais sua experiência com o Gêniozinho em Ação!
           </AlertDescription>
       </div>
