@@ -24,12 +24,14 @@ export function PromoBlocks() {
               Aproveite para adquirir esses materiais extras e enriquecer ainda mais sua experiência com o Gêniozinho em Ação!
           </AlertDescription>
       </div>
-      <Alert className="bg-white/80 border-yellow-950/40 text-yellow-900 border-l-4 text-center">
-        <AlertTriangle className="h-5 w-5" />
-        <AlertTitle className="font-bold text-yellow-950 mt-2 text-center">
-          ATENÇÃO
-        </AlertTitle>
-        <AlertDescription className="text-yellow-900 text-center">
+      <Alert className="bg-white/80 border-yellow-950/40 text-yellow-900 text-center border-l-4">
+        <div className="flex items-center justify-center">
+            <AlertTriangle className="h-5 w-5 mr-2" />
+            <AlertTitle className="font-bold text-yellow-950 mt-0">
+            ATENÇÃO
+            </AlertTitle>
+        </div>
+        <AlertDescription className="text-yellow-900 text-center mt-1">
           Se você já adquiriu algum desses materiais, confira o e-mail cadastrado — o acesso já foi enviado para lá!
         </AlertDescription>
       </Alert>
@@ -45,7 +47,7 @@ export function PromoBlocks() {
           </CardHeader>
           <CardContent className="flex-grow space-y-4 p-6 pt-0">
             <Image
-              src="https://placehold.co/600x400.png"
+              src="https://i.imgur.com/HCOg2Af.png"
               alt="Ilustração de moldes de EVA com letras, animais e painéis"
               width={600}
               height={400}
@@ -53,11 +55,10 @@ export function PromoBlocks() {
               data-ai-hint="eva craft molds"
             />
             <p className="text-card-foreground/90">
-              Transforme suas atividades em verdadeiras obras de arte com moldes prontos para imprimir! Inclui temas como letras, animais, datas comemorativas, painéis escolares, personagens e muito mais!
-            </p>
-            <p className="flex items-center gap-3 text-sm text-muted-foreground font-semibold">
-              <span className="text-2xl">🖨️</span>
-              <span className="flex-1">Ideal para decorar salas, criar lembrancinhas e deixar suas aulas ainda mais criativas!</span>
+                Transforme suas atividades em verdadeiras obras de arte com moldes prontos para imprimir! Inclui temas como letras, animais, datas comemorativas, painéis escolares, personagens e muito mais!{' '}
+                <span className="text-primary/90 text-sm font-semibold">
+                    🖨️ Ideal para decorar salas, criar lembrancinhas e deixar suas aulas ainda mais criativas!
+                </span>
             </p>
           </CardContent>
           <CardFooter className="bg-muted/40 p-4 mt-auto">
