@@ -63,11 +63,9 @@ export function PromoBlocks() {
           </CardContent>
           <CardFooter className="bg-muted/40 p-4 mt-auto">
             <Label
-              className="flex items-center justify-center w-full p-3 bg-green-600 hover:bg-green-700 text-white rounded-lg cursor-pointer animate-button-pulse transition-colors duration-300"
+              className="flex items-center justify-center w-full p-3 bg-green-600 hover:bg-green-700 text-white rounded-lg cursor-pointer animate-button-pulse transition-colors duration-300 text-base font-bold"
             >
-               <span className="text-base font-bold">
                 Sim! Quero os +1000 moldes agora!
-               </span>
             </Label>
           </CardFooter>
         </Card>
@@ -99,11 +97,9 @@ export function PromoBlocks() {
           </CardContent>
           <CardFooter className="bg-muted/40 p-4 mt-auto">
              <Label
-              className="flex items-center justify-center w-full p-3 bg-green-600 hover:bg-green-700 text-white rounded-lg cursor-pointer animate-button-pulse transition-colors duration-300"
+              className="flex items-center justify-center w-full p-3 bg-green-600 hover:bg-green-700 text-white rounded-lg cursor-pointer animate-button-pulse transition-colors duration-300 text-base font-bold"
             >
-               <span className="text-base font-bold">
                 Sim! Quero as medalhas para premiar meus alunos!
-               </span>
              </Label>
           </CardFooter>
         </Card>
