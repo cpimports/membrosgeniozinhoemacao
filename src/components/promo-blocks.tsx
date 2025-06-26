@@ -10,14 +10,6 @@ import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 export function PromoBlocks() {
   return (
     <div className="space-y-6 rounded-2xl border bg-card p-6 shadow-lg">
-      <Alert className="bg-yellow-100 border-yellow-500 text-yellow-800 [&>svg]:text-yellow-500 border-l-4">
-        <AlertTriangle className="h-5 w-5" />
-        <AlertTitle className="font-bold text-yellow-900">ATENÇÃO</AlertTitle>
-        <AlertDescription className="text-yellow-800">
-          Se você já adquiriu algum desses materiais, confira o e-mail cadastrado — o acesso já foi enviado para lá!
-        </AlertDescription>
-      </Alert>
-      
       <Alert className="bg-primary/10 border-primary/30 text-primary [&>svg]:text-primary border-l-4">
         <Gift className="h-5 w-5" />
         <AlertTitle className="font-bold">Novas atividades disponíveis!</AlertTitle>
@@ -26,6 +18,14 @@ export function PromoBlocks() {
         </AlertDescription>
       </Alert>
 
+      <Alert className="bg-yellow-100 border-yellow-500 text-yellow-800 [&>svg]:text-yellow-500 border-l-4">
+        <AlertTriangle className="h-5 w-5" />
+        <AlertTitle className="font-bold text-yellow-900">ATENÇÃO</AlertTitle>
+        <AlertDescription className="text-yellow-800">
+          Se você já adquiriu algum desses materiais, confira o e-mail cadastrado — o acesso já foi enviado para lá!
+        </AlertDescription>
+      </Alert>
+      
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 pt-4">
         {/* Bloco 1: Moldes de EVA */}
         <Card className="flex flex-col overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 rounded-2xl bg-card">
