@@ -43,7 +43,7 @@ export default function Page() {
           src="https://i.imgur.com/29Kp6BM.png"
           alt="Banner Gêniozinho em Ação"
           width={1200}
-          height={400}
+          height={300}
           className="w-full h-auto rounded-lg shadow-md"
           priority
         />
