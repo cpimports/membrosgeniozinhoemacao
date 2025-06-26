@@ -38,7 +38,7 @@ export function PromoBlocks() {
               <span className="text-3xl">✂️</span>
               <span className="leading-tight">+1000 moldes de EVA por apenas R$19,90!</span>
             </CardTitle>
-          </Header>
+          </CardHeader>
           <CardContent className="flex-grow space-y-4 p-6 pt-0">
             <Image
               src="https://placehold.co/600x400.png"
