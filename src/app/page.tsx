@@ -15,11 +15,9 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { ActivityCard } from "@/components/activity-card";
 import { ActivityViewModal } from "@/components/activity-view-modal";
 import { activities, categories, type Activity } from "@/lib/mock-data";
-import { Search, TriangleAlert } from "lucide-react";
+import { Search } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { WhatsappIcon } from "@/components/icons/whatsapp-icon";
-import { Checkbox } from "@/components/ui/checkbox";
-import { Label } from "@/components/ui/label";
 
 export default function Page() {
   const [searchQuery, setSearchQuery] = useState("");
@@ -73,83 +71,6 @@ export default function Page() {
           </div>
         </CardContent>
       </Card>
-
-      {/* Promotional Blocks Section */}
-      <div className="space-y-6">
-        <div className="rounded-lg border-l-4 border-accent p-4 bg-accent/10">
-          <div className="flex items-center">
-            <TriangleAlert className="h-6 w-6 mr-3 text-accent flex-shrink-0" />
-            <p className="text-sm font-semibold text-accent-foreground">
-              ATENÇÃO: Se você já adquiriu algum desses materiais, confira o e-mail cadastrado — o acesso já foi enviado para lá!
-            </p>
-          </div>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {/* EVA Molds Card */}
-          <Card className="shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col border-2 border-accent/60 overflow-hidden">
-            <CardHeader className="p-0">
-              <Image
-                src="https://placehold.co/600x300.png"
-                alt="Moldes de EVA"
-                width={600}
-                height={300}
-                className="w-full h-48 object-cover"
-                data-ai-hint="eva molds craft"
-              />
-            </CardHeader>
-            <CardContent className="p-6 flex-grow space-y-4">
-              <h3 className="text-xl font-bold text-accent-foreground">
-                +1000 moldes de EVA por apenas R$19,90!
-              </h3>
-              <p className="text-sm text-muted-foreground leading-relaxed">
-                Transforme suas atividades em verdadeiras obras de arte com moldes prontos para imprimir! Inclui temas como letras, animais, datas comemorativas, painéis escolares, personagens e muito mais!
-              </p>
-            </CardContent>
-            <CardFooter className="p-4 mt-auto bg-muted/50">
-              <Label
-                htmlFor="eva-molds"
-                className="flex items-center space-x-3 w-full cursor-pointer rounded-lg bg-accent/10 p-4 transition-colors hover:bg-accent/20"
-              >
-                <Checkbox id="eva-molds" />
-                <span className="text-base font-bold text-accent-foreground flex-1">
-                  Sim! Quero os +1000 moldes agora!
-                </span>
-              </Label>
-            </CardFooter>
-          </Card>
-
-          {/* Incentive Medals Card */}
-          <Card className="shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col border-2 border-accent/60 overflow-hidden">
-            <CardHeader className="p-6 pb-2">
-              <h3 className="text-xl font-bold text-accent-foreground">
-                🏅 Kit exclusivo com medalhas de incentivo por apenas R$7,00!
-              </h3>
-            </CardHeader>
-            <CardContent className="p-6 pt-2 flex-grow">
-              <p className="text-sm text-muted-foreground leading-relaxed">
-                Imprima e use para premiar os alunos por bom comportamento, participação e conquistas.
-                <br />
-                <span className="mt-2 inline-block">
-                  🎉 Ajuda a motivar, valorizar o esforço e deixar as crianças ainda mais empolgadas para aprender!
-                </span>
-              </p>
-            </CardContent>
-            <CardFooter className="p-4 mt-auto bg-muted/50">
-              <Label
-                htmlFor="medals"
-                className="flex items-center space-x-3 w-full cursor-pointer rounded-lg bg-accent/10 p-4 transition-colors hover:bg-accent/20"
-              >
-                <Checkbox id="medals" />
-                <span className="text-base font-bold text-accent-foreground flex-1">
-                  Sim! Quero as medalhas para premiar meus alunos!
-                </span>
-              </Label>
-            </CardFooter>
-          </Card>
-        </div>
-      </div>
-
 
       <Card className="shadow-lg">
         <CardHeader>
