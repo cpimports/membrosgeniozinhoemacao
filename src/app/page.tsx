@@ -42,9 +42,9 @@ export default function Page() {
         <Image
           src="https://i.imgur.com/29Kp6BM.png"
           alt="Gêniozinho em Ação Logo"
-          width={160}
-          height={160}
-          className="mx-auto mb-4 w-40 h-auto"
+          width={120}
+          height={120}
+          className="mx-auto mb-4 w-30 h-auto"
           data-ai-hint="logo"
         />
         <h1 className="text-3xl font-bold text-primary">Seja bem-vindo(a) ao Gêniozinho em Ação!</h1>
@@ -55,8 +55,8 @@ export default function Page() {
         <CardContent className="p-6">
           <div className="flex flex-col md:flex-row items-center gap-4 text-center md:text-left">
             <div className="flex-grow">
-              <h3 className="text-lg font-semibold text-primary">Junte-se à nossa comunidade exclusiva de pais e professores!</h3>
-              <p className="text-muted-foreground mt-1 text-sm">
+              <h3 className="text-base font-semibold">Junte-se à nossa comunidade exclusiva de pais e professores!</h3>
+              <p className="mt-1 text-sm">
                 Receba conteúdos especiais, dicas práticas e novidades em primeira mão.
                 Clique no botão abaixo e participe do nosso grupo VIP no WhatsApp!
               </p>
