@@ -12,8 +12,8 @@ export function PromoBlocks() {
     <div className="space-y-6 rounded-2xl border bg-[#FFD700] p-6 shadow-lg">
       <div className="w-full text-center">
           <AlertTitle 
-            className="font-bold text-2xl mb-1 flex flex-col justify-center items-center gap-2 text-black"
-            style={{ textShadow: '-1px -1px 0 #FFF, 1px -1px 0 #FFF, -1px 1px 0 #FFF, 1px 1px 0 #FFF' }}
+            className="font-bold text-2xl mb-1 flex flex-col justify-center items-center gap-2 text-white"
+            style={{ textShadow: '-1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000' }}
           >
               <Gift className="h-8 w-8 text-red-600 [filter:drop-shadow(0_2px_2px_rgba(255,255,255,0.8))]" />
               Novas atividades disponíveis!
