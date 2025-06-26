@@ -53,7 +53,11 @@ export function PromoBlocks() {
               data-ai-hint="eva craft molds"
             />
             <p className="text-card-foreground/90">
-              Transforme suas atividades em verdadeiras obras de arte com moldes prontos para imprimir! Inclui temas como letras, animais, datas comemorativas, painéis escolares, personagens e muito mais!🖨️Ideal para decorar salas, criar lembrancinhas e deixar suas aulas ainda mais criativas!
+              Transforme suas atividades em verdadeiras obras de arte com moldes prontos para imprimir! Inclui temas como letras, animais, datas comemorativas, painéis escolares, personagens e muito mais!
+            </p>
+            <p className="flex items-center gap-3 text-sm text-muted-foreground font-semibold">
+              <span className="text-2xl">🖨️</span>
+              <span className="flex-1">Ideal para decorar salas, criar lembrancinhas e deixar suas aulas ainda mais criativas!</span>
             </p>
           </CardContent>
           <CardFooter className="bg-muted/40 p-4 mt-auto">
