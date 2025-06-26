@@ -44,7 +44,7 @@ export default function Page() {
           alt="Banner Gêniozinho em Ação"
           width={1200}
           height={300}
-          className="w-full h-auto rounded-lg shadow-md"
+          className="w-full h-auto rounded-lg shadow-md object-cover max-h-64"
           priority
         />
       </div>
