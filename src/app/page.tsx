@@ -55,7 +55,7 @@ export default function Page() {
         <CardContent className="p-6">
           <div className="flex flex-col md:flex-row items-center gap-4 text-center md:text-left">
             <div className="flex-grow">
-              <h3 className="text-base font-semibold">Junte-se à nossa comunidade exclusiva de pais e professores!</h3>
+              <h3 className="text-base font-semibold text-primary">Junte-se à nossa comunidade exclusiva de pais e professores!</h3>
               <p className="mt-1 text-sm">
                 Receba conteúdos especiais, dicas práticas e novidades em primeira mão.
                 Clique no botão abaixo e participe do nosso grupo VIP no WhatsApp!
