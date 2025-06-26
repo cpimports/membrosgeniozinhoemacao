@@ -22,10 +22,10 @@ export function PromoBlocks() {
         </div>
       </Alert>
 
-      <Alert className="bg-yellow-100 border-yellow-500 text-yellow-800 [&>svg]:text-yellow-500 border-l-4">
+      <Alert className="bg-[#F0C609]/20 border-[#F0C609] text-yellow-900 [&>svg]:text-[#F0C609] border-l-4">
         <AlertTriangle className="h-5 w-5" />
-        <AlertTitle className="font-bold text-yellow-900">ATENÇÃO</AlertTitle>
-        <AlertDescription className="text-yellow-800">
+        <AlertTitle className="font-bold text-yellow-950">ATENÇÃO</AlertTitle>
+        <AlertDescription className="text-yellow-900">
           Se você já adquiriu algum desses materiais, confira o e-mail cadastrado — o acesso já foi enviado para lá!
         </AlertDescription>
       </Alert>
