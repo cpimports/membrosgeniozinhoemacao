@@ -81,7 +81,7 @@ export function PromoBlocks() {
           </CardHeader>
           <CardContent className="flex-grow space-y-4 p-6 pt-0">
              <Image
-              src="https://placehold.co/600x400.png"
+              src="https://i.imgur.com/QKYazo1.png"
               alt="Ilustração de medalhas de incentivo para alunos"
               width={600}
               height={400}
