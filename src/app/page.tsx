@@ -18,6 +18,7 @@ import { activities, categories, type Activity } from "@/lib/mock-data";
 import { Search } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { WhatsappIcon } from "@/components/icons/whatsapp-icon";
+import { PromoBlocks } from "@/components/promo-blocks";
 
 export default function Page() {
   const [searchQuery, setSearchQuery] = useState("");
@@ -71,6 +72,8 @@ export default function Page() {
           </div>
         </CardContent>
       </Card>
+
+      <PromoBlocks />
 
       <Card className="shadow-lg">
         <CardHeader>
