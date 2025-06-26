@@ -9,7 +9,7 @@ import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 
 export function PromoBlocks() {
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 rounded-2xl border bg-card p-6 shadow-lg">
       <Alert className="bg-yellow-100 border-yellow-500 text-yellow-800 [&>svg]:text-yellow-500 border-l-4">
         <AlertTriangle className="h-5 w-5" />
         <AlertTitle className="font-bold text-yellow-900">ATENÇÃO</AlertTitle>
