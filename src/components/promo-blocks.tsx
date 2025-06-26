@@ -38,7 +38,7 @@ export function PromoBlocks() {
         {/* Bloco 1: Moldes de EVA */}
         <Card className="flex flex-col overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 rounded-2xl bg-card">
           <CardHeader className="p-6">
-            <CardTitle className="text-xl lg:text-2xl font-bold text-primary flex items-center gap-3">
+            <CardTitle className="text-xl lg:text-2xl font-bold text-secondary-foreground flex items-center gap-3">
               <span className="text-3xl">✂️</span>
               <span className="leading-tight">+1000 moldes de EVA por apenas R$19,90!</span>
             </CardTitle>
@@ -74,7 +74,7 @@ export function PromoBlocks() {
         {/* Bloco 2: Medalhas de Incentivo */}
         <Card className="flex flex-col overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 rounded-2xl bg-card">
           <CardHeader className="p-6">
-            <CardTitle className="text-xl lg:text-2xl font-bold text-primary flex items-center gap-3">
+            <CardTitle className="text-xl lg:text-2xl font-bold text-secondary-foreground flex items-center gap-3">
               <span className="text-3xl">🏅</span>
               <span className="leading-tight">Kit exclusivo com medalhas de incentivo por apenas R$7,00!</span>
             </CardTitle>
