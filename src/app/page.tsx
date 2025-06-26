@@ -80,7 +80,7 @@ export default function Page() {
             <CardTitle className="text-xl font-bold text-accent-foreground flex items-start gap-3">
               <span className="text-3xl mt-[-2px]">🔹</span>
               <div>
-                Adicione 1.000+ moldes de EVA por apenas <span className="text-primary underline">R$XX</span>!
+                +1000 Moldes de EVA
               </div>
             </CardTitle>
           </CardHeader>
