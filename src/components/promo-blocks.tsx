@@ -12,9 +12,9 @@ export function PromoBlocks() {
     <div className="space-y-6 rounded-2xl border bg-card p-6 shadow-lg">
       <Alert className="bg-primary/10 border-primary/30 text-primary">
         <div className="w-full text-center">
-            <AlertTitle className="font-bold text-lg mb-1 flex justify-center items-center gap-2 text-green-600">
-                <Gift className="h-5 w-5" />
-                Novas atividades disponíveis!
+            <AlertTitle className="font-bold text-lg mb-1 flex justify-center items-center gap-2">
+                <Gift className="h-5 w-5 text-red-600" />
+                <span className="text-green-600">Novas atividades disponíveis!</span>
             </AlertTitle>
             <AlertDescription>
             Aproveite para adquirir esses materiais extras e enriquecer ainda mais sua experiência com o Gêniozinho em Ação!
@@ -38,7 +38,7 @@ export function PromoBlocks() {
               <span className="text-3xl">✂️</span>
               <span className="leading-tight">+1000 moldes de EVA por apenas R$19,90!</span>
             </CardTitle>
-          </CardHeader>
+          </Header>
           <CardContent className="flex-grow space-y-4 p-6 pt-0">
             <Image
               src="https://placehold.co/600x400.png"
@@ -77,7 +77,7 @@ export function PromoBlocks() {
               <span className="text-3xl">🏅</span>
               <span className="leading-tight">Kit exclusivo com medalhas de incentivo por apenas R$7,00!</span>
             </CardTitle>
-          </CardHeader>
+          </Header>
           <CardContent className="flex-grow space-y-4 p-6 pt-0">
              <Image
               src="https://placehold.co/600x400.png"
