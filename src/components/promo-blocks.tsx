@@ -13,7 +13,7 @@ export function PromoBlocks() {
       <Alert className="bg-primary/10 border-primary/30 text-primary">
         <div className="w-full text-center">
             <AlertTitle className="font-bold text-lg mb-1 flex justify-center items-center gap-2">
-                <Gift className="h-5 w-5" />
+                <Gift className="h-5 w-5 text-destructive" />
                 Novas atividades disponíveis!
             </AlertTitle>
             <AlertDescription>
