@@ -77,7 +77,7 @@ export function PromoBlocks() {
               <span className="text-3xl">🏅</span>
               <span className="leading-tight">Kit exclusivo com medalhas de incentivo por apenas R$7,00!</span>
             </CardTitle>
-          </Header>
+          </CardHeader>
           <CardContent className="flex-grow space-y-4 p-6 pt-0">
              <Image
               src="https://placehold.co/600x400.png"
