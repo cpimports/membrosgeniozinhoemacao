@@ -38,7 +38,7 @@ export default function Page() {
 
   return (
     <div className="space-y-8">
-      <div>
+      <div className="text-center">
         <h1 className="text-3xl font-bold text-primary">Seja bem-vindo(a) ao Gêniozinho em Ação!</h1>
         <p className="text-muted-foreground mt-1">Um mundo onde brincar ensina e aprender encanta!</p>
       </div>
