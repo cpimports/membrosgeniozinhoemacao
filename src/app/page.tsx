@@ -59,7 +59,7 @@ export default function Page() {
           <div className="flex flex-col md:flex-row items-center gap-4 text-center md:text-left">
             <div className="flex-grow">
               <h3 className="text-base font-semibold text-primary">Junte-se à nossa comunidade exclusiva de pais e professores!</h3>
-              <p className="mt-1 text-sm">
+              <p className="mt-1 text-sm text-foreground">
                 Receba conteúdos especiais, dicas práticas e novidades em primeira mão.
                 Clique no botão abaixo e participe do nosso grupo VIP no WhatsApp!
               </p>
@@ -104,10 +104,6 @@ export default function Page() {
               </h3>
               <p className="text-sm text-muted-foreground leading-relaxed">
                 Transforme suas atividades em verdadeiras obras de arte com moldes prontos para imprimir! Inclui temas como letras, animais, datas comemorativas, painéis escolares, personagens e muito mais!
-                <br />
-                <span className="mt-2 inline-block">
-                  🖨️ Ideal para decorar salas, criar lembrancinhas e deixar suas aulas ainda mais criativas!
-                </span>
               </p>
             </CardContent>
             <CardFooter className="p-4 mt-auto bg-muted/50">
