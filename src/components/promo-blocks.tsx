@@ -57,7 +57,7 @@ export function PromoBlocks() {
             <p className="text-card-foreground/90">
                 Transforme suas atividades em verdadeiras obras de arte com moldes prontos para imprimir! Inclui temas como letras, animais, datas comemorativas, painéis escolares, personagens e muito mais!
             </p>
-            <p className="font-semibold text-secondary-foreground">
+            <p className="text-sm font-semibold text-secondary-foreground">
                 🖨️ Ideal para decorar salas, criar lembrancinhas e deixar suas aulas ainda mais criativas!
             </p>
           </CardContent>
@@ -90,7 +90,7 @@ export function PromoBlocks() {
             <p className="text-card-foreground/90">
               Imprima e use para premiar os alunos por bom comportamento, participação e conquistas.
             </p>
-            <p className="flex items-center gap-3 text-sm text-muted-foreground font-semibold">
+            <p className="flex items-center gap-3 text-sm text-secondary-foreground font-semibold">
               <span className="text-2xl">🎉</span>
               <span className="flex-1">Ajuda a motivar, valorizar o esforço e deixar as crianças ainda mais empolgadas para aprender!</span>
             </p>
