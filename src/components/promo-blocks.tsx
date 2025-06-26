@@ -18,7 +18,7 @@ export function PromoBlocks() {
               <Gift className="h-8 w-8 text-red-600 [filter:drop-shadow(0_2px_2px_rgba(255,255,255,0.8))]" />
               Novas atividades disponíveis!
           </AlertTitle>
-          <AlertDescription className="text-neutral-800">
+          <AlertDescription className="text-neutral-800 font-bold">
               Aproveite para adquirir esses materiais extras e enriquecer ainda mais sua experiência com o Gêniozinho em Ação!
           </AlertDescription>
       </div>
