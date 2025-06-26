@@ -87,7 +87,7 @@ export default function Page() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {/* EVA Molds Card */}
-          <Card className="shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col border-2 border-primary/40 overflow-hidden">
+          <Card className="shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col border-2 border-accent/60 overflow-hidden">
             <CardHeader className="p-0">
               <Image
                 src="https://placehold.co/600x300.png"
@@ -99,7 +99,7 @@ export default function Page() {
               />
             </CardHeader>
             <CardContent className="p-6 flex-grow space-y-4">
-              <h3 className="text-xl font-bold text-primary">
+              <h3 className="text-xl font-bold text-accent-foreground">
                 +1000 moldes de EVA por apenas R$19,90!
               </h3>
               <p className="text-sm text-muted-foreground leading-relaxed">
@@ -109,10 +109,10 @@ export default function Page() {
             <CardFooter className="p-4 mt-auto bg-muted/50">
               <Label
                 htmlFor="eva-molds"
-                className="flex items-center space-x-3 w-full cursor-pointer rounded-lg bg-primary/10 p-4 transition-colors hover:bg-primary/20"
+                className="flex items-center space-x-3 w-full cursor-pointer rounded-lg bg-accent/10 p-4 transition-colors hover:bg-accent/20"
               >
                 <Checkbox id="eva-molds" />
-                <span className="text-base font-bold text-primary flex-1">
+                <span className="text-base font-bold text-accent-foreground flex-1">
                   Sim! Quero os +1000 moldes agora!
                 </span>
               </Label>
@@ -138,10 +138,10 @@ export default function Page() {
             <CardFooter className="p-4 mt-auto bg-muted/50">
               <Label
                 htmlFor="medals"
-                className="flex items-center space-x-3 w-full cursor-pointer rounded-lg bg-primary/10 p-4 transition-colors hover:bg-primary/20"
+                className="flex items-center space-x-3 w-full cursor-pointer rounded-lg bg-accent/10 p-4 transition-colors hover:bg-accent/20"
               >
                 <Checkbox id="medals" />
-                <span className="text-base font-bold text-primary flex-1">
+                <span className="text-base font-bold text-accent-foreground flex-1">
                   Sim! Quero as medalhas para premiar meus alunos!
                 </span>
               </Label>
