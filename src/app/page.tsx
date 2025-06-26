@@ -13,28 +13,13 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { ActivityCard } from "@/components/activity-card";
 import { ActivityViewModal } from "@/components/activity-view-modal";
 import { activities, categories, type Activity } from "@/lib/mock-data";
-import { Heart, Search } from "lucide-react";
+import { Search } from "lucide-react";
 
 export default function Page() {
   const [searchQuery, setSearchQuery] = useState("");
-  const [favorites, setFavorites] = useState(
-    new Set(activities.filter((a) => a.isFavorite).map((a) => a.id))
-  );
   const [selectedActivity, setSelectedActivity] = useState<Activity | null>(
     null
   );
-
-  const handleToggleFavorite = (activityId: string) => {
-    setFavorites((prev) => {
-      const newFavorites = new Set(prev);
-      if (newFavorites.has(activityId)) {
-        newFavorites.delete(activityId);
-      } else {
-        newFavorites.add(activityId);
-      }
-      return newFavorites;
-    });
-  };
 
   const handleViewActivity = (activity: Activity) => {
     if (activity.pdfUrl && activity.pdfUrl !== '#') {
@@ -53,20 +38,6 @@ export default function Page() {
       <div>
         <h1 className="text-3xl font-bold text-primary">Seja bem-vindo(a) ao Gêniozinho em Ação!</h1>
         <p className="text-muted-foreground mt-1">Um mundo onde brincar ensina e aprender encanta!</p>
-      </div>
-      <div className="grid gap-6">
-        <Card className="hover:shadow-lg transition-shadow duration-300">
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Favoritos</CardTitle>
-            <Heart className="h-5 w-5 text-pink-400" />
-          </CardHeader>
-          <CardContent>
-            <div className="text-2xl font-bold">{favorites.size}</div>
-            <p className="text-xs text-muted-foreground">
-              Atividades que você mais gostou
-            </p>
-          </CardContent>
-        </Card>
       </div>
 
       <Card className="shadow-lg">
@@ -104,8 +75,6 @@ export default function Page() {
                   <ActivityCard
                     key={activity.id}
                     activity={activity}
-                    isFavorite={favorites.has(activity.id)}
-                    onToggleFavorite={handleToggleFavorite}
                     onView={handleViewActivity}
                   />
                 ))}
@@ -120,8 +89,6 @@ export default function Page() {
                         <ActivityCard
                           key={activity.id}
                           activity={activity}
-                          isFavorite={favorites.has(activity.id)}
-                          onToggleFavorite={handleToggleFavorite}
                           onView={handleViewActivity}
                         />
                       ))}
