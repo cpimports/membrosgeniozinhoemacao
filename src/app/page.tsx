@@ -74,67 +74,6 @@ export default function Page() {
         </CardContent>
       </Card>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
-        <Card className="border-2 border-dashed border-accent shadow-lg bg-accent/10 flex flex-col">
-          <CardHeader>
-            <CardTitle className="text-xl font-bold text-accent-foreground flex items-start gap-3">
-              <span className="text-3xl mt-[-2px]">🔹</span>
-              <div>
-                +1000 Moldes de EVA
-              </div>
-            </CardTitle>
-          </CardHeader>
-          <CardContent className="flex-grow space-y-3">
-            <p className="text-sm text-card-foreground/80">
-              Transforme suas atividades em verdadeiras obras de arte com moldes prontos para imprimir!
-              Inclui temas como letras, animais, datas comemorativas, painéis escolares, personagens e muito mais!
-            </p>
-            <p className="text-sm font-semibold text-card-foreground">
-              🖨️ Ideal para decorar salas, criar lembrancinhas e deixar suas aulas ainda mais criativas!
-            </p>
-          </CardContent>
-          <CardFooter>
-            <Label htmlFor="order-bump-eva" className="w-full p-4 rounded-lg bg-green-500 hover:bg-green-600 transition-colors cursor-pointer border-b-4 border-green-700 active:border-b-2">
-              <div className="flex items-center space-x-3">
-                <Checkbox id="order-bump-eva" className="h-6 w-6 border-white bg-white data-[state=checked]:bg-green-700 focus-visible:ring-white"/>
-                <span className="text-base font-bold text-white">
-                  Sim! Quero os +1000 moldes agora com meu pedido!
-                </span>
-              </div>
-            </Label>
-          </CardFooter>
-        </Card>
-
-        <Card className="border-2 border-dashed border-primary shadow-lg bg-primary/10 flex flex-col">
-          <CardHeader>
-            <CardTitle className="text-xl font-bold text-primary flex items-start gap-3">
-              <span className="text-3xl mt-[-2px]">🏅</span>
-              <div>
-                Leve um kit exclusivo com medalhas de incentivo por apenas <span className="text-accent underline">R$XX</span>!
-              </div>
-            </CardTitle>
-          </CardHeader>
-          <CardContent className="flex-grow space-y-3">
-            <p className="text-sm text-card-foreground/80">
-              Imprima e use para premiar os alunos por bom comportamento, participação e conquistas.
-            </p>
-            <p className="text-sm font-semibold text-card-foreground">
-              🎉 Ajuda a motivar, valorizar o esforço e deixar as crianças ainda mais empolgadas para aprender!
-            </p>
-          </CardContent>
-          <CardFooter>
-            <Label htmlFor="order-bump-medals" className="w-full p-4 rounded-lg bg-green-500 hover:bg-green-600 transition-colors cursor-pointer border-b-4 border-green-700 active:border-b-2">
-              <div className="flex items-center space-x-3">
-                <Checkbox id="order-bump-medals" className="h-6 w-6 border-white bg-white data-[state=checked]:bg-green-700 focus-visible:ring-white"/>
-                <span className="text-base font-bold text-white">
-                  Sim! Quero as medalhas para premiar meus alunos!
-                </span>
-              </div>
-            </Label>
-          </CardFooter>
-        </Card>
-      </div>
-
       <Card className="shadow-lg">
         <CardHeader>
           <CardTitle className="text-2xl font-bold text-primary">
