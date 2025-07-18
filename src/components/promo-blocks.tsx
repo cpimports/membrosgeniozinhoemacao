@@ -5,6 +5,7 @@ import { AlertTriangle, Gift } from 'lucide-react';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Label } from '@/components/ui/label';
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
+import Link from 'next/link';
 
 export function PromoBlocks() {
   return (
@@ -62,11 +63,13 @@ export function PromoBlocks() {
             </p>
           </CardContent>
           <CardFooter className="bg-muted/40 p-4 mt-auto">
-            <Label
-              className="flex items-center justify-center w-full p-3 bg-green-600 hover:bg-green-700 text-white rounded-lg cursor-pointer animate-button-pulse transition-colors duration-300 text-base font-bold"
-            >
-                Sim! Quero os +1000 moldes agora!
-            </Label>
+            <a href="https://pay.cakto.com.br/g3ufukf_468676" target="_blank" rel="noopener noreferrer" className="w-full">
+              <Label
+                className="flex items-center justify-center w-full p-3 bg-green-600 hover:bg-green-700 text-white rounded-lg cursor-pointer animate-button-pulse transition-colors duration-300 text-base font-bold"
+              >
+                  Sim! Quero os +1000 moldes agora!
+              </Label>
+            </a>
           </CardFooter>
         </Card>
 
