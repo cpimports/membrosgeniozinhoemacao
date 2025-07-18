@@ -99,11 +99,13 @@ export function PromoBlocks() {
             </p>
           </CardContent>
           <CardFooter className="bg-muted/40 p-4 mt-auto">
-             <Label
-              className="flex items-center justify-center w-full p-3 bg-green-600 hover:bg-green-700 text-white rounded-lg cursor-pointer animate-button-pulse transition-colors duration-300 text-base font-bold"
-            >
-                Sim! Quero as medalhas para premiar meus alunos!
-             </Label>
+            <a href="https://pay.cakto.com.br/wi7akcn_468660" target="_blank" rel="noopener noreferrer" className="w-full">
+              <Label
+                className="flex items-center justify-center w-full p-3 bg-green-600 hover:bg-green-700 text-white rounded-lg cursor-pointer animate-button-pulse transition-colors duration-300 text-base font-bold"
+              >
+                  Sim! Quero as medalhas para premiar meus alunos!
+              </Label>
+            </a>
           </CardFooter>
         </Card>
       </div>
