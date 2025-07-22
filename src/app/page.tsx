@@ -64,7 +64,7 @@ export default function Page() {
               </p>
             </div>
             <Button asChild className="mt-4 md:mt-0 md:ml-6 flex-shrink-0 w-full md:w-auto" size="lg" style={{ backgroundColor: '#25D366', color: 'white' }}>
-              <a href="https://chat.whatsapp.com/replace-with-your-invite-link" target="_blank" rel="noopener noreferrer">
+              <a href="https://chat.whatsapp.com/ETxeF3IfwBU9JUjsDZRSkH" target="_blank" rel="noopener noreferrer">
                 <WhatsappIcon className="mr-2 h-5 w-5" />
                 Entrar no Grupo VIP
               </a>
