@@ -26,6 +26,7 @@ export function ActivityCard({
     <Card className="flex flex-col overflow-hidden shadow-md hover:shadow-xl transition-all duration-300">
       <CardHeader className="p-0 relative">
         <Image
+          unoptimized
           src={activity.thumbnailUrl}
           alt={`Thumbnail da atividade ${activity.title}`}
           width={400}

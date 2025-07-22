@@ -31,6 +31,7 @@ export function AIRecommender({ onActivityClick }: AIRecommenderProps) {
               onClick={() => onActivityClick(activity)}
             >
               <Image
+                unoptimized
                 src={activity.thumbnailUrl}
                 alt={activity.title}
                 width={300}

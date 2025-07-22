@@ -48,6 +48,7 @@ export function PromoBlocks() {
           </CardHeader>
           <CardContent className="flex-grow space-y-4 p-6 pt-0">
             <Image
+              unoptimized
               src="https://i.imgur.com/HCOg2Af.png"
               alt="Ilustração de moldes de EVA com letras, animais e painéis"
               width={600}
@@ -83,6 +84,7 @@ export function PromoBlocks() {
           </CardHeader>
           <CardContent className="flex-grow space-y-4 p-6 pt-0">
              <Image
+              unoptimized
               src="https://i.imgur.com/QKYazo1.png"
               alt="Ilustração de medalhas de incentivo para alunos"
               width={600}

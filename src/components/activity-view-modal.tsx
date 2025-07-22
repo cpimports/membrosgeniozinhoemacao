@@ -39,6 +39,7 @@ export function ActivityViewModal({
         </DialogHeader>
         <div className="px-6 py-4 max-h-[60vh] overflow-y-auto">
           <Image
+            unoptimized
             src={activity.thumbnailUrl.replace('400x250', '800x500')}
             alt={`Visualização da atividade ${activity.title}`}
             width={800}
