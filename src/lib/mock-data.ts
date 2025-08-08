@@ -20,7 +20,7 @@ export const categories = [
 
 
 export const activities: Activity[] = [
-  { id: 'new-activity', title: 'Nova Atividade', category: 'Alfabetização', thumbnailUrl: 'https://placehold.co/400x250.png', pdfUrl: '#', isFavorite: false, aiHint: "new activity" },
+  { id: '54', title: 'Pareamento Visual e Coordenação Motora – Guarda-Chuvas Coloridos', category: 'Atividades sensoriais', thumbnailUrl: 'https://placehold.co/400x250.png', pdfUrl: 'https://drive.google.com/drive/u/3/folders/1ZlfFJXHrBLBbhoFFI2Eyxfuo1EyCVmN_', isFavorite: false, aiHint: "visual pairing" },
   { id: '53', title: 'Coordenação Ritmada', category: 'Atividades sensoriais', thumbnailUrl: 'https://i.imgur.com/oRWVIpu.png', pdfUrl: 'https://drive.google.com/drive/u/3/folders/1Parc_g0dzE9iDRWmaMa7aAoxgbe2VLun', isFavorite: false, aiHint: "rhythmic coordination" },
   { id: '1', title: 'Sabe Ler - Autismo', category: 'Alfabetização', thumbnailUrl: 'https://i.imgur.com/SvaWc91.jpeg', pdfUrl: 'https://drive.google.com/drive/u/4/folders/14qQNTkDYdEyBaJEROknqnEt0Imkg4XXr', isFavorite: true, aiHint: "child drawing" },
   { id: '2', title: 'Não Sabe Ler - Autismo', category: 'Alfabetização', thumbnailUrl: 'https://i.imgur.com/YmcoxnN.jpeg', pdfUrl: 'https://drive.google.com/drive/u/4/folders/1b-b9IpMcNdMqDWxktQlw_As4C1gUf1V1', isFavorite: false, aiHint: "child pointing" },
@@ -30,7 +30,7 @@ export const activities: Activity[] = [
   { id: '8', title: 'Caligrafia', category: 'Alfabetização', thumbnailUrl: 'https://i.imgur.com/tRpQRss.png', pdfUrl: 'https://drive.google.com/drive/u/4/folders/1MQJbnDiYW1w0SjrzGRYokFDwRT_DAWnU', isFavorite: true, aiHint: "tracing lines" },
   { id: '34', title: 'Escreva as silabas', category: 'Alfabetização', thumbnailUrl: 'https://i.imgur.com/aDFuER0.png', pdfUrl: 'https://drive.google.com/drive/u/4/folders/1nkPv-pmbEC2QHDxEPl155-Pq34ex2Dkj', isFavorite: false, aiHint: 'writing syllables' },
   { id: '33', title: 'Escrita maluca', category: 'Alfabetização', thumbnailUrl: 'https://i.imgur.com/Q71cI03.png', pdfUrl: 'https://drive.google.com/drive/u/4/folders/1MRdHra0aDU04PwIfQygjmxb1XrF1dooR', isFavorite: false, aiHint: 'creative writing' },
-  { id: '32', title: 'Fluência leitora', category: 'Alfabetização', thumbnailUrl: 'https://i.imgur.com/AObZwIN.png', pdfUrl: 'https://drive.google.com/drive/u/4/folders/1hbv7gmSDPlYdAJvg65ucvpQ7SHIfaioh', isFavorite: false, aiHint: 'reading fluency' },
+  { id: '32', title: 'Fluência leitora', category: 'Alfabetização', thumbnailUrl: 'https://i.imgur.com/AObZwIN.png', pdfUrl: 'https://drive.gdrive.google.com/drive/u/4/folders/1hbv7gmSDPlYdAJvg65ucvpQ7SHIfaioh', isFavorite: false, aiHint: 'reading fluency' },
   { id: '17', title: 'Vogais Fônicas', category: 'Alfabetização', thumbnailUrl: 'https://i.imgur.com/52IlwNO.png', pdfUrl: 'https://drive.google.com/drive/u/4/folders/1Ylq98saTlody6Rse-rK67j0bh-caLR8T', isFavorite: false, aiHint: 'vowels phonics' },
   { id: '29', title: 'Interpretação de texto', category: 'Alfabetização', thumbnailUrl: 'https://i.imgur.com/6hpNx9P.png', pdfUrl: 'https://drive.google.com/drive/u/4/folders/1mlpZtbw-bMmobRePp4ZTRavW74uZnMj3', isFavorite: false, aiHint: 'text interpretation' },
   { id: '15', title: 'Inglês', category: 'Ensino Completo', thumbnailUrl: 'https://i.imgur.com/nvIxMfQ.png', pdfUrl: 'https://drive.google.com/drive/u/4/folders/1oRZLigZYIPQPKAQZWFWGSotcmF9_q9Nn', isFavorite: false, aiHint: 'learning english' },
