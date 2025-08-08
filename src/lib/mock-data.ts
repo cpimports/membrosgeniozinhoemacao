@@ -20,7 +20,7 @@ export const categories = [
 
 
 export const activities: Activity[] = [
-  { id: '53', title: 'Atividade de Exemplo', category: 'Alfabetização', thumbnailUrl: 'https://placehold.co/400x250.png', pdfUrl: '#', isFavorite: false, aiHint: "new activity" },
+  { id: '53', title: 'Coordenação Ritmada', category: 'Atividades sensoriais', thumbnailUrl: 'https://placehold.co/400x250.png', pdfUrl: 'https://drive.google.com/drive/u/3/folders/1Parc_g0dzE9iDRWmaMa7aAoxgbe2VLun', isFavorite: false, aiHint: "rhythmic coordination" },
   { id: '1', title: 'Sabe Ler - Autismo', category: 'Alfabetização', thumbnailUrl: 'https://i.imgur.com/SvaWc91.jpeg', pdfUrl: 'https://drive.google.com/drive/u/4/folders/14qQNTkDYdEyBaJEROknqnEt0Imkg4XXr', isFavorite: true, aiHint: "child drawing" },
   { id: '2', title: 'Não Sabe Ler - Autismo', category: 'Alfabetização', thumbnailUrl: 'https://i.imgur.com/YmcoxnN.jpeg', pdfUrl: 'https://drive.google.com/drive/u/4/folders/1b-b9IpMcNdMqDWxktQlw_As4C1gUf1V1', isFavorite: false, aiHint: "child pointing" },
   { id: '18', title: 'Vamos escrever', category: 'Alfabetização', thumbnailUrl: 'https://i.imgur.com/vhEaEg6.png', pdfUrl: 'https://drive.google.com/drive/u/4/folders/1QpAQ6faz1eWcW2ue4e2k6f8Eeeq-iN2S', isFavorite: false, aiHint: 'writing practice' },
@@ -75,6 +75,6 @@ export const activities: Activity[] = [
   { id: '35', title: 'Emoções', category: 'Jogos Educativos', thumbnailUrl: 'https://i.imgur.com/3DjF9vp.png', pdfUrl: 'https://drive.google.com/drive/u/4/folders/1CdeMcf2vTJZBnsZFgdMcBSldhZcEKgCd', isFavorite: false, aiHint: 'feelings chart' },
   { id: '37', title: 'Dominós', category: 'Jogos Educativos', thumbnailUrl: 'https://i.imgur.com/G2q2rHr.png', pdfUrl: 'https://drive.google.com/drive/u/4/folders/1Q629gOLdWL-42ivNpdtaY5xrRjNdd2Vt', isFavorite: false, aiHint: 'dominoes game' },
   { id: '43', title: 'Cartões de Comunicação', category: 'Jogos Educativos', thumbnailUrl: 'https://i.imgur.com/6HHIbdS.png', pdfUrl: 'https://drive.google.com/drive/u/4/folders/1E6ThcEmkZNCOUQmOjzVRTaTCVDBRjNF_', isFavorite: false, aiHint: 'communication cards' },
-  { id: '44', title: 'Bingos', category: 'Jogos Educativos', thumbnailUrl: 'https://i.imgur.com/94u8Uac.png', pdfUrl: 'https://drive.google.com/drive/u/4/folders/1oJTWu62uNDqF_-3k3FsK2EYeLBKzs_75', isFavorite: false, aiHint: 'bingo game' },
+  { id: '44', title: 'Bingos', category: 'Jogos Educativos', thumbnailUrl: 'https://i.imgur.com/94u8Uac.png', pdfUrl: 'https://drive.google.com/drive/u/4/folders/1oJTWu62uNDqF_-3k3FsK2EYeLBKzs_75', isFasvorite: false, aiHint: 'bingo game' },
   { id: '45', title: 'Bingo das Palavras', category: 'Jogos Educativos', thumbnailUrl: 'https://i.imgur.com/RpNv5Du.png', pdfUrl: 'https://drive.google.com/drive/u/4/folders/1wQoSTPOrUtNUbQqc_FjpKxge4XOBlWr3', isFavorite: false, aiHint: 'word bingo' },
 ];
