@@ -20,6 +20,7 @@ export const categories = [
 
 
 export const activities: Activity[] = [
+  { id: '53', title: 'Atividade de Exemplo', category: 'Alfabetização', thumbnailUrl: 'https://placehold.co/400x250.png', pdfUrl: '#', isFavorite: false, aiHint: "new activity" },
   { id: '1', title: 'Sabe Ler - Autismo', category: 'Alfabetização', thumbnailUrl: 'https://i.imgur.com/SvaWc91.jpeg', pdfUrl: 'https://drive.google.com/drive/u/4/folders/14qQNTkDYdEyBaJEROknqnEt0Imkg4XXr', isFavorite: true, aiHint: "child drawing" },
   { id: '2', title: 'Não Sabe Ler - Autismo', category: 'Alfabetização', thumbnailUrl: 'https://i.imgur.com/YmcoxnN.jpeg', pdfUrl: 'https://drive.google.com/drive/u/4/folders/1b-b9IpMcNdMqDWxktQlw_As4C1gUf1V1', isFavorite: false, aiHint: "child pointing" },
   { id: '18', title: 'Vamos escrever', category: 'Alfabetização', thumbnailUrl: 'https://i.imgur.com/vhEaEg6.png', pdfUrl: 'https://drive.google.com/drive/u/4/folders/1QpAQ6faz1eWcW2ue4e2k6f8Eeeq-iN2S', isFavorite: false, aiHint: 'writing practice' },
