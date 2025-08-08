@@ -20,6 +20,7 @@ export const categories = [
 
 
 export const activities: Activity[] = [
+  { id: 'new-activity', title: 'Nova Atividade', category: 'Alfabetização', thumbnailUrl: 'https://placehold.co/400x250.png', pdfUrl: '#', isFavorite: false, aiHint: "new activity" },
   { id: '53', title: 'Coordenação Ritmada', category: 'Atividades sensoriais', thumbnailUrl: 'https://i.imgur.com/oRWVIpu.png', pdfUrl: 'https://drive.google.com/drive/u/3/folders/1Parc_g0dzE9iDRWmaMa7aAoxgbe2VLun', isFavorite: false, aiHint: "rhythmic coordination" },
   { id: '1', title: 'Sabe Ler - Autismo', category: 'Alfabetização', thumbnailUrl: 'https://i.imgur.com/SvaWc91.jpeg', pdfUrl: 'https://drive.google.com/drive/u/4/folders/14qQNTkDYdEyBaJEROknqnEt0Imkg4XXr', isFavorite: true, aiHint: "child drawing" },
   { id: '2', title: 'Não Sabe Ler - Autismo', category: 'Alfabetização', thumbnailUrl: 'https://i.imgur.com/YmcoxnN.jpeg', pdfUrl: 'https://drive.google.com/drive/u/4/folders/1b-b9IpMcNdMqDWxktQlw_As4C1gUf1V1', isFavorite: false, aiHint: "child pointing" },
