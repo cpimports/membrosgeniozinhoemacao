@@ -31,7 +31,7 @@ export default function DashboardPage() {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedActivity, setSelectedActivity] = useState<Activity | null>(null);
 
-  const isAdmin = user?.email === 'admin';
+  const isAdmin = user?.email === 'admin@gmail.com';
 
   useEffect(() => {
     if (!loading && !user) {
