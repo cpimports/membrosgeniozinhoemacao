@@ -76,6 +76,6 @@ export const activities: Activity[] = [
   { id: '35', title: 'Emoções', category: 'Jogos Educativos', thumbnailUrl: 'https://i.imgur.com/3DjF9vp.png', pdfUrl: 'https://drive.google.com/drive/u/4/folders/1CdeMcf2vTJZBnsZFgdMcBSldhZcEKgCd', isFavorite: false, aiHint: 'feelings chart' },
   { id: '37', title: 'Dominós', category: 'Jogos Educativos', thumbnailUrl: 'https://i.imgur.com/G2q2rHr.png', pdfUrl: 'https://drive.google.com/drive/u/4/folders/1Q629gOLdWL-42ivNpdtaY5xrRjNdd2Vt', isFavorite: false, aiHint: 'dominoes game' },
   { id: '43', title: 'Cartões de Comunicação', category: 'Jogos Educativos', thumbnailUrl: 'https://i.imgur.com/6HHIbdS.png', pdfUrl: 'https://drive.google.com/drive/u/4/folders/1E6ThcEmkZNCOUQmOjzVRTaTCVDBRjNF_', isFavorite: false, aiHint: 'communication cards' },
-  { id: '44', title: 'Bingos', category: 'Jogos Educativos', thumbnailUrl: 'https://i.imgur.com/94u8Uac.png', pdfUrl: 'https://drive.google.com/drive/u/4/folders/1oJTWu62uNDqF_-3k3FsK2EYeLBKzs_75', isFasvorite: false, aiHint: 'bingo game' },
+  { id: '44', title: 'Bingos', category: 'Jogos Educativos', thumbnailUrl: 'https://i.imgur.com/94u8Uac.png', pdfUrl: 'https://drive.google.com/drive/u/4/folders/1oJTWu62uNDqF_-3k3FsK2EYeLBKzs_75', isFavorite: false, aiHint: 'bingo game' },
   { id: '45', title: 'Bingo das Palavras', category: 'Jogos Educativos', thumbnailUrl: 'https://i.imgur.com/RpNv5Du.png', pdfUrl: 'https://drive.google.com/drive/u/4/folders/1wQoSTPOrUtNUbQqc_FjpKxge4XOBlWr3', isFavorite: false, aiHint: 'word bingo' },
 ];

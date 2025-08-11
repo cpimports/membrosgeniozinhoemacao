@@ -11,15 +11,14 @@ import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { useToast } from "@/hooks/use-toast";
-import { Mail, KeyRound, UserPlus, CircleUserRound } from "lucide-react";
+import { Mail, KeyRound, LogIn } from "lucide-react";
 
 const formSchema = z.object({
-  name: z.string().min(2, { message: "O nome deve ter pelo menos 2 caracteres." }),
   email: z.string().email({ message: "Por favor, insira um email válido." }),
   password: z.string().min(6, { message: "A senha deve ter pelo menos 6 caracteres." }),
 });
 
-export default function SignupPage() {
+export default function LoginPage() {
   const router = useRouter();
   const { toast } = useToast();
   const [isLoading, setIsLoading] = useState(false);
@@ -27,7 +26,6 @@ export default function SignupPage() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      name: "",
       email: "",
       password: "",
     },
@@ -39,14 +37,15 @@ export default function SignupPage() {
     await new Promise(resolve => setTimeout(resolve, 1500));
     console.log(values);
     
-    // In a real scenario, you would call Firebase to create a new user.
+    // In a real scenario, you would call Firebase here.
+    // For now, let's simulate a success.
     
     toast({
-      title: "Conta criada com sucesso!",
-      description: "Você já pode fazer o login.",
+      title: "Login realizado com sucesso!",
+      description: "Redirecionando para o painel...",
     });
 
-    router.push("/login");
+    router.push("/dashboard");
 
     setIsLoading(false);
   }
@@ -55,28 +54,12 @@ export default function SignupPage() {
     <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-background to-secondary/50 p-4">
       <Card className="w-full max-w-md shadow-2xl backdrop-blur-lg bg-card/80">
         <CardHeader className="text-center">
-          <CardTitle className="text-3xl font-bold text-primary">Crie sua Conta</CardTitle>
-          <CardDescription>É rápido e fácil. Vamos começar!</CardDescription>
+          <CardTitle className="text-3xl font-bold text-primary">Bem-vindo(a) de volta!</CardTitle>
+          <CardDescription>Acesse sua conta para continuar.</CardDescription>
         </CardHeader>
         <CardContent>
           <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-              <FormField
-                control={form.control}
-                name="name"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Nome Completo</FormLabel>
-                    <div className="relative">
-                      <CircleUserRound className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
-                      <FormControl>
-                        <Input placeholder="Seu nome completo" {...field} className="pl-10" />
-                      </FormControl>
-                    </div>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
               <FormField
                 control={form.control}
                 name="email"
@@ -102,7 +85,7 @@ export default function SignupPage() {
                      <div className="relative">
                       <KeyRound className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
                       <FormControl>
-                        <Input type="password" placeholder="Crie uma senha forte" {...field} className="pl-10" />
+                        <Input type="password" placeholder="••••••••" {...field} className="pl-10" />
                       </FormControl>
                     </div>
                     <FormMessage />
@@ -110,17 +93,22 @@ export default function SignupPage() {
                 )}
               />
               <Button type="submit" className="w-full" disabled={isLoading}>
-                {isLoading ? 'Criando conta...' : <> <UserPlus className="mr-2"/> Criar Conta </>}
+                {isLoading ? 'Entrando...' : <> <LogIn className="mr-2"/> Entrar </>}
               </Button>
             </form>
           </Form>
         </CardContent>
-        <CardFooter className="flex justify-center">
+        <CardFooter className="flex flex-col gap-4">
+            <Link href="/forgot-password" passHref>
+                <Button variant="link" size="sm" className="text-sm">
+                    Esqueceu sua senha?
+                </Button>
+            </Link>
              <div className="text-center text-sm text-muted-foreground">
-                Já tem uma conta?{' '}
-                <Link href="/login" passHref>
+                Não tem uma conta?{' '}
+                <Link href="/signup" passHref>
                     <Button variant="link" className="p-0 h-auto">
-                    Faça login
+                    Cadastre-se
                     </Button>
                 </Link>
             </div>
