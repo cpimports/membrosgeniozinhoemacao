@@ -2,6 +2,3 @@
 # https://firebase.google.com/docs/app-hosting/configure
 
 # Specifies that this is a static site.
-staticConfig:
-  # The directory containing the static files to be served.
-  public: out
