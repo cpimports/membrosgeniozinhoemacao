@@ -11,22 +11,14 @@ import { Skeleton } from '@/components/ui/skeleton';
 import { collection, getDocs, QueryDocumentSnapshot, DocumentData } from 'firebase/firestore';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import { Badge } from '@/components/ui/badge';
-
-type UserData = {
-    id: string;
-    name: string;
-    email: string;
-    subscription: {
-        status: string;
-        validUntil: any;
-    };
-}
+import { ManageUserModal, type UserData } from '@/components/manage-user-modal';
 
 export default function AdminPage() {
   const [user, loadingAuth] = useAuthState(auth);
   const router = useRouter();
   const [users, setUsers] = useState<UserData[]>([]);
   const [loadingUsers, setLoadingUsers] = useState(true);
+  const [selectedUser, setSelectedUser] = useState<UserData | null>(null);
 
   const isAdmin = user?.email === 'admin@gmail.com';
 
@@ -52,7 +44,6 @@ export default function AdminPage() {
         setUsers(usersList);
       } catch (error) {
         console.error("Error fetching users: ", error);
-        // Handle error display to user
       } finally {
         setLoadingUsers(false);
       }
@@ -62,6 +53,14 @@ export default function AdminPage() {
         fetchUsers();
     }
   }, [user, loadingAuth, isAdmin, router]);
+
+  const handleManageClick = (userToManage: UserData) => {
+    setSelectedUser(userToManage);
+  };
+
+  const handleCloseModal = () => {
+    setSelectedUser(null);
+  };
 
   const renderSkeletons = () => (
     <div className="space-y-4">
@@ -93,62 +92,73 @@ export default function AdminPage() {
   }
 
   return (
-    <div className="space-y-8">
-        <div className="flex justify-between items-center">
-            <div>
-                <h1 className="text-2xl font-bold text-primary">Painel do Administrador</h1>
-                <p className="text-muted-foreground">Gerencie usuários, produtos e assinaturas.</p>
-            </div>
-            <Button onClick={() => router.push('/dashboard')} variant="outline">
-              <ArrowLeft className="mr-2 h-4 w-4" />
-              Voltar ao Painel
-            </Button>
-        </div>
+    <>
+      <div className="space-y-8">
+          <div className="flex justify-between items-center">
+              <div>
+                  <h1 className="text-2xl font-bold text-primary">Painel do Administrador</h1>
+                  <p className="text-muted-foreground">Gerencie usuários, produtos e assinaturas.</p>
+              </div>
+              <Button onClick={() => router.push('/dashboard')} variant="outline">
+                <ArrowLeft className="mr-2 h-4 w-4" />
+                Voltar ao Painel
+              </Button>
+          </div>
 
-        <Card>
-            <CardHeader>
-                <CardTitle>Lista de Usuários</CardTitle>
-                <CardDescription>
-                   Aqui você pode visualizar todos os usuários cadastrados na plataforma.
-                </CardDescription>
-            </CardHeader>
-            <CardContent>
-                {loadingUsers ? (
-                   <div className="space-y-2">
-                        {[...Array(5)].map((_, i) => (
-                        <Skeleton key={i} className="h-12 w-full" />
-                        ))}
-                    </div>
-                ) : (
-                    <Table>
-                        <TableHeader>
-                            <TableRow>
-                                <TableHead>Nome</TableHead>
-                                <TableHead>Email</TableHead>
-                                <TableHead>Status da Assinatura</TableHead>
-                                <TableHead className="text-right">Ações</TableHead>
-                            </TableRow>
-                        </TableHeader>
-                        <TableBody>
-                            {users.map((u) => (
-                                <TableRow key={u.id}>
-                                    <TableCell className="font-medium">{u.name}</TableCell>
-                                    <TableCell>{u.email}</TableCell>
-                                    <TableCell>
-                                        <Badge variant={u.subscription?.status === 'active' ? 'default' : 'secondary'}>
-                                            {u.subscription?.status === 'active' ? 'Ativa' : 'Inativa'}
-                                        </Badge>
-                                    </TableCell>
-                                    <TableCell className="text-right">
-                                        <Button variant="outline" size="sm">Gerenciar</Button>
-                                    </TableCell>
-                                </TableRow>
-                            ))}
-                        </TableBody>
-                    </Table>
-                )}
-            </CardContent>
-        </Card>
-    </div>
+          <Card>
+              <CardHeader>
+                  <CardTitle>Lista de Usuários</CardTitle>
+                  <CardDescription>
+                     Aqui você pode visualizar todos os usuários cadastrados na plataforma.
+                  </CardDescription>
+              </CardHeader>
+              <CardContent>
+                  {loadingUsers ? (
+                     <div className="space-y-2">
+                          {[...Array(5)].map((_, i) => (
+                          <Skeleton key={i} className="h-12 w-full" />
+                          ))}
+                      </div>
+                  ) : (
+                      <Table>
+                          <TableHeader>
+                              <TableRow>
+                                  <TableHead>Nome</TableHead>
+                                  <TableHead>Email</TableHead>
+                                  <TableHead>Status da Assinatura</TableHead>
+                                  <TableHead className="text-right">Ações</TableHead>
+                              </TableRow>
+                          </TableHeader>
+                          <TableBody>
+                              {users.map((u) => (
+                                  <TableRow key={u.id}>
+                                      <TableCell className="font-medium">{u.name}</TableCell>
+                                      <TableCell>{u.email}</TableCell>
+                                      <TableCell>
+                                          <Badge variant={u.subscription?.status === 'active' ? 'default' : 'secondary'}>
+                                              {u.subscription?.status === 'active' ? 'Ativa' : 'Inativa'}
+                                          </Badge>
+                                      </TableCell>
+                                      <TableCell className="text-right">
+                                          <Button variant="outline" size="sm" onClick={() => handleManageClick(u)}>Gerenciar</Button>
+                                      </TableCell>
+                                  </TableRow>
+                              ))}
+                          </TableBody>
+                      </Table>
+                  )}
+              </CardContent>
+          </Card>
+      </div>
+      
+      <ManageUserModal
+        isOpen={!!selectedUser}
+        onClose={handleCloseModal}
+        user={selectedUser}
+        onUserUpdate={() => {
+            // Placeholder for future logic to refresh the user list
+        }}
+      />
+    </>
   );
 }
