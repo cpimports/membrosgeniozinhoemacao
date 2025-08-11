@@ -17,18 +17,21 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { ActivityCard } from "@/components/activity-card";
 import { ActivityViewModal } from "@/components/activity-view-modal";
 import { activities, categories, type Activity } from "@/lib/mock-data";
-import { Search, LogOut } from "lucide-react";
+import { Search, LogOut, ShieldCheck } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { WhatsappIcon } from "@/components/icons/whatsapp-icon";
 import { PromoBlocks } from "@/components/promo-blocks";
 import { Skeleton } from "@/components/ui/skeleton";
 import { signOut } from "firebase/auth";
+import { AIRecommender } from "@/components/ai-recommender";
 
 export default function DashboardPage() {
   const [user, loading] = useAuthState(auth);
   const router = useRouter();
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedActivity, setSelectedActivity] = useState<Activity | null>(null);
+
+  const isAdmin = user?.email === 'admin';
 
   useEffect(() => {
     if (!loading && !user) {
@@ -74,10 +77,18 @@ export default function DashboardPage() {
           <h1 className="text-2xl font-bold text-primary">Olá, {user.displayName || 'Gêniozinho'}!</h1>
           <p className="text-muted-foreground">Bem-vindo(a) de volta!</p>
         </div>
-        <Button onClick={handleLogout} variant="outline">
-          <LogOut className="mr-2 h-4 w-4" />
-          Sair
-        </Button>
+        <div className="flex items-center gap-2">
+            {isAdmin && (
+                <Button variant="secondary" onClick={() => router.push('/admin')}>
+                    <ShieldCheck className="mr-2 h-4 w-4" />
+                    Painel Admin
+                </Button>
+            )}
+            <Button onClick={handleLogout} variant="outline">
+              <LogOut className="mr-2 h-4 w-4" />
+              Sair
+            </Button>
+        </div>
       </div>
 
       <Card>
@@ -99,6 +110,8 @@ export default function DashboardPage() {
           </div>
         </CardContent>
       </Card>
+
+      <AIRecommender onActivityClick={handleViewActivity} />
 
       <PromoBlocks />
 
