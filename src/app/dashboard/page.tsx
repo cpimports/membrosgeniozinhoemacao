@@ -1,9 +1,11 @@
+
 "use client";
 
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { auth } from "@/lib/firebase";
+import { auth, db } from "@/lib/firebase";
+import { doc, getDoc, Timestamp } from "firebase/firestore";
 import Image from "next/image";
 import {
   Card,
@@ -17,27 +19,56 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { ActivityCard } from "@/components/activity-card";
 import { ActivityViewModal } from "@/components/activity-view-modal";
 import { activities, categories, type Activity } from "@/lib/mock-data";
-import { Search, LogOut, ShieldCheck } from "lucide-react";
+import { Search, LogOut, ShieldCheck, Lock } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { WhatsappIcon } from "@/components/icons/whatsapp-icon";
 import { PromoBlocks } from "@/components/promo-blocks";
 import { Skeleton } from "@/components/ui/skeleton";
 import { signOut } from "firebase/auth";
 import { AIRecommender } from "@/components/ai-recommender";
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
+
+type Subscription = {
+  status: 'active' | 'inactive';
+  validUntil: Timestamp | null;
+}
 
 export default function DashboardPage() {
-  const [user, loading] = useAuthState(auth);
+  const [user, loadingAuth] = useAuthState(auth);
   const router = useRouter();
   const [searchQuery, setSearchQuery] = useState("");
-  const [selectedActivity, setSelectedActivity] = useState<Activity | null>(null);
+  const [selectedActivity, setSelectedActivity] = useState<Activity | null>(
+    null
+  );
+  const [subscription, setSubscription] = useState<Subscription | null>(null);
+  const [loadingSubscription, setLoadingSubscription] = useState(true);
 
-  const isAdmin = user?.email === 'admin@gmail.com';
+  const isAdmin = user?.email === "admin@gmail.com";
+  const isSubscriptionActive = subscription?.status === 'active' && 
+    (subscription.validUntil ? subscription.validUntil.toDate() > new Date() : false);
+
 
   useEffect(() => {
-    if (!loading && !user) {
+    if (loadingAuth) return;
+    if (!user) {
       router.push("/login");
+      return;
     }
-  }, [user, loading, router]);
+
+    const fetchSubscription = async () => {
+      setLoadingSubscription(true);
+      const userDocRef = doc(db, "users", user.uid);
+      const userDocSnap = await getDoc(userDocRef);
+
+      if (userDocSnap.exists()) {
+        const userData = userDocSnap.data();
+        setSubscription(userData.subscription as Subscription);
+      }
+      setLoadingSubscription(false);
+    };
+
+    fetchSubscription();
+  }, [user, loadingAuth, router]);
 
   const handleLogout = async () => {
     await signOut(auth);
@@ -45,6 +76,14 @@ export default function DashboardPage() {
   };
 
   const handleViewActivity = (activity: Activity) => {
+    if (!isSubscriptionActive && !isAdmin) {
+       setSelectedActivity({
+        ...activity,
+        pdfUrl: '#', // Bloqueia o PDF
+       });
+       return;
+    }
+    
     if (activity.pdfUrl && activity.pdfUrl !== '#') {
       window.open(activity.pdfUrl, '_blank');
     } else {
@@ -56,15 +95,18 @@ export default function DashboardPage() {
     activity.title.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
-  if (loading || !user) {
+  if (loadingAuth || !user || loadingSubscription) {
     return (
       <div className="space-y-8">
-        <div className="text-center">
-          <Skeleton className="h-24 w-24 rounded-full mx-auto mb-4" />
-          <Skeleton className="h-8 w-1/2 mx-auto mb-2" />
-          <Skeleton className="h-4 w-1/3 mx-auto" />
+        <div className="flex justify-between items-center">
+            <div className="space-y-2">
+                <Skeleton className="h-8 w-48" />
+                <Skeleton className="h-4 w-32" />
+            </div>
+             <Skeleton className="h-10 w-24" />
         </div>
         <Skeleton className="h-40 w-full" />
+        <Skeleton className="h-32 w-full" />
         <Skeleton className="h-64 w-full" />
       </div>
     );
@@ -74,20 +116,22 @@ export default function DashboardPage() {
     <div className="space-y-8">
       <div className="flex justify-between items-center">
         <div>
-          <h1 className="text-2xl font-bold text-primary">Olá, {user.displayName || 'Gêniozinho'}!</h1>
+          <h1 className="text-2xl font-bold text-primary">
+            Olá, {user.displayName || "Gêniozinho"}!
+          </h1>
           <p className="text-muted-foreground">Bem-vindo(a) de volta!</p>
         </div>
         <div className="flex items-center gap-2">
-            {isAdmin && (
-                <Button variant="secondary" onClick={() => router.push('/admin')}>
-                    <ShieldCheck className="mr-2 h-4 w-4" />
-                    Painel Admin
-                </Button>
-            )}
-            <Button onClick={handleLogout} variant="outline">
-              <LogOut className="mr-2 h-4 w-4" />
-              Sair
+          {isAdmin && (
+            <Button variant="secondary" onClick={() => router.push("/admin")}>
+              <ShieldCheck className="mr-2 h-4 w-4" />
+              Painel Admin
             </Button>
+          )}
+          <Button onClick={handleLogout} variant="outline">
+            <LogOut className="mr-2 h-4 w-4" />
+            Sair
+          </Button>
         </div>
       </div>
 
@@ -95,14 +139,26 @@ export default function DashboardPage() {
         <CardContent className="p-6">
           <div className="flex flex-col md:flex-row items-center gap-4 text-center md:text-left">
             <div className="flex-grow">
-              <h3 className="text-base font-semibold text-primary">Junte-se à nossa comunidade exclusiva de pais e professores!</h3>
+              <h3 className="text-base font-semibold text-primary">
+                Junte-se à nossa comunidade exclusiva de pais e professores!
+              </h3>
               <p className="mt-1 text-sm text-foreground">
-                Receba conteúdos especiais, dicas práticas e novidades em primeira mão.
-                Clique no botão abaixo e participe do nosso grupo VIP no WhatsApp!
+                Receba conteúdos especiais, dicas práticas e novidades em
+                primeira mão. Clique no botão abaixo e participe do nosso grupo
+                VIP no WhatsApp!
               </p>
             </div>
-            <Button asChild className="mt-4 md:mt-0 md:ml-6 flex-shrink-0 w-full md:w-auto" size="lg" style={{ backgroundColor: '#25D366', color: 'white' }}>
-              <a href="https://chat.whatsapp.com/ETxeF3IfwBU9JUjsDZRSkH" target="_blank" rel="noopener noreferrer">
+            <Button
+              asChild
+              className="mt-4 md:mt-0 md:ml-6 flex-shrink-0 w-full md:w-auto"
+              size="lg"
+              style={{ backgroundColor: "#25D366", color: "white" }}
+            >
+              <a
+                href="https://chat.whatsapp.com/ETxeF3IfwBU9JUjsDZRSkH"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <WhatsappIcon className="mr-2 h-5 w-5" />
                 Entrar no Grupo VIP
               </a>
@@ -114,6 +170,16 @@ export default function DashboardPage() {
       <AIRecommender onActivityClick={handleViewActivity} />
 
       <PromoBlocks />
+      
+      {(!isSubscriptionActive && !isAdmin) && (
+        <Alert variant="destructive" className="border-l-4">
+            <Lock className="h-5 w-5" />
+            <AlertTitle className="font-bold">Assinatura Inativa</AlertTitle>
+            <AlertDescription>
+              Sua assinatura não está ativa. Você pode visualizar as atividades, mas o acesso ao conteúdo completo está bloqueado.
+            </AlertDescription>
+        </Alert>
+      )}
 
       <Card className="shadow-lg">
         <CardHeader>
@@ -151,23 +217,25 @@ export default function DashboardPage() {
                     key={activity.id}
                     activity={activity}
                     onView={handleViewActivity}
+                    isLocked={!isSubscriptionActive && !isAdmin}
                   />
                 ))}
               </div>
             </TabsContent>
             {categories.map((cat) => (
               <TabsContent key={cat.id} value={cat.id}>
-                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                    {filteredActivities
-                      .filter((act) => act.category === cat.name)
-                      .map((activity) => (
-                        <ActivityCard
-                          key={activity.id}
-                          activity={activity}
-                          onView={handleViewActivity}
-                        />
-                      ))}
-                  </div>
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                  {filteredActivities
+                    .filter((act) => act.category === cat.name)
+                    .map((activity) => (
+                      <ActivityCard
+                        key={activity.id}
+                        activity={activity}
+                        onView={handleViewActivity}
+                        isLocked={!isSubscriptionActive && !isAdmin}
+                      />
+                    ))}
+                </div>
               </TabsContent>
             ))}
           </Tabs>
@@ -178,7 +246,9 @@ export default function DashboardPage() {
         activity={selectedActivity}
         isOpen={!!selectedActivity}
         onClose={() => setSelectedActivity(null)}
+        isLocked={!isSubscriptionActive && !isAdmin}
       />
     </div>
   );
 }
+
