@@ -12,6 +12,8 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { useToast } from "@/hooks/use-toast";
 import { Mail, KeyRound, LogIn } from "lucide-react";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from "@/lib/firebase";
 
 const formSchema = z.object({
   email: z.string().email({ message: "Por favor, insira um email válido." }),
@@ -33,21 +35,37 @@ export default function LoginPage() {
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
     setIsLoading(true);
-    // Simulating API call
-    await new Promise(resolve => setTimeout(resolve, 1500));
-    console.log(values);
-    
-    // In a real scenario, you would call Firebase here.
-    // For now, let's simulate a success.
-    
-    toast({
-      title: "Login realizado com sucesso!",
-      description: "Redirecionando para o painel...",
-    });
-
-    router.push("/dashboard");
-
-    setIsLoading(false);
+    try {
+      await signInWithEmailAndPassword(auth, values.email, values.password);
+      toast({
+        title: "Login realizado com sucesso!",
+        description: "Redirecionando para o painel...",
+      });
+      router.push("/dashboard");
+    } catch (error: any) {
+      let errorMessage = "Ocorreu um erro ao tentar fazer login.";
+      switch (error.code) {
+        case "auth/user-not-found":
+          errorMessage = "Usuário não encontrado. Verifique o e-mail e tente novamente.";
+          break;
+        case "auth/wrong-password":
+          errorMessage = "Senha incorreta. Por favor, tente novamente.";
+          break;
+        case "auth/invalid-credential":
+           errorMessage = "Credenciais inválidas. Verifique seu e-mail e senha.";
+           break;
+        default:
+          errorMessage = "Ocorreu um erro desconhecido. Tente novamente mais tarde.";
+          break;
+      }
+       toast({
+        title: "Erro no login",
+        description: errorMessage,
+        variant: "destructive",
+      });
+    } finally {
+        setIsLoading(false);
+    }
   }
 
   return (

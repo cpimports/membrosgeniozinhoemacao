@@ -12,6 +12,8 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { useToast } from "@/hooks/use-toast";
 import { Mail, KeyRound, UserPlus, CircleUserRound } from "lucide-react";
+import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
+import { auth } from "@/lib/firebase";
 
 const formSchema = z.object({
   name: z.string().min(2, { message: "O nome deve ter pelo menos 2 caracteres." }),
@@ -35,20 +37,32 @@ export default function SignupPage() {
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
     setIsLoading(true);
-    // Simulating API call
-    await new Promise(resolve => setTimeout(resolve, 1500));
-    console.log(values);
-    
-    // In a real scenario, you would call Firebase to create a new user.
-    
-    toast({
-      title: "Conta criada com sucesso!",
-      description: "Você já pode fazer o login.",
-    });
+    try {
+      const userCredential = await createUserWithEmailAndPassword(auth, values.email, values.password);
+      await updateProfile(userCredential.user, {
+        displayName: values.name,
+      });
 
-    router.push("/login");
+      toast({
+        title: "Conta criada com sucesso!",
+        description: "Você já pode fazer o login.",
+      });
 
-    setIsLoading(false);
+      router.push("/login");
+
+    } catch (error: any) {
+      let errorMessage = "Ocorreu um erro ao tentar criar a conta.";
+      if (error.code === "auth/email-already-in-use") {
+        errorMessage = "Este e-mail já está sendo utilizado por outra conta.";
+      }
+       toast({
+        title: "Erro na criação da conta",
+        description: errorMessage,
+        variant: "destructive",
+      });
+    } finally {
+      setIsLoading(false);
+    }
   }
 
   return (
