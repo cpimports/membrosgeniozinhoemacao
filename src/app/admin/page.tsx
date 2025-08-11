@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import { useRouter } from 'next/navigation';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth, db } from '@/lib/firebase';
@@ -21,19 +21,9 @@ export default function AdminPage() {
   const [selectedUser, setSelectedUser] = useState<UserData | null>(null);
 
   const isAdmin = user?.email === 'admin@gmail.com';
-
-  useEffect(() => {
-    if (loadingAuth) return;
-    if (!user) {
-      router.push('/login');
-      return;
-    }
-    if (!isAdmin) {
-      router.push('/dashboard');
-      return;
-    }
-
-    const fetchUsers = async () => {
+  
+  const fetchUsers = useCallback(async () => {
+      setLoadingUsers(true);
       try {
         const usersCollection = collection(db, 'users');
         const userSnapshot = await getDocs(usersCollection);
@@ -47,12 +37,23 @@ export default function AdminPage() {
       } finally {
         setLoadingUsers(false);
       }
-    };
+    }, []);
+
+  useEffect(() => {
+    if (loadingAuth) return;
+    if (!user) {
+      router.push('/login');
+      return;
+    }
+    if (!isAdmin) {
+      router.push('/dashboard');
+      return;
+    }
 
     if(isAdmin) {
         fetchUsers();
     }
-  }, [user, loadingAuth, isAdmin, router]);
+  }, [user, loadingAuth, isAdmin, router, fetchUsers]);
 
   const handleManageClick = (userToManage: UserData) => {
     setSelectedUser(userToManage);
@@ -61,6 +62,11 @@ export default function AdminPage() {
   const handleCloseModal = () => {
     setSelectedUser(null);
   };
+
+  const handleUserUpdate = (updatedUser: UserData) => {
+    setUsers(prevUsers => prevUsers.map(u => u.id === updatedUser.id ? updatedUser : u));
+  };
+
 
   const renderSkeletons = () => (
     <div className="space-y-4">
@@ -155,9 +161,7 @@ export default function AdminPage() {
         isOpen={!!selectedUser}
         onClose={handleCloseModal}
         user={selectedUser}
-        onUserUpdate={() => {
-            // Placeholder for future logic to refresh the user list
-        }}
+        onUserUpdate={handleUserUpdate}
       />
     </>
   );
