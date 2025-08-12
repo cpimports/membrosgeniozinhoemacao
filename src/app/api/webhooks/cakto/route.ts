@@ -1,6 +1,6 @@
 
 import { NextRequest, NextResponse } from 'next/server';
-import { getApps, initializeApp, getApp } from 'firebase-admin/app';
+import { getApps, initializeApp, getApp, cert } from 'firebase-admin/app';
 import { getAuth } from 'firebase-admin/auth';
 import { getFirestore, Timestamp } from 'firebase-admin/firestore';
 import { addDays } from 'date-fns';
@@ -12,9 +12,15 @@ const serviceAccount = process.env.FIREBASE_SERVICE_ACCOUNT
   : undefined;
 
 if (!getApps().length) {
-  initializeApp({
-    credential: serviceAccount ? require('firebase-admin').credential.cert(serviceAccount) : undefined,
-  });
+    if (serviceAccount) {
+        initializeApp({
+            credential: cert(serviceAccount),
+        });
+    } else {
+        // This is for local development without service account file
+        // It will use default credentials if available
+        initializeApp();
+    }
 }
 
 const auth = getAuth();
