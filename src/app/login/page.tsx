@@ -15,6 +15,8 @@ import { useToast } from "@/hooks/use-toast";
 import { Mail, LogIn, KeyRound } from "lucide-react";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "@/lib/firebase";
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
+import { Info } from "lucide-react";
 
 const formSchema = z.object({
   email: z.string().email({ message: "Por favor, insira um email válido." }),
@@ -67,6 +69,13 @@ export default function LoginPage() {
           <CardDescription>Use seu email e senha para entrar.</CardDescription>
         </CardHeader>
         <CardContent>
+           <Alert className="mb-6 bg-primary/10 border-primary/30 text-primary-foreground">
+              <Info className="h-5 w-5 text-primary" />
+              <AlertTitle className="font-bold text-primary">Primeiro Acesso?</AlertTitle>
+              <AlertDescription className="text-muted-foreground">
+                Se você acabou de comprar, seu acesso já foi criado! Use o e-mail da compra e clique em <strong>"Esqueceu sua senha?"</strong> abaixo para definir sua senha de acesso.
+              </AlertDescription>
+          </Alert>
           <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
               <FormField
@@ -107,14 +116,10 @@ export default function LoginPage() {
             </form>
           </Form>
         </CardContent>
-        <CardFooter className="flex flex-col gap-4">
+        <CardFooter className="flex flex-col gap-2">
           <Link href="/forgot-password" passHref>
              <Button variant="link" className="text-sm">Esqueceu sua senha?</Button>
           </Link>
-          <div className="text-center text-sm text-muted-foreground">
-            O acesso é liberado após a compra.<br/> 
-            Se é seu primeiro acesso, use "Esqueceu sua senha?" para definir uma.
-          </div>
         </CardFooter>
       </Card>
     </div>
