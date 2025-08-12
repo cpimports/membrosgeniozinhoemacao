@@ -44,14 +44,22 @@ export default function DashboardPage() {
   const [loadingSubscription, setLoadingSubscription] = useState(true);
 
   const isAdmin = user?.email === "admin@gmail.com";
-  const isSubscriptionActive = subscription?.status === 'active' && 
-    (subscription.validUntil ? subscription.validUntil.toDate() > new Date() : false);
+  
+  // Admin always has an active subscription state for viewing purposes
+  const isSubscriptionActive = isAdmin || (subscription?.status === 'active' && 
+    (subscription.validUntil ? subscription.validUntil.toDate() > new Date() : false));
 
 
   useEffect(() => {
     if (loadingAuth) return;
     if (!user) {
       router.push("/login");
+      return;
+    }
+
+    // No need to fetch subscription for admin, as they have full access
+    if (isAdmin) {
+      setLoadingSubscription(false);
       return;
     }
 
@@ -68,7 +76,7 @@ export default function DashboardPage() {
     };
 
     fetchSubscription();
-  }, [user, loadingAuth, router]);
+  }, [user, loadingAuth, router, isAdmin]);
 
   const handleLogout = async () => {
     await signOut(auth);
@@ -78,7 +86,7 @@ export default function DashboardPage() {
   const handleViewActivity = (activity: Activity) => {
     // Se a assinatura não estiver ativa E o usuário não for admin,
     // abra o modal, mas ele internamente saberá que está bloqueado.
-    if (!isSubscriptionActive && !isAdmin) {
+    if (!isSubscriptionActive) {
        setSelectedActivity(activity);
        return;
     }
@@ -172,7 +180,7 @@ export default function DashboardPage() {
 
       <PromoBlocks />
       
-      {(!isSubscriptionActive && !isAdmin) && (
+      {!isSubscriptionActive && (
         <Alert variant="destructive" className="border-l-4">
             <Lock className="h-5 w-5" />
             <AlertTitle className="font-bold">Assinatura Inativa</AlertTitle>
@@ -218,7 +226,7 @@ export default function DashboardPage() {
                     key={activity.id}
                     activity={activity}
                     onView={handleViewActivity}
-                    isLocked={!isSubscriptionActive && !isAdmin}
+                    isLocked={!isSubscriptionActive}
                   />
                 ))}
               </div>
@@ -233,7 +241,7 @@ export default function DashboardPage() {
                         key={activity.id}
                         activity={activity}
                         onView={handleViewActivity}
-                        isLocked={!isSubscriptionActive && !isAdmin}
+                        isLocked={!isSubscriptionActive}
                       />
                     ))}
                 </div>
@@ -247,8 +255,10 @@ export default function DashboardPage() {
         activity={selectedActivity}
         isOpen={!!selectedActivity}
         onClose={() => setSelectedActivity(null)}
-        isLocked={!isSubscriptionActive && !isAdmin}
+        isLocked={!isSubscriptionActive}
       />
     </div>
   );
 }
+
+    
