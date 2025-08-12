@@ -76,17 +76,18 @@ export default function DashboardPage() {
   };
 
   const handleViewActivity = (activity: Activity) => {
+    // Se a assinatura não estiver ativa E o usuário não for admin,
+    // abra o modal, mas ele internamente saberá que está bloqueado.
     if (!isSubscriptionActive && !isAdmin) {
-       setSelectedActivity({
-        ...activity,
-        pdfUrl: '#', // Bloqueia o PDF
-       });
+       setSelectedActivity(activity);
        return;
     }
     
+    // Se a assinatura estiver ativa ou for admin, abra o PDF diretamente se houver URL.
     if (activity.pdfUrl && activity.pdfUrl !== '#') {
       window.open(activity.pdfUrl, '_blank');
     } else {
+      // Caso não tenha PDF, apenas abre o modal de visualização.
       setSelectedActivity(activity);
     }
   };
@@ -251,4 +252,3 @@ export default function DashboardPage() {
     </div>
   );
 }
-

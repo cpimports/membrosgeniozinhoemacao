@@ -13,7 +13,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { type Activity } from "@/lib/mock-data";
-import { X, Lock } from "lucide-react";
+import { X, Lock, DownloadCloud } from "lucide-react";
 import { Alert, AlertTitle, AlertDescription } from "@/components/ui/alert";
 import { cn } from "@/lib/utils";
 
@@ -33,7 +33,7 @@ export function ActivityViewModal({
 }: ActivityViewModalProps) {
   if (!activity) return null;
 
-  const isPdfBlocked = isLocked && activity.pdfUrl !== '#';
+  const hasPdf = activity.pdfUrl && activity.pdfUrl !== '#';
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
@@ -42,11 +42,11 @@ export function ActivityViewModal({
           <Badge variant="secondary" className="w-fit">{activity.category}</Badge>
           <DialogTitle className="text-2xl font-bold">{activity.title}</DialogTitle>
           <DialogDescription>
-            {isPdfBlocked ? "Sua assinatura está inativa. Você pode visualizar a atividade, mas o acesso ao PDF está bloqueado." : "Visualize a atividade abaixo."}
+            {isLocked && hasPdf ? "Sua assinatura está inativa. Você pode visualizar a atividade, mas o acesso ao PDF está bloqueado." : "Visualize a atividade abaixo e faça o download do material."}
           </DialogDescription>
         </DialogHeader>
 
-        {isPdfBlocked && (
+        {isLocked && hasPdf && (
             <div className="px-6">
                 <Alert variant="destructive" className="border-l-4">
                     <Lock className="h-5 w-5"/>
@@ -65,17 +65,26 @@ export function ActivityViewModal({
             alt={`Visualização da atividade ${activity.title}`}
             width={800}
             height={500}
-            className={cn("w-full h-auto rounded-lg border object-contain", isPdfBlocked && "grayscale ")}
+            className={cn("w-full h-auto rounded-lg border object-contain", isLocked && hasPdf && "grayscale ")}
             data-ai-hint={activity.aiHint}
           />
         </div>
-        <DialogFooter className="p-6 bg-muted/50 flex sm:justify-end items-center">
-            <Button variant="ghost" onClick={onClose}>
+        <DialogFooter className="p-6 bg-muted/50 flex flex-col-reverse sm:flex-row sm:justify-between sm:items-center gap-4">
+           <Button variant="ghost" onClick={onClose} className="w-full sm:w-auto">
                 <X className="mr-2 h-4 w-4" /> Fechar
             </Button>
+            {hasPdf && (
+              <Button 
+                onClick={() => window.open(activity.pdfUrl, '_blank')}
+                disabled={isLocked}
+                className="w-full sm:w-auto"
+              >
+                  {isLocked ? <Lock className="mr-2 h-4 w-4" /> : <DownloadCloud className="mr-2 h-4 w-4" />}
+                  {isLocked ? 'Download Bloqueado' : 'Baixar PDF'}
+              </Button>
+            )}
         </DialogFooter>
       </DialogContent>
     </Dialog>
   );
 }
-
