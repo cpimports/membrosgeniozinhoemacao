@@ -1,3 +1,4 @@
+
 "use client";
 
 import Link from "next/link";
@@ -27,19 +28,13 @@ export default function Page() {
         <Card className="w-full max-w-sm mx-auto shadow-xl bg-card/80 backdrop-blur-lg">
             <CardHeader>
                 <CardTitle>Acesse sua conta</CardTitle>
-                <CardDescription>Entre ou crie uma conta para acessar todas as nossas atividades.</CardDescription>
+                <CardDescription>O acesso à plataforma é liberado após a compra de um de nossos produtos.</CardDescription>
             </CardHeader>
             <CardContent className="flex flex-col gap-4">
                  <Link href="/login" passHref>
                     <Button className="w-full" size="lg">
                         <LogIn className="mr-2"/>
                         Fazer Login
-                    </Button>
-                </Link>
-                <Link href="/signup" passHref>
-                    <Button className="w-full" size="lg" variant="secondary">
-                        <UserPlus className="mr-2"/>
-                        Criar Conta
                     </Button>
                 </Link>
             </CardContent>

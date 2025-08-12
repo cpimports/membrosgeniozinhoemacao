@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState } from "react";
@@ -72,7 +73,7 @@ export default function LoginPage() {
     <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-background to-secondary/50 p-4">
       <Card className="w-full max-w-md shadow-2xl backdrop-blur-lg bg-card/80">
         <CardHeader className="text-center">
-          <CardTitle className="text-3xl font-bold text-primary">Bem-vindo(a) de volta!</CardTitle>
+          <CardTitle className="text-3xl font-bold text-primary">Bem-vindo(a)!</CardTitle>
           <CardDescription>Acesse sua conta para continuar.</CardDescription>
         </CardHeader>
         <CardContent>
@@ -123,12 +124,7 @@ export default function LoginPage() {
                 </Button>
             </Link>
              <div className="text-center text-sm text-muted-foreground">
-                Não tem uma conta?{' '}
-                <Link href="/signup" passHref>
-                    <Button variant="link" className="p-0 h-auto">
-                    Cadastre-se
-                    </Button>
-                </Link>
+                O acesso é liberado após a compra. <br/> Verifique seu e-mail para as instruções de acesso.
             </div>
         </CardFooter>
       </Card>
