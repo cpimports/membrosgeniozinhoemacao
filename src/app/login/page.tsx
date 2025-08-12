@@ -1,7 +1,7 @@
 
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
@@ -13,152 +13,58 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { useToast } from "@/hooks/use-toast";
 import { Mail, LogIn, KeyRound } from "lucide-react";
-import { signInWithEmailAndPassword, isSignInWithEmailLink, signInWithEmailLink, sendSignInLinkToEmail } from "firebase/auth";
+import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "@/lib/firebase";
-import { Alert, AlertTitle, AlertDescription } from "@/components/ui/alert";
-
 
 const formSchema = z.object({
   email: z.string().email({ message: "Por favor, insira um email válido." }),
+  password: z.string().min(1, { message: "Por favor, insira sua senha." }),
 });
 
 export default function LoginPage() {
   const router = useRouter();
   const { toast } = useToast();
   const [isLoading, setIsLoading] = useState(false);
-  const [isLinkSent, setIsLinkSent] = useState(false);
-  const [isLoggingInFromLink, setIsLoggingInFromLink] = useState(false);
-
-  // Check if the user is coming from a sign-in link
-  useEffect(() => {
-    if (isSignInWithEmailLink(auth, window.location.href)) {
-      setIsLoggingInFromLink(true);
-      let email = window.localStorage.getItem('emailForSignIn');
-      if (!email) {
-        // User opened the link on a different device. To prevent session fixation
-        // attacks, ask the user to provide the email again. For simplicity,
-        // we'll just ask them to start over.
-        toast({
-          title: "Erro de verificação",
-          description: "Por favor, digite seu e-mail novamente para fazer login.",
-          variant: "destructive",
-        });
-        setIsLoggingInFromLink(false);
-        return;
-      }
-      
-      signInWithEmailLink(auth, email, window.location.href)
-        .then((result) => {
-          window.localStorage.removeItem('emailForSignIn');
-          toast({
-            title: "Login realizado com sucesso!",
-            description: "Bem-vindo(a) de volta!",
-          });
-          router.push("/dashboard");
-        })
-        .catch((err) => {
-          toast({
-            title: "Erro ao fazer login",
-            description: "O link de acesso é inválido ou expirou. Por favor, tente novamente.",
-            variant: "destructive",
-          });
-           setIsLoggingInFromLink(false);
-        });
-    }
-  }, [router, toast]);
-
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
       email: "",
+      password: "",
     },
   });
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
     setIsLoading(true);
-    
-    const actionCodeSettings = {
-        url: window.location.href, // This URL will be used to complete the sign-in.
-        handleCodeInApp: true,
-    };
-
     try {
-        await sendSignInLinkToEmail(auth, values.email, actionCodeSettings);
-        // The link was successfully sent. Inform the user.
-        // Save the email locally so you don't need to ask the user for it again
-        // if they open the link on the same device.
-        window.localStorage.setItem('emailForSignIn', values.email);
-        setIsLinkSent(true);
-        toast({
-            title: "Link de acesso enviado!",
-            description: "Verifique seu e-mail para o link mágico de login.",
-        });
+      await signInWithEmailAndPassword(auth, values.email, values.password);
+      toast({
+        title: "Login realizado com sucesso!",
+        description: "Bem-vindo(a) de volta!",
+      });
+      router.push("/dashboard");
     } catch (error: any) {
-        console.error(error);
-        toast({
-            title: "Erro ao enviar o link",
-            description: "Não foi possível enviar o link de acesso. Verifique o e-mail e tente novamente.",
-            variant: "destructive",
-        });
+      let errorMessage = "Ocorreu um erro ao fazer login. Verifique suas credenciais.";
+      if (error.code === 'auth/wrong-password' || error.code === 'auth/user-not-found' || error.code === 'auth/invalid-credential') {
+        errorMessage = "Email ou senha incorretos. Verifique seus dados e tente novamente.";
+      }
+      console.error("Login error:", error.code);
+      toast({
+        title: "Erro no Login",
+        description: errorMessage,
+        variant: "destructive",
+      });
     } finally {
-        setIsLoading(false);
+      setIsLoading(false);
     }
-  }
-
-  if (isLoggingInFromLink) {
-    return (
-        <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-background to-secondary/50 p-4">
-             <Card className="w-full max-w-md shadow-2xl backdrop-blur-lg bg-card/80">
-                <CardHeader className="text-center">
-                    <CardTitle className="text-3xl font-bold text-primary">Verificando...</CardTitle>
-                    <CardDescription>Aguarde enquanto validamos seu link de acesso.</CardDescription>
-                </CardHeader>
-                <CardContent>
-                    <div className="flex justify-center items-center p-8">
-                        <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-primary"></div>
-                    </div>
-                </CardContent>
-            </Card>
-        </div>
-    )
-  }
-
-  if (isLinkSent) {
-    return (
-       <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-background to-secondary/50 p-4">
-             <Card className="w-full max-w-md shadow-2xl backdrop-blur-lg bg-card/80">
-                <CardHeader className="text-center">
-                    <CardTitle className="text-3xl font-bold text-primary">Verifique seu E-mail</CardTitle>
-                     <CardDescription>
-                       Enviamos um link mágico para o seu e-mail. Clique nele para acessar sua conta!
-                    </CardDescription>
-                </CardHeader>
-                <CardContent>
-                   <Alert>
-                        <Mail className="h-5 w-5" />
-                        <AlertTitle>Link enviado!</AlertTitle>
-                        <AlertDescription>
-                         Pode levar alguns minutos para chegar. Não se esqueça de checar sua caixa de spam.
-                        </AlertDescription>
-                    </Alert>
-                </CardContent>
-                 <CardFooter className="flex flex-col gap-4">
-                    <Button variant="link" onClick={() => setIsLinkSent(false)}>
-                        Não recebeu? Enviar novamente.
-                    </Button>
-                </CardFooter>
-            </Card>
-        </div>
-    )
   }
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-background to-secondary/50 p-4">
       <Card className="w-full max-w-md shadow-2xl backdrop-blur-lg bg-card/80">
         <CardHeader className="text-center">
-          <CardTitle className="text-3xl font-bold text-primary">Bem-vindo(a)!</CardTitle>
-          <CardDescription>Digite seu e-mail para acessar sua conta.</CardDescription>
+          <CardTitle className="text-3xl font-bold text-primary">Acesse sua Conta</CardTitle>
+          <CardDescription>Use seu email e senha para entrar.</CardDescription>
         </CardHeader>
         <CardContent>
           <Form {...form}>
@@ -179,21 +85,38 @@ export default function LoginPage() {
                   </FormItem>
                 )}
               />
-              
+              <FormField
+                control={form.control}
+                name="password"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Senha</FormLabel>
+                    <div className="relative">
+                      <KeyRound className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
+                      <FormControl>
+                        <Input type="password" placeholder="••••••••" {...field} className="pl-10" />
+                      </FormControl>
+                    </div>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
               <Button type="submit" className="w-full" disabled={isLoading}>
-                {isLoading ? 'Enviando link...' : <> <LogIn className="mr-2"/> Receber link de acesso </>}
+                {isLoading ? 'Entrando...' : <> <LogIn className="mr-2"/> Fazer Login </>}
               </Button>
             </form>
           </Form>
         </CardContent>
         <CardFooter className="flex flex-col gap-4">
-             <div className="text-center text-sm text-muted-foreground">
-                O acesso é liberado após a compra. <br/> Você receberá um link de login no e-mail cadastrado.
-            </div>
+          <Link href="/forgot-password" passHref>
+             <Button variant="link" className="text-sm">Esqueceu sua senha?</Button>
+          </Link>
+          <div className="text-center text-sm text-muted-foreground">
+            O acesso é liberado após a compra.<br/> 
+            Se é seu primeiro acesso, use "Esqueceu sua senha?" para definir uma.
+          </div>
         </CardFooter>
       </Card>
     </div>
   );
 }
-
-    

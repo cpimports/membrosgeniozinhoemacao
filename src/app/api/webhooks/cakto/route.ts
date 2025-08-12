@@ -47,7 +47,7 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'Missing customer information' }, { status: 400 });
     }
 
-    // 3. Create user in Firebase and Firestore
+    // 3. Create or update user in Firebase and Firestore
     let userRecord;
     try {
       // Check if user already exists
@@ -68,7 +68,7 @@ export async function POST(req: NextRequest) {
     } catch (error: any) {
       if (error.code === 'auth/user-not-found') {
         console.log(`Creating new user for ${email}.`);
-        // User does not exist, create them
+        // User does not exist, create them. A password is not set here.
         userRecord = await auth.createUser({
           email: email,
           displayName: name,
@@ -89,13 +89,10 @@ export async function POST(req: NextRequest) {
           createdAt: Timestamp.now(),
         });
         
-        // 4. Send password reset email for the new user to set their password
-        const passwordResetLink = await auth.generatePasswordResetLink(email);
-        
-        // HERE you would integrate an email service (like SendGrid, Resend, etc.)
-        // to send a welcome email with the passwordResetLink.
-        // As I cannot do that, the user will have to use the "Forgot Password" flow for now.
-        console.log(`User created. Instruct user to use 'Forgot Password'. Link: ${passwordResetLink}`);
+        // The user is created without a password. They must use the "Forgot Password"
+        // flow on the login page to set their password for the first time.
+        // We cannot send an email with a link from here without an email provider integration.
+        console.log(`User created. Instruct user to use 'Forgot Password' to set their initial password.`);
 
       } else {
         // Other error, re-throw
