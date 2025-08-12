@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, useEffect } from "react";
@@ -17,11 +18,13 @@ import { doc, updateDoc, Timestamp } from "firebase/firestore";
 import { db } from "@/lib/firebase";
 import { useToast } from "@/hooks/use-toast";
 import { addDays } from 'date-fns';
+import { Package } from "lucide-react";
 
 export type UserData = {
   id: string;
   name: string;
   email: string;
+  products?: string[];
   subscription: {
     status: string;
     validUntil: any;
@@ -61,7 +64,14 @@ export function ManageUserModal({
         
         let validUntil = null;
         if (isActive) {
-            validUntil = Timestamp.fromDate(addDays(new Date(), 30));
+            // If subscription is already active and has a future date, don't extend it.
+            // Extend only if it was inactive or expired.
+            const currentValidUntil = user.subscription.validUntil?.toDate();
+            if (!currentValidUntil || currentValidUntil < new Date()) {
+                 validUntil = Timestamp.fromDate(addDays(new Date(), 30));
+            } else {
+                validUntil = user.subscription.validUntil;
+            }
         }
 
         const updatedData = {
@@ -107,19 +117,36 @@ export function ManageUserModal({
           </DialogDescription>
         </DialogHeader>
         <div className="py-4 space-y-6">
-          <div className="flex flex-col space-y-1.5">
+          <div className="space-y-1.5">
               <Label>Nome</Label>
               <p className="text-sm text-muted-foreground">{user.name}</p>
           </div>
-           <div className="flex flex-col space-y-1.5">
+           <div className="space-y-1.5">
               <Label>Email</Label>
               <p className="text-sm text-muted-foreground">{user.email}</p>
           </div>
+          
+          <div className="space-y-3">
+            <Label>Produtos Adquiridos</Label>
+            <div className="p-3 rounded-lg border bg-muted/50 space-y-2">
+                {user.products && user.products.length > 0 ? (
+                    user.products.map((product, index) => (
+                        <div key={index} className="flex items-center gap-2 text-sm text-muted-foreground">
+                            <Package className="h-4 w-4" />
+                            <span>{product}</span>
+                        </div>
+                    ))
+                ) : (
+                    <p className="text-sm text-muted-foreground italic">Nenhum produto adquirido.</p>
+                )}
+            </div>
+          </div>
+
           <div className="flex items-center justify-between rounded-lg border p-3 shadow-sm">
             <div className="space-y-0.5">
                 <Label htmlFor="subscription-status">Assinatura</Label>
                 <p className="text-xs text-muted-foreground">
-                    Ative ou desative a assinatura deste usuário.
+                    Ative ou desative o acesso geral do usuário.
                 </p>
             </div>
              <div className="flex items-center gap-2">
@@ -147,3 +174,4 @@ export function ManageUserModal({
     </Dialog>
   );
 }
+
