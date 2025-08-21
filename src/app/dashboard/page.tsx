@@ -182,8 +182,6 @@ export default function DashboardPage() {
         </CardContent>
       </Card>
 
-      <AIRecommender onActivityClick={handleViewActivity} />
-
       {!isAdmin && !hasPurchasedPromo && <PromoBlocks />}
       
       {!isSubscriptionActive && (
@@ -256,6 +254,8 @@ export default function DashboardPage() {
           </Tabs>
         </CardContent>
       </Card>
+      
+      <AIRecommender onActivityClick={handleViewActivity} />
 
       <ActivityViewModal
         activity={selectedActivity}
@@ -266,5 +266,3 @@ export default function DashboardPage() {
     </div>
   );
 }
-
-    
