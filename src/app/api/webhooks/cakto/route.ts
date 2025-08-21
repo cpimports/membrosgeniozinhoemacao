@@ -43,14 +43,13 @@ export async function POST(req: NextRequest) {
     console.log('Cakto webhook payload received:', payload);
 
     // 2. Extract user information from the payload
-    // IMPORTANT: Adjust these fields based on the actual payload structure from Cakto
     const email = payload.customer?.email;
     const name = payload.customer?.name;
     const productName = payload.product?.name;
 
-    if (!email || !name) {
-      console.error('Webhook payload is missing customer email or name.');
-      return NextResponse.json({ error: 'Missing customer information' }, { status: 400 });
+    if (!email || !name || !productName) {
+      console.error('Webhook payload is missing customer email, name, or product name.');
+      return NextResponse.json({ error: 'Missing customer or product information' }, { status: 400 });
     }
 
     // 3. Create or update user in Firebase and Firestore
@@ -58,12 +57,18 @@ export async function POST(req: NextRequest) {
     try {
       // Check if user already exists
       userRecord = await auth.getUserByEmail(email);
-      console.log(`User ${email} already exists. Updating subscription.`);
+      console.log(`User ${email} already exists. Updating subscription and products.`);
 
-      // Update existing user's subscription
+      // Update existing user's subscription and add the new product
       const userRef = db.collection('users').doc(userRecord.uid);
+      const userDoc = await userRef.get();
+      const userData = userDoc.data() || {};
+      const existingProducts = userData.products || [];
+      
+      const newProducts = [...new Set([...existingProducts, productName])]; // Avoid duplicates
+
       await userRef.set({
-        products: [productName],
+        products: newProducts,
         subscription: {
           status: 'active',
           validUntil: Timestamp.fromDate(addDays(new Date(), 30)),
@@ -95,9 +100,6 @@ export async function POST(req: NextRequest) {
           createdAt: Timestamp.now(),
         });
         
-        // The user is created without a password. They must use the "Forgot Password"
-        // flow on the login page to set their password for the first time.
-        // We cannot send an email with a link from here without an email provider integration.
         console.log(`User created. Instruct user to use 'Forgot Password' to set their initial password.`);
 
       } else {

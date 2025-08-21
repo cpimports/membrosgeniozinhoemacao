@@ -28,10 +28,20 @@ import { signOut } from "firebase/auth";
 import { AIRecommender } from "@/components/ai-recommender";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 
-type Subscription = {
-  status: 'active' | 'inactive';
-  validUntil: Timestamp | null;
+type UserData = {
+  subscription: {
+    status: 'active' | 'inactive';
+    validUntil: Timestamp | null;
+  };
+  products?: string[];
 }
+
+// Nomes dos produtos promocionais exatamente como são salvos pelo webhook da Cakto
+const PROMO_PRODUCT_NAMES = [
+    "+1000 moldes de EVA",
+    "Kit exclusivo com medalhas de incentivo"
+];
+
 
 export default function DashboardPage() {
   const [user, loadingAuth] = useAuthState(auth);
@@ -40,14 +50,15 @@ export default function DashboardPage() {
   const [selectedActivity, setSelectedActivity] = useState<Activity | null>(
     null
   );
-  const [subscription, setSubscription] = useState<Subscription | null>(null);
-  const [loadingSubscription, setLoadingSubscription] = useState(true);
+  const [userData, setUserData] = useState<UserData | null>(null);
+  const [loadingData, setLoadingData] = useState(true);
 
   const isAdmin = user?.email === "admin@gmail.com";
   
-  // Admin always has an active subscription state for viewing purposes
-  const isSubscriptionActive = isAdmin || (subscription?.status === 'active' && 
-    (subscription.validUntil ? subscription.validUntil.toDate() > new Date() : false));
+  const isSubscriptionActive = isAdmin || (userData?.subscription?.status === 'active' && 
+    (userData.subscription.validUntil ? userData.subscription.validUntil.toDate() > new Date() : false));
+
+  const hasPurchasedPromo = userData?.products?.some(p => PROMO_PRODUCT_NAMES.includes(p)) ?? false;
 
 
   useEffect(() => {
@@ -57,25 +68,24 @@ export default function DashboardPage() {
       return;
     }
 
-    // No need to fetch subscription for admin, as they have full access
+    // Admin tem acesso total e não precisa de dados de usuário do DB
     if (isAdmin) {
-      setLoadingSubscription(false);
+      setLoadingData(false);
       return;
     }
 
-    const fetchSubscription = async () => {
-      setLoadingSubscription(true);
+    const fetchUserData = async () => {
+      setLoadingData(true);
       const userDocRef = doc(db, "users", user.uid);
       const userDocSnap = await getDoc(userDocRef);
 
       if (userDocSnap.exists()) {
-        const userData = userDocSnap.data();
-        setSubscription(userData.subscription as Subscription);
+        setUserData(userDocSnap.data() as UserData);
       }
-      setLoadingSubscription(false);
+      setLoadingData(false);
     };
 
-    fetchSubscription();
+    fetchUserData();
   }, [user, loadingAuth, router, isAdmin]);
 
   const handleLogout = async () => {
@@ -84,18 +94,14 @@ export default function DashboardPage() {
   };
 
   const handleViewActivity = (activity: Activity) => {
-    // Se a assinatura não estiver ativa E o usuário não for admin,
-    // abra o modal, mas ele internamente saberá que está bloqueado.
     if (!isSubscriptionActive) {
        setSelectedActivity(activity);
        return;
     }
     
-    // Se a assinatura estiver ativa ou for admin, abra o PDF diretamente se houver URL.
     if (activity.pdfUrl && activity.pdfUrl !== '#') {
       window.open(activity.pdfUrl, '_blank');
     } else {
-      // Caso não tenha PDF, apenas abre o modal de visualização.
       setSelectedActivity(activity);
     }
   };
@@ -104,7 +110,7 @@ export default function DashboardPage() {
     activity.title.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
-  if (loadingAuth || !user || loadingSubscription) {
+  if (loadingAuth || !user || loadingData) {
     return (
       <div className="space-y-8">
         <div className="flex justify-between items-center">
@@ -178,7 +184,7 @@ export default function DashboardPage() {
 
       <AIRecommender onActivityClick={handleViewActivity} />
 
-      <PromoBlocks />
+      {!isAdmin && !hasPurchasedPromo && <PromoBlocks />}
       
       {!isSubscriptionActive && (
         <Alert variant="destructive" className="border-l-4">
