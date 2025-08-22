@@ -27,6 +27,8 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { signOut } from "firebase/auth";
 import { AIRecommender } from "@/components/ai-recommender";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
+import { SecondaryPromoBlocks } from "@/components/secondary-promo-blocks";
+import { MAIN_PRODUCT, SECONDARY_PRODUCTS } from "@/lib/products";
 
 type UserData = {
   subscription: {
@@ -58,8 +60,14 @@ export default function DashboardPage() {
   const isSubscriptionActive = isAdmin || (userData?.subscription?.status === 'active' && 
     (userData.subscription.validUntil ? userData.subscription.validUntil.toDate() > new Date() : false));
 
-  const hasPurchasedPromo = userData?.products?.some(p => PROMO_PRODUCT_NAMES.includes(p)) ?? false;
+  // Logic for the original promo blocks (EVA, Medals)
+  const hasPurchasedEvaOrMedals = userData?.products?.some(p => PROMO_PRODUCT_NAMES.includes(p)) ?? false;
+  const showOriginalPromo = !isAdmin && !hasPurchasedEvaOrMedals;
 
+  // Logic for the new secondary promo blocks (Sensory, PECS, Phono)
+  const userProducts = userData?.products || [];
+  const hasMainProductOnly = userProducts.length === 1 && userProducts[0] === MAIN_PRODUCT;
+  const showSecondaryPromo = !isAdmin && hasMainProductOnly;
 
   useEffect(() => {
     if (loadingAuth) return;
@@ -181,8 +189,9 @@ export default function DashboardPage() {
           </div>
         </CardContent>
       </Card>
-
-      {!isAdmin && !hasPurchasedPromo && <PromoBlocks />}
+      
+      {showSecondaryPromo && <SecondaryPromoBlocks />}
+      {showOriginalPromo && <PromoBlocks />}
       
       {!isSubscriptionActive && (
         <Alert variant="destructive" className="border-l-4">
@@ -266,3 +275,5 @@ export default function DashboardPage() {
     </div>
   );
 }
+
+    

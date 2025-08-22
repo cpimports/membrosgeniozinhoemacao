@@ -1,38 +1,38 @@
+
 "use client";
 
 import Image from 'next/image';
-import { AlertTriangle, Gift } from 'lucide-react';
+import { Gift } from 'lucide-react';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Label } from '@/components/ui/label';
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
-import Link from 'next/link';
+import { AlertTriangle } from 'lucide-react';
 
 export function PromoBlocks() {
   return (
     <div 
-      className="space-y-6 rounded-2xl border bg-[#FFD700] p-6" 
-      style={{ boxShadow: '8px 8px 0px rgba(128, 128, 128, 1)' }}
+      className="space-y-6 rounded-2xl border bg-primary/10 p-6" 
+      style={{ boxShadow: '8px 8px 0px hsla(var(--primary), 0.2)' }}
     >
       <div className="w-full text-center">
           <AlertTitle 
-            className="font-bold text-2xl mb-1 flex flex-col justify-center items-center gap-2 text-secondary-foreground"
-            style={{ textShadow: '-1px -1px 0 #FFF, 1px -1px 0 #FFF, -1px 1px 0 #FFF, 1px 1px 0 #FFF' }}
+            className="font-bold text-2xl mb-1 flex flex-col justify-center items-center gap-2 text-primary"
           >
-              <Gift className="h-8 w-8 text-red-600 [filter:drop-shadow(0_2px_2px_rgba(255,255,255,0.8))]" />
-              Novas atividades disponíveis!
+              <Gift className="h-8 w-8 text-accent" />
+              Materiais de Bônus Disponíveis!
           </AlertTitle>
-          <AlertDescription className="text-neutral-800 font-bold">
-              Aproveite para adquirir esses materiais extras e enriquecer ainda mais sua experiência com o Gêniozinho em Ação!
+          <AlertDescription className="text-muted-foreground font-semibold">
+              Adquira esses materiais extras e enriqueça ainda mais suas atividades!
           </AlertDescription>
       </div>
-      <Alert className="bg-white/80 border-yellow-950/40 text-yellow-900 text-center border-l-4">
+       <Alert className="bg-background/80 border-primary/20 text-primary-foreground text-center border-l-4 border-primary">
         <div className="flex items-center justify-center">
-            <AlertTriangle className="h-5 w-5 mr-2" />
-            <AlertTitle className="font-bold text-yellow-950 mt-0">
+            <AlertTriangle className="h-5 w-5 mr-2 text-primary" />
+            <AlertTitle className="font-bold text-primary mt-0">
             ATENÇÃO
             </AlertTitle>
         </div>
-        <AlertDescription className="text-yellow-900 text-center mt-1">
+        <AlertDescription className="text-muted-foreground text-center mt-1">
           Se você já adquiriu algum desses materiais, confira o e-mail cadastrado — o acesso já foi enviado para lá!
         </AlertDescription>
       </Alert>
@@ -114,3 +114,5 @@ export function PromoBlocks() {
     </div>
   );
 }
+
+    
