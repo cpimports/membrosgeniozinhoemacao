@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useEffect, useState, useCallback } from 'react';
@@ -6,12 +7,13 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth, db } from '@/lib/firebase';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { ArrowLeft } from 'lucide-react';
+import { ArrowLeft, PlusCircle } from 'lucide-react';
 import { Skeleton } from '@/components/ui/skeleton';
 import { collection, getDocs, QueryDocumentSnapshot, DocumentData } from 'firebase/firestore';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import { Badge } from '@/components/ui/badge';
 import { ManageUserModal, type UserData } from '@/components/manage-user-modal';
+import { AddUserModal } from '@/components/add-user-modal';
 
 export default function AdminPage() {
   const [user, loadingAuth] = useAuthState(auth);
@@ -19,6 +21,7 @@ export default function AdminPage() {
   const [users, setUsers] = useState<UserData[]>([]);
   const [loadingUsers, setLoadingUsers] = useState(true);
   const [selectedUser, setSelectedUser] = useState<UserData | null>(null);
+  const [isAddUserModalOpen, setIsAddUserModalOpen] = useState(false);
 
   const isAdmin = user?.email === 'admin@gmail.com';
   
@@ -59,12 +62,18 @@ export default function AdminPage() {
     setSelectedUser(userToManage);
   };
 
-  const handleCloseModal = () => {
+  const handleCloseManageModal = () => {
     setSelectedUser(null);
   };
 
   const handleUserUpdate = (updatedUser: UserData) => {
     setUsers(prevUsers => prevUsers.map(u => u.id === updatedUser.id ? updatedUser : u));
+    fetchUsers(); // Re-fetch to ensure data is consistent
+  };
+  
+  const handleUserAdded = (newUser: UserData) => {
+    setUsers(prevUsers => [...prevUsers, newUser]);
+    fetchUsers(); // Re-fetch to get the full list with the new user
   };
 
 
@@ -112,11 +121,17 @@ export default function AdminPage() {
           </div>
 
           <Card>
-              <CardHeader>
-                  <CardTitle>Lista de Usuários</CardTitle>
-                  <CardDescription>
-                     Aqui você pode visualizar todos os usuários cadastrados na plataforma.
-                  </CardDescription>
+              <CardHeader className="flex flex-row items-center justify-between">
+                <div>
+                    <CardTitle>Lista de Usuários</CardTitle>
+                    <CardDescription>
+                       Aqui você pode visualizar todos os usuários cadastrados na plataforma.
+                    </CardDescription>
+                </div>
+                <Button onClick={() => setIsAddUserModalOpen(true)}>
+                    <PlusCircle className="mr-2 h-4 w-4" />
+                    Adicionar Usuário
+                </Button>
               </CardHeader>
               <CardContent>
                   {loadingUsers ? (
@@ -159,9 +174,15 @@ export default function AdminPage() {
       
       <ManageUserModal
         isOpen={!!selectedUser}
-        onClose={handleCloseModal}
+        onClose={handleCloseManageModal}
         user={selectedUser}
         onUserUpdate={handleUserUpdate}
+      />
+
+      <AddUserModal
+        isOpen={isAddUserModalOpen}
+        onClose={() => setIsAddUserModalOpen(false)}
+        onUserAdded={handleUserAdded}
       />
     </>
   );
