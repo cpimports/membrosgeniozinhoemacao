@@ -26,73 +26,121 @@ if (!getApps().length) {
 const auth = getAuth();
 const db = getFirestore();
 
-// Your Cakto webhook secret key
-const CAKTO_WEBHOOK_SECRET = process.env.CAKTO_WEBHOOK_SECRET || 'd4bcc4ac-0697-427d-8eda-f33feb642b6b';
+// --- Mapa de Chaves Secretas e Produtos ---
+// Cada chave corresponde a um pacote específico de produtos.
+const CAKTO_PLANS: Record<string, string[]> = {
+    // Chave para o produto principal
+    'd4bcc4ac-0697-427d-8eda-f33feb642b6b': [
+        'Mais de 1500 Atividades adaptadas e lúdicas para autistas!',
+    ],
+    // Chave para o produto principal + Caderno Fonológico
+    '2abdc0a1-b2eb-4175-8040-a5eb4d3ea008': [
+        'Mais de 1500 Atividades adaptadas e lúdicas para autistas!',
+        'Caderno Fonológico - Fala, Leitura e Atenção',
+    ],
+    // Chave para o produto principal + PECS
+    '22bdbd79-7542-4481-804e-0b9ecea55dee': [
+        'Mais de 1500 Atividades adaptadas e lúdicas para autistas!',
+        'Cartões de Comunicação Visual (PECS)',
+    ],
+    // Chave para o produto principal + Atividades Sensoriais
+    'f3ed6308-1cb4-48c5-b758-9649b4713eb5': [
+        'Mais de 1500 Atividades adaptadas e lúdicas para autistas!',
+        '+150 Atividades Sensoriais - Foco e calma',
+    ],
+    // Chave para o produto principal + Caderno + PECS
+    '80e71a74-ecd0-4324-978e-608c20337873': [
+        'Mais de 1500 Atividades adaptadas e lúdicas para autistas!',
+        'Caderno Fonológico - Fala, Leitura e Atenção',
+        'Cartões de Comunicação Visual (PECS)',
+    ],
+    // Chave para o produto principal + Caderno + Sensoriais
+    '55a39afa-edba-4fa3-a2e5-12a88f2b8a3b': [
+        'Mais de 1500 Atividades adaptadas e lúdicas para autistas!',
+        'Caderno Fonológico - Fala, Leitura e Atenção',
+        '+150 Atividades Sensoriais - Foco e calma',
+    ],
+    // Chave para o produto principal + PECS + Sensoriais
+    '431048f4-ef42-46cc-a9dc-1fc931e969ee': [
+        'Mais de 1500 Atividades adaptadas e lúdicas para autistas!',
+        'Cartões de Comunicação Visual (PECS)',
+        '+150 Atividades Sensoriais - Foco e calma',
+    ],
+    // Chave para TODOS os produtos
+    'acba5002-e3de-4b46-993b-d6d1365f58ed': [
+        'Mais de 1500 Atividades adaptadas e lúdicas para autistas!',
+        'Caderno Fonológico - Fala, Leitura e Atenção',
+        'Cartões de Comunicação Visual (PECS)',
+        '+150 Atividades Sensoriais - Foco e calma',
+    ],
+};
 
 export async function POST(req: NextRequest) {
   try {
     const caktoSignature = req.headers.get('cakto-signature');
     
-    // 1. Verify the webhook signature
-    if (caktoSignature !== CAKTO_WEBHOOK_SECRET) {
-      console.warn('Invalid Cakto webhook signature received.');
+    // 1. Verificar se a chave secreta do webhook é válida
+    if (!caktoSignature || !CAKTO_PLANS[caktoSignature]) {
+      console.warn('Invalid or missing Cakto webhook signature received.');
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
+
+    // Obter a lista de produtos para a chave válida
+    const productsForThisPlan = CAKTO_PLANS[caktoSignature];
+    console.log(`Webhook received for plan with products: ${productsForThisPlan.join(', ')}`);
 
     const payload = await req.json();
     console.log('Cakto webhook payload received:', payload);
 
-    // 2. Extract user information from the payload
+    // 2. Extrair informações do usuário do payload
     const email = payload.customer?.email;
     const name = payload.customer?.name;
-    const productName = payload.product?.name;
 
-    if (!email || !name || !productName) {
-      console.error('Webhook payload is missing customer email, name, or product name.');
-      return NextResponse.json({ error: 'Missing customer or product information' }, { status: 400 });
+    if (!email || !name) {
+      console.error('Webhook payload is missing customer email or name.');
+      return NextResponse.json({ error: 'Missing customer information' }, { status: 400 });
     }
 
-    // 3. Create or update user in Firebase and Firestore
+    // 3. Criar ou atualizar o usuário no Firebase e Firestore
     let userRecord;
     try {
-      // Check if user already exists
+      // Usuário já existe, vamos atualizar seus produtos e assinatura
       userRecord = await auth.getUserByEmail(email);
       console.log(`User ${email} already exists. Updating subscription and products.`);
 
-      // Update existing user's subscription and add the new product
       const userRef = db.collection('users').doc(userRecord.uid);
       const userDoc = await userRef.get();
       const userData = userDoc.data() || {};
       const existingProducts = userData.products || [];
       
-      const newProducts = [...new Set([...existingProducts, productName])]; // Avoid duplicates
+      // Combina os produtos existentes com os novos produtos do plano, sem duplicatas
+      const allProducts = [...new Set([...existingProducts, ...productsForThisPlan])];
 
       await userRef.set({
-        products: newProducts,
+        products: allProducts,
         subscription: {
           status: 'active',
-          validUntil: Timestamp.fromDate(addDays(new Date(), 30)),
+          validUntil: Timestamp.fromDate(addDays(new Date(), 30)), // Renova a assinatura por 30 dias
         },
       }, { merge: true });
 
-
     } catch (error: any) {
       if (error.code === 'auth/user-not-found') {
+        // Usuário não existe, vamos criá-lo
         console.log(`Creating new user for ${email}.`);
-        // User does not exist, create them. A password is not set here.
         userRecord = await auth.createUser({
           email: email,
           displayName: name,
-          emailVerified: true, // We trust the email from the payment provider
+          emailVerified: true, // Confiamos no e-mail do provedor de pagamento
         });
 
-        // Create user document in Firestore
+        // Criar o documento do usuário no Firestore com os produtos do plano
         const userRef = db.collection('users').doc(userRecord.uid);
         await userRef.set({
           uid: userRecord.uid,
           name: name,
           email: email,
-          products: [productName],
+          products: productsForThisPlan,
           subscription: {
             status: 'active',
             validUntil: Timestamp.fromDate(addDays(new Date(), 30)),
@@ -103,7 +151,7 @@ export async function POST(req: NextRequest) {
         console.log(`User created. Instruct user to use 'Forgot Password' to set their initial password.`);
 
       } else {
-        // Other error, re-throw
+        // Outro erro, relançar
         throw error;
       }
     }
