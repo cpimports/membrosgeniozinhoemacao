@@ -72,8 +72,9 @@ export default function LoginPage() {
            <Alert className="mb-6 bg-primary/10 border-primary/30 text-primary-foreground">
               <Info className="h-5 w-5 text-primary" />
               <AlertTitle className="font-bold text-primary">Primeiro Acesso?</AlertTitle>
-              <AlertDescription className="text-muted-foreground">
-                Se você acabou de comprar, seu acesso já foi criado! Use o e-mail da compra e clique em <strong>"Esqueceu sua senha?"</strong> abaixo para definir sua senha de acesso.
+              <AlertDescription className="text-muted-foreground space-y-1">
+                <p>Seu login é o <strong>e-mail que usou na compra.</strong></p>
+                <p>Sua senha inicial é o seu <strong>CPF (apenas os números).</strong></p>
               </AlertDescription>
           </Alert>
           <Form {...form}>
@@ -116,11 +117,6 @@ export default function LoginPage() {
             </form>
           </Form>
         </CardContent>
-        <CardFooter className="flex flex-col gap-2">
-          <Link href="/forgot-password" passHref>
-             <Button variant="link" className="text-sm">Esqueceu sua senha?</Button>
-          </Link>
-        </CardFooter>
       </Card>
     </div>
   );

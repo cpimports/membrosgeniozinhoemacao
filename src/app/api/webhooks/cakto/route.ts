@@ -95,11 +95,21 @@ export async function POST(req: NextRequest) {
     // 2. Extrair informações do usuário do payload
     const email = payload.customer?.email;
     const name = payload.customer?.name;
+    const document = payload.customer?.document; // Assumindo que a Cakto envia o CPF em 'document'
 
-    if (!email || !name) {
-      console.error('Webhook payload is missing customer email or name.');
+    if (!email || !name || !document) {
+      console.error('Webhook payload is missing customer email, name, or document.');
       return NextResponse.json({ error: 'Missing customer information' }, { status: 400 });
     }
+    
+    // Limpa o CPF para usar como senha (remove pontos, traços, etc.)
+    const password = document.replace(/\D/g, '');
+
+    if (password.length < 6) {
+        console.error('Document number is too short to be used as a password.');
+        return NextResponse.json({ error: 'Invalid document for password creation.' }, { status: 400 });
+    }
+
 
     // 3. Criar ou atualizar o usuário no Firebase e Firestore
     let userRecord;
@@ -131,6 +141,7 @@ export async function POST(req: NextRequest) {
         userRecord = await auth.createUser({
           email: email,
           displayName: name,
+          password: password,
           emailVerified: true, // Confiamos no e-mail do provedor de pagamento
         });
 
@@ -148,7 +159,7 @@ export async function POST(req: NextRequest) {
           createdAt: Timestamp.now(),
         });
         
-        console.log(`User created. Instruct user to use 'Forgot Password' to set their initial password.`);
+        console.log(`User created with CPF as password.`);
 
       } else {
         // Outro erro, relançar
