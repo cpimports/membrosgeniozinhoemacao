@@ -11,7 +11,7 @@ import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { useToast } from "@/hooks/use-toast";
-import { Mail, Send, ArrowLeft } from "lucide-react";
+import { Mail, Send, ArrowLeft, AlertTriangle } from "lucide-react";
 import { sendPasswordResetEmail } from "firebase/auth";
 import { auth } from "@/lib/firebase";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
@@ -70,11 +70,11 @@ export default function ForgotPasswordPage() {
                     </CardDescription>
                 </CardHeader>
                 <CardContent>
-                   <Alert>
-                        <Mail className="h-5 w-5" />
-                        <AlertTitle>Link enviado!</AlertTitle>
+                   <Alert variant="destructive">
+                        <AlertTriangle className="h-5 w-5" />
+                        <AlertTitle>Não recebeu o e-mail?</AlertTitle>
                         <AlertDescription>
-                         Pode levar alguns minutos para chegar. Não se esqueça de checar sua caixa de spam.
+                         Pode levar alguns minutos para chegar. Não se esqueça de checar sua <strong>caixa de SPAM</strong> ou lixo eletrônico.
                         </AlertDescription>
                     </Alert>
                 </CardContent>
